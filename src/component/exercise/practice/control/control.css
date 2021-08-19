@@ -1,0 +1,17 @@
+.type {
+    margin: 1rem 0;
+  }
+  
+  .range {
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .sound-control {
+    text-align: center;
+  }
+  
+  .audio-setting {
+    width: 9rem;
+    height: 1.5rem;
+  }

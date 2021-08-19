@@ -1,0 +1,10 @@
+.menu {
+    display: flex;
+    margin-top: 2rem;
+    justify-content: center;
+    margin-bottom: .25rem;
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+}

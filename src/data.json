@@ -1,0 +1,230 @@
+{
+    "lesson": [
+      {
+        "title": "Greeting",
+        "limit": {
+          "lesson": 18,
+          "lessons": ["Greetings in Yoruba langauge", "Good Morning", "Hope you wake up well", "Hope you wake up well", 
+                      "Thank God", "Good afternoon", "How are you", "Good evening(sunset)", "Good evening", "Good bye", "Good night", 
+                      "Greeting someone at home", "Your welcome", "Did I meet you well", "I meat you well", "Well done",
+                      "Thank you", "You are well seated", "Hello"]
+        }
+      },
+      {
+        "title": "Begining",
+        "limit": {
+          "lesson": 18,
+          "lessons": ["I will tak to you later", "I want to get to work", "I just woke up", "What are you doing now", "I woke up great", "Did you sleep well", "Good morning",
+                      "Do you speak Yoruba", "Yes I speak a little bit", "How old are you", "I am 33years old", "What do you want to do now", "I don’t know",
+                      "What do you do you do for a living", "I don’t understand", "What work do you do", "I do a software developer’s work", "It was nice talking to you"]
+        }
+      },
+      {
+        "title": "Step 2",
+        "limit": {
+          "lesson": 10,
+          "lessons": ["What are they talking about", "I don’t know o", "Can you help me", "I don’t know the way", "That’s sad, sorry", "How much is this",
+                      "What is this", "Happy Birthday", "I celebrate with you or congratulations", "Are you okay?"
+            ]
+        },
+        "rules": {
+          "random": true
+        }
+      },
+      {
+        "title": "Random",
+        "limit": {
+          "lesson": 24,
+          "exercise": 30
+        },
+        "rules": {
+          "random": true,
+          "repeat": true
+        }
+      },
+      {
+        "title": "Joined",
+        "limit": {
+          "lesson": 30,
+          "exercise": 0
+        }
+      },
+      {
+        "title": "Fatha",
+        "limit": {
+          "lesson": 30,
+          "exercise": 16
+        }
+      },
+      {
+        "title": "Kasra",
+        "limit": {
+          "lesson": 30,
+          "exercise": 20
+        }
+      },
+      {
+        "title": "Dhamma",
+        "limit": {
+          "lesson": 30,
+          "exercise": 20
+        }
+      },
+      {
+        "title": "Vowels 1",
+        "limit": {
+          "exercise": 46
+        }
+      },
+      {
+        "title": "Double fatha",
+        "limit": {
+          "lesson": 30,
+          "exercise": 24
+        }
+      },
+      {
+        "title": "Double kasra",
+        "limit": {
+          "lesson": 30,
+          "exercise": 23
+        }
+      },
+      {
+        "title": "Double dhamma",
+        "limit": {
+          "lesson": 30,
+          "exercise": 19
+        }
+      },
+      {
+        "title": "Alif vowel",
+        "limit": {
+          "lesson": 28,
+          "exercise": 31
+        }
+      },
+      {
+        "title": "Standing fatha kasra dhamma",
+        "limit": {
+          "lesson": 39,
+          "exercise": 31
+        }
+      },
+      {
+        "title": "Sukoon fatha wow",
+        "limit": {
+          "lesson": 30,
+          "exercise": 24
+        }
+      },
+      {
+        "title": "Sukoon dhamma wow",
+        "limit": {
+          "lesson": 29,
+          "exercise": 24
+        }
+      },
+      {
+        "title": "Sukoon fatha ya",
+        "limit": {
+          "lesson": 29,
+          "exercise": 26
+        }
+      },
+      {
+        "title": "Sukoon kasra ya",
+        "limit": {
+          "lesson": 29,
+          "exercise": 25
+        }
+      },
+      {
+        "title": "Sukoon",
+        "limit": {
+          "lesson": 31,
+          "exercise": 85
+        }
+      },
+      {
+        "title": "slience letter",
+        "limit": {
+          "exercise": 30
+        }
+      },
+      {
+        "title": "More practise",
+        "limit": {
+          "lesson": 12
+        }
+      },
+      {
+        "title": "Shadda",
+        "limit": {
+          "lesson": 11,
+          "exercise": 21
+        }
+      },
+      {
+        "title": "Shadda 2",
+        "limit": {
+          "lesson": 25,
+          "exercise": 47
+        }
+      },
+      {
+        "title": "Madd",
+        "limit": {
+          "exercise": 44
+        }
+      },
+      {
+        "title": "Madd 2",
+        "limit": {
+          "exercise": 13
+        }
+      },
+      {
+        "title": "Alif end",
+        "limit": {
+          "exercise": 22
+        }
+      },
+      {
+        "title": "advance",
+        "limit": {
+          "exercise": 15
+        }
+      },
+      {
+        "title": "advance 2",
+        "limit": {
+          "exercise": 20
+        }
+      },
+      {
+        "title": "advance 3",
+        "limit": {
+          "exercise": 19
+        }
+      },
+      {
+        "title": "advance 4",
+        "limit": {
+          "lesson": 18
+        }
+      },
+      {
+        "title": "Haroof e Muqataat",
+        "limit": {
+          "lesson": 16
+        }
+      },
+      {
+        "title": "sentence",
+        "limit": {
+          "lesson": 21
+        }
+      }
+    ]
+  }

@@ -1,0 +1,229 @@
+{
+    "lesson": [
+      {
+        "title": "Begining",
+        "limit": {
+          "lesson": 30,
+          "exercise": 30
+        }
+      },
+      {
+        "title": "No English",
+        "limit": {
+          "lesson": 24,
+          "exercise": 64
+        },
+        "rules": {
+          "random": true
+        }
+      },
+      {
+        "title": "Random",
+        "limit": {
+          "lesson": 24,
+          "exercise": 30
+        },
+        "rules": {
+          "random": true,
+          "repeat": true
+        }
+      },
+      {
+        "title": "Joined",
+        "limit": {
+          "lesson": 30,
+          "exercise": 0
+        }
+      },
+      {
+        "title": "Fatha",
+        "limit": {
+          "lesson": 30,
+          "exercise": 16
+        }
+      },
+      {
+        "title": "Kasra",
+        "limit": {
+          "lesson": 30,
+          "exercise": 20
+        }
+      },
+      {
+        "title": "Dhamma",
+        "limit": {
+          "lesson": 30,
+          "exercise": 20
+        }
+      },
+      {
+        "title": "Vowels 1",
+        "limit": {
+          "exercise": 46
+        }
+      },
+      {
+        "title": "Double fatha",
+        "limit": {
+          "lesson": 30,
+          "exercise": 24
+        }
+      },
+      {
+        "title": "Double kasra",
+        "limit": {
+          "lesson": 30,
+          "exercise": 23
+        }
+      },
+      {
+        "title": "Double dhamma",
+        "limit": {
+          "lesson": 30,
+          "exercise": 19
+        }
+      },
+      {
+        "title": "Alif vowel",
+        "limit": {
+          "lesson": 30,
+          "exercise": 31
+        }
+      },
+      {
+        "title": "Standing fatha",
+        "limit": {
+          "lesson": 27,
+          "exercise": 21
+        }
+      },
+      {
+        "title": "Standing kasra dhamma",
+        "limit": {
+          "lesson": 12,
+          "exercise": 10
+        }
+      },
+      {
+        "title": "Sukoon fatha wow",
+        "limit": {
+          "lesson": 30,
+          "exercise": 24
+        }
+      },
+      {
+        "title": "Sukoon dhamma wow",
+        "limit": {
+          "lesson": 29,
+          "exercise": 24
+        }
+      },
+      {
+        "title": "Sukoon fatha ya",
+        "limit": {
+          "lesson": 29,
+          "exercise": 26
+        }
+      },
+      {
+        "title": "Sukoon kasra ya",
+        "limit": {
+          "lesson": 29,
+          "exercise": 25
+        }
+      },
+      {
+        "title": "Sukoon",
+        "limit": {
+          "lesson": 31,
+          "exercise": 85
+        }
+      },
+      {
+        "title": "slience letter",
+        "limit": {
+          "lesson": 31
+        }
+      },
+      {
+        "title": "More practise",
+        "limit": {
+          "lesson": 13
+        }
+      },
+      {
+        "title": "Shadda",
+        "limit": {
+          "lesson": 11,
+          "exercise": 21
+        }
+      },
+      {
+        "title": "Shadda 2",
+        "limit": {
+          "lesson": 25,
+          "exercise": 47
+        }
+      },
+      {
+        "title": "Madd",
+        "limit": {
+          "lesson": 44
+        }
+      },
+      {
+        "title": "Madd 2",
+        "limit": {
+          "lesson": 13
+        }
+      },
+      {
+        "title": "Alif end",
+        "limit": {
+          "lesson": 23
+        }
+      },
+      {
+        "title": "advance",
+        "limit": {
+          "lesson": 15
+        }
+      },
+      {
+        "title": "advance 2",
+        "limit": {
+          "lesson": 20
+        }
+      },
+      {
+        "title": "advance 3",
+        "limit": {
+          "lesson": 19
+        }
+      },
+      {
+        "title": "advance 4",
+        "limit": {
+          "lesson": 13
+        }
+      },
+      {
+        "title": "advance 5",
+        "limit": {
+          "lesson": 5
+        }
+      },
+      {
+        "title": "sentence",
+        "limit": {
+          "lesson": 21
+        }
+      },
+      {
+        "title": "Haroof e Muqataat",
+        "limit": {
+          "lesson": 16
+        }
+      }
+    ]
+  }

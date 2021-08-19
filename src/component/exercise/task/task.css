@@ -1,0 +1,40 @@
+.task {
+    height: 100%;
+    flex-direction: column;
+  }
+  
+  .task__select {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .task__container {
+    flex: 1 0 calc(18% - 0.5rem);
+    min-height: 5rem;
+    border-radius: 3px;
+    box-shadow: 0 0 0rem 0.125rem rgba(0, 0, 0, 0.178);
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    text-decoration: unset;
+    color: unset;
+  }
+  .task__container:hover {
+    box-shadow: 0 0 0.125rem 0.25rem rgba(0, 0, 0, 0.178);
+  }
+  
+  .task__img {
+    width: 2rem;
+    height: 50%;
+    margin: 0 0.25rem;
+  }
+  
+  .task__title {
+    font-weight: 500;
+  }
+  
+  .task__length {
+    padding: 1rem 0;
+    font-weight: bold;
+  }

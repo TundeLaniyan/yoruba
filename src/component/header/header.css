@@ -1,0 +1,47 @@
+.header {
+    display: flex;
+    justify-content: center;
+    height: 5rem;
+    align-items: center;
+    padding: 0 5%;
+    /* box-shadow: 0 0.25rem 0.5rem 0.25rem #00000052; */
+  }
+  
+  .header .logo {
+    padding: 1rem 0;
+    height: 5rem;
+    margin-right: auto;
+  }
+  
+  .header .option {
+    margin: 0 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: underline;
+    position: relative;
+  }
+  
+  .header .droplist {
+    padding: 2rem;
+    position: absolute;
+    z-index: 10;
+    top: 4rem;
+    left: 50%;
+    background-color: #cfc7add5;
+    text-align: left;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    overflow: scroll;
+    height: 50vh;
+  }
+  
+  .header .droplist__item {
+    padding: 0.25rem 0;
+    text-transform: capitalize;
+  }
+  
+  .header__navigation {
+    position: absolute;
+    left: 2rem;
+    bottom: calc(100% - 6rem);
+  }

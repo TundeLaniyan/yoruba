@@ -1,0 +1,33 @@
+.progress-container {
+    border-radius: 0.25rem;
+    overflow: hidden;
+    margin: 0.25rem;
+  }
+  
+  .progress__top,
+  .progress__bottom {
+    height: 0.25rem;
+  }
+  
+  .progress__body {
+    display: flex;
+    position: relative;
+  }
+  
+  .progress__side {
+    width: 0.25rem;
+  }
+  
+  .progress__pass {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    width: 50%;
+  }
+  
+  .progress__pass-img {
+    width: 80%;
+    height: 80%;
+  }
