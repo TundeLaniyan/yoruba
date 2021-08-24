@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/yoruba/static/css/main.72e9e7f3.chunk.css",
-    "main.js": "/yoruba/static/js/main.f47c3036.chunk.js",
-    "main.js.map": "/yoruba/static/js/main.f47c3036.chunk.js.map",
+    "main.css": "/yoruba/static/css/main.4f7d32f8.chunk.css",
+    "main.js": "/yoruba/static/js/main.7742b4f2.chunk.js",
+    "main.js.map": "/yoruba/static/js/main.7742b4f2.chunk.js.map",
     "runtime-main.js": "/yoruba/static/js/runtime-main.af23dbbd.js",
     "runtime-main.js.map": "/yoruba/static/js/runtime-main.af23dbbd.js.map",
     "static/js/2.5ba750cd.chunk.js": "/yoruba/static/js/2.5ba750cd.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.5c8263d7.chunk.js": "/yoruba/static/js/3.5c8263d7.chunk.js",
     "static/js/3.5c8263d7.chunk.js.map": "/yoruba/static/js/3.5c8263d7.chunk.js.map",
     "index.html": "/yoruba/index.html",
-    "static/css/main.72e9e7f3.chunk.css.map": "/yoruba/static/css/main.72e9e7f3.chunk.css.map",
+    "static/css/main.4f7d32f8.chunk.css.map": "/yoruba/static/css/main.4f7d32f8.chunk.css.map",
     "static/js/2.5ba750cd.chunk.js.LICENSE.txt": "/yoruba/static/js/2.5ba750cd.chunk.js.LICENSE.txt",
     "static/media/logo.271d96d0.png": "/yoruba/static/media/logo.271d96d0.png",
     "static/media/exercise.css": "/yoruba/static/media/yoruba3.04c60fd0.jpg"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.af23dbbd.js",
     "static/js/2.5ba750cd.chunk.js",
-    "static/css/main.72e9e7f3.chunk.css",
-    "static/js/main.f47c3036.chunk.js"
+    "static/css/main.4f7d32f8.chunk.css",
+    "static/js/main.7742b4f2.chunk.js"
   ]
 }
