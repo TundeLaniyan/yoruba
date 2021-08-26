@@ -5,10 +5,9 @@ import Lesson from "./lesson/lesson";
 import Task from "./task/task";
 import EasyGame from "./easyGame/easyGame";
 import { TiArrowBack } from "react-icons/ti";
-import "./exercise.css";
 import HardGame from "./hardGame/hardGame";
 import MemoryGame from "./memoryGame/memoryGame";
-import Progress from "../progress/progress";
+import "./exercise.css";
 
 const Exercise = ({ lecture, setLecture, location }) => {
   const [exercise, setExercise] = useState(1);
@@ -23,24 +22,14 @@ const Exercise = ({ lecture, setLecture, location }) => {
           {location.pathname !== "/" && <TiArrowBack />}
         </Link>
         <Switch>
-          <Route path="/progress">
-            <Progress
-              lecture={lecture}
-              exercise={exercise}
-              setExercise={setExercise}
-              type="lesson"
-              Component={Practice}
-              // percentage={10}
-            />
-          </Route>
-          <Route path="/lesson">
+          {/* <Route path="/lesson">
             <Practice
               lecture={lecture}
               exercise={exercise}
               setExercise={setExercise}
               type="lesson"
             />
-          </Route>
+          </Route> */}
           <Route path="/exercise">
             <Practice
               lecture={lecture}
@@ -61,15 +50,9 @@ const Exercise = ({ lecture, setLecture, location }) => {
           <Route path="/memoryGame">
             <MemoryGame lecture={lecture} />
           </Route>
-          <Route 
-            path="/" 
-            render={({history}) => 
-              <Lesson 
-                history={history} 
-                setLecture={setLecture} 
-                lecture={lecture}
-              />}
-          />
+          <Route path="/">
+            <Lesson setLecture={setLecture}/>
+          </Route> 
         </Switch>
       </div>
     </div>

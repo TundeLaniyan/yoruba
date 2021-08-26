@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { lesson } from '../../../../data.json';
 import "./slider.css";
 
 const Slider = ({
@@ -10,18 +11,18 @@ const Slider = ({
   auto,
   random,
 }) => {
-  const [audio, setAudio] = useState(new Audio());
-
+  const [audio, setAudio] = useState();
+  
   useEffect(() => {
     if (auto === "Auto") {
-      audio.pause();
-      setAudio(new Audio(`/files/lecture${lecture + 1}/${exercise}`));
+      audio?.pause();
+      // console.log({exercise, lecture});
+      new Audio(`files/lecture${lecture}/${exercise}.m4a`).play()
+      const currentAudio = new Audio(`files/lecture${lecture}/${exercise}.m4a`);
+      currentAudio.play();
+      setAudio(currentAudio);
     }
   }, [exercise, lecture, type]);
-
-  useEffect(() => {
-    audio.play();
-  }, [audio]);
 
   const randomNumber = (prev, value) => {
     if (random) return Math.ceil(Math.random() * limit);
@@ -31,20 +32,19 @@ const Slider = ({
   return (
     <div className="slider">
       <button
-        className="switch"
+        className="switch switch--next"
         disabled={!random && exercise < 2}
         onClick={() => setExercise((prev) => randomNumber(prev, -1))}
       ></button>
-      <div
-        className="slider__img"
-        style={{
-          backgroundImage: `url(../../files/lecture${
-            lecture + 1
-          }/${exercise}.png)`,
-        }}
-      ></div>
+      <div>
+        <div
+          className="slider__img"
+          style={{backgroundImage: `url(./img/lecture${lecture}/${exercise}.jpg)`}}
+        ></div>
+        <h5>{lesson[lecture - 1].lessons[exercise - 1]}</h5>
+      </div>
       <button
-        className="switch switch--next"
+        className="switch"
         disabled={!random && exercise > limit - 1}
         onClick={() => setExercise((prev) => randomNumber(prev, 1))}
       ></button>

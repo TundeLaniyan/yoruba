@@ -13,14 +13,14 @@ const HardGame = ({ lecture, setProgress }) => {
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
   const [active, setActive] = useState(false);
-  const max = lesson[lecture - 1].limit.lessons.length;
   const gameLimit = 5;
+  const displayCard = gameLogic.displayCard;
 
   function nextRound() {
     setState([]);
     const cardLimit = next + 5;
-    const cards = gameLogic.generateCards({ cardLimit, max });
-    gameLogic.playCards({ cards, cardLimit, gameSpeed: 500, setState });
+    const totalCards = gameLogic.totalCards(lecture);
+    gameLogic.generateCards({ cardLimit, totalCards, setState });
   }
 
   useEffect(() => {
@@ -43,37 +43,45 @@ const HardGame = ({ lecture, setProgress }) => {
   }, [state]);
   
   function answerQuestion(state) {
-    setAnswer(gameLogic.answerQuestion({ state, lecture, cardLimit: state.length }));
+    setAnswer(gameLogic.answerQuestionMultLectures({ state, lecture, cardLimit: state.length }));
     setActive(true);
   }
 
   function handleOnClick(input) {
     if (!active) return;
     setActive(false);
-    new Audio(`files/lecture${lecture}/${input}.m4a`).play();
-    setTimeout(() => {
+    const { lecture: inputLecture, position } = displayCard(input, lecture);
+    new Audio(`files/lecture${inputLecture}/${position}.m4a`).play();
+    gameLogic.delay(2000, () => {
       if (input === answer) {
-        setCorrect((prev) => prev + 1);
         gameLogic.correct();
-        const current = [...state];
-        current.splice(current.indexOf(input), 1);
-        setState(current);
-        if (current.length === 1) setNext((prev) => prev + 1);
-        else answerQuestion(current);
+        setCorrect((prev) => prev + 1);
+        gameLogic.delay(1500, () => {
+          const current = [...state];
+          current.splice(current.indexOf(input), 1);
+          setState(current);
+          if (current.length === 1) setNext((prev) => prev + 1);
+          else answerQuestion(current);
+        });
       } else {
-        new Audio(`files/lecture${lecture}/${answer}.m4a`).play();
         gameLogic.incorrect();
         setIncorrect((prev) => prev + 1);
-        setActive(true);
+        gameLogic.delay(1500, () => {
+          const { lecture: answerLecture, position } = displayCard(answer, lecture);
+          new Audio(`files/lecture${answerLecture}/${position}.m4a`).play();
+          setActive(true);
+        });
       }
-    }, [2500]);
+    });
   }
 
   return (
     <div className="hard-game">
       <div className="title">Hard Game</div>
       <div className="select">
-        {state.map((cur, index) => (
+        {state.map((cur, index) => {
+          const { lecture: cardLecture, position } = displayCard(cur, lecture)
+          return(
           <div
             key={index}
             className="container"
@@ -82,19 +90,19 @@ const HardGame = ({ lecture, setProgress }) => {
             <div
               className="img"
               style={{
-                backgroundImage: `url(../../img/lecture${lecture}/${cur}.jpg)`,
+                backgroundImage: `url(./img/lecture${cardLecture}/${position}.jpg)`,
               }}
             ></div>
-            <h5>{lesson[lecture - 1].limit.lessons[cur - 1]}</h5>
+            <h5>{lesson[cardLecture - 1].lessons[position - 1]}</h5>
           </div>
-        ))}
+        )})}
       </div>
       <div className="hard-game__footer">
         <div
           className="score score__play"
           onClick={() =>
             active &&
-            new Audio(`files/lecture${lecture}/${answer}.m4a`).play()
+            new Audio(`files/lecture${displayCard(answer, lecture).lecture}/${displayCard(answer, lecture).position}.m4a`).play()
           }
         >
           <GiSpeaker />

@@ -1,4 +1,5 @@
-const defaultState = window.localStorage.getItem("Tajweed") || {};
+const saveState = window.localStorage.getItem("Yoruba") || "{}";
+const defaultState = saveState !== "[object Object]" ? JSON.parse(saveState) : {};
 
 export const reducer = (state = defaultState, action) => {
   switch (action.type) {

@@ -1,27 +1,27 @@
+import { lesson } from '../../data.json';
+
 export default {
-    generateCards: function({ cardLimit, max }) {
+    generateCards: function({ cardLimit, totalCards, setState }) {
         const cards = new Set();
         let i = 0;
         while (i < cardLimit) {
-          const value = Math.ceil(Math.random() * max);
+          const value = Math.ceil(Math.random() * totalCards);
           if (!cards.has(value)) {
             i++;
             cards.add(value);
           }
         }
-        return [...cards];
+        setState([...cards]);
+        return [...cards]
       },
-    playCards: function({ cardLimit, setState, gameSpeed, cards, lecture, autoPlay }) {
-        let i = 0;
-        const intervalId = setInterval(() => {
-            if (i < cardLimit) {
+    playCards: function({ cardLimit, setSoundState, gameSpeed, cards, lecture, autoPlay, setCleanUp }) {
+        for (let i = 0; i < cardLimit; i++) {
+            this.delay(gameSpeed * i, () => {
                 autoPlay && new Audio(`files/lecture${lecture}/${cards[i]}.m4a`).play();
-                setState((prev) => [...prev, cards[i]]);
-                i++;
-            } else {
-                clearInterval(intervalId);
-            }
-        }, gameSpeed);
+                setSoundState(i);
+            }, setCleanUp);
+        }
+        this.delay(gameSpeed * cardLimit, () => setSoundState(cardLimit));
     },
     endGame: function({ result, exercise, lecture, setProgress }) {
         setProgress({ result, exercise, lecture });
@@ -32,6 +32,42 @@ export default {
         new Audio(`files/lecture${lecture}/${state[value]}.m4a`).play();
         return state[value];
     },
-    correct: function() {},
-    incorrect: function() { alert("INCORRECT"); }
+    answerQuestionMultLectures: function({ state, lecture, cardLimit }) {
+        const value = Math.floor(Math.random() * cardLimit);
+        const { lecture: currentLecture, position } = this.displayCard(state[value], lecture);
+        new Audio(`files/lecture${currentLecture}/${position}.m4a`).play();
+        return state[value];
+    },
+    correct: function() { new Audio("files/yes.m4a").play() },
+    incorrect: function() { new Audio("files/no.m4a").play() },
+    delay: function(timeout, cb, setCleanUp) { 
+        const timeOut = setTimeout(() => { 
+            cb();
+            setCleanUp && setCleanUp(prev => {
+                const index = prev.indexOf(timeOut);
+                index > -1 && prev.splice(index, 1);
+                return prev;
+            })
+        }, timeout);
+        setCleanUp && setCleanUp(prev => [...prev, timeOut]);
+    },
+    isTouchDevice: () => 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0,
+    totalCards: (lecture) => lesson.slice(0, lecture).reduce((total, cur) =>
+    (typeof total === "number" ? total : total.limit.lessons.length) + cur.limit.lessons.length
+    , 0),
+    displayCard: function(state, lecture) {
+        let runningTotal = state, currentLecture, position, accumulation = 0;
+        for (let i = 0; i < lecture; i++) {
+          const current = lesson[i].lessons.length;
+          if (runningTotal - current <= 0) {
+            position = state - accumulation;
+            currentLecture = i + 1;
+            break;
+          }
+          runningTotal -= current;
+          accumulation +=current
+        }
+    
+        return { position, lecture: currentLecture }
+    }
 }

@@ -44,8 +44,8 @@
   }
   
   .exercise .switch {
-    /* background-image: url("../../img/switch.png"); */
-    background-size: contain;
+    background-image: url("../../img/switch.png");
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     border: none;
@@ -76,11 +76,12 @@
   }
   
   .btn {
-    padding: 1rem;
+    padding: .25rem .5rem;
     border: 3px;
-    border: 1px solid darkkhaki;
+    border: 1px solid cornsilk;
+    color: cornsilk;
     cursor: pointer;
-    background-color: transparent;
+    background-color: rgb(138, 75, 3);
     box-shadow: 0 0.25rem 0 0 #00000026;
     outline: none;
   }
@@ -141,3 +142,14 @@
   input[type="range"]::-ms-fill-upper {
     background-color: grey;
   }
+
+@media screen and (max-width: 56.25em) {
+  .exercise__container {
+    padding: 1vh 0;
+  }
+
+  .exercise {
+    padding: 0;
+    height: 85vh;
+  }
+}

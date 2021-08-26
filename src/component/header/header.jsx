@@ -1,33 +1,14 @@
-import React, { useState } from "react";
-import { lesson } from "../../data.json";
+import React from "react";
 import logo from "../../img/logo.png";
 import "./header.css";
 
-const Header = ({ setLecture }) => {
-  const [display, setDisplay] = useState(false);
+const Header = () => {
 
   return (
-    <div className="header" onMouseLeave={() => setDisplay(false)}>
+    <div className="header">
       <div className="logo-container">
-        <img className="logo" src={logo} />
+        <img className="logo" src={logo} alt="Yoruba" />
       </div>
-      {/* <div className="header__navigation">Navigation/unit 15/lesson</div> */}
-      {/* <div
-        className="option"
-        onClick={() => setDisplay((prev) => (prev ? false : true))}
-        onMouseEnter={() => setDisplay(true)}
-      >
-        <span>Lecture</span>
-        {display && (
-          <div className="droplist" onMouseLeave={() => setDisplay(false)}>
-            {lesson.map((cur, i) => (
-              <div className="droplist__item" onClick={() => setLecture(i)}>
-                {cur.title}
-              </div>
-            ))}
-          </div>
-        )}
-      </div> */}
     </div>
   );
 };

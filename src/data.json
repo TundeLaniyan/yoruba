@@ -2,8 +2,11 @@
     "lesson": [
       {
         "title": "Greeting",
+        "lessons": ["Greetings in Yoruba langauge", "Good Morning", "Hope you wake up well", "Hope you wake up well", 
+          "Thank God", "Good afternoon", "How are you", "Good evening(sunset)", "Good evening", "Good bye", "Good night", 
+          "Greeting someone at home", "Your welcome", "Did I meet you well", "I meat you well", "Well done",
+          "Thank you", "You are well seated", "Hello"],
         "limit": {
-          "lesson": 18,
           "lessons": ["Greetings in Yoruba langauge", "Good Morning", "Hope you wake up well", "Hope you wake up well", 
                       "Thank God", "Good afternoon", "How are you", "Good evening(sunset)", "Good evening", "Good bye", "Good night", 
                       "Greeting someone at home", "Your welcome", "Did I meet you well", "I meat you well", "Well done",
@@ -11,219 +14,57 @@
         }
       },
       {
-        "title": "Begining",
+        "title": "Introducing yourself",
+        "lessons": ["Introducing oneself in Yoruba langauge", "What is your name", "My name is Remi Olaniyan", "Nice to meet you",
+                    "Where are you from", "I am from Oyo state", "Where do you live", "I live in London", "What do you do for a living",
+                    "I am a teacher", "I am a student", "I am working in a company", "How old are you", "I am 33 years old",
+                    "Which food do you like best", "I like pounded yam and okro soup", "Where are you going", "I am going home",
+                    "I am going to the market", "I am going to my workplace", "I am going to the mosque", "Where are you", "I am at home",
+                    "I am in the office", "I am in the market", "What are you doing", "I am resting", "I am eating", "I am sleeping", 
+                    "I am praying", "I am reading"],
         "limit": {
-          "lesson": 18,
-          "lessons": ["I will tak to you later", "I want to get to work", "I just woke up", "What are you doing now", "I woke up great", "Did you sleep well", "Good morning",
-                      "Do you speak Yoruba", "Yes I speak a little bit", "How old are you", "I am 33years old", "What do you want to do now", "I don’t know",
-                      "What do you do you do for a living", "I don’t understand", "What work do you do", "I do a software developer’s work", "It was nice talking to you"]
+          "lessons": ["Introducing oneself in Yoruba langauge", "What is your name", "My name is Remi Olaniyan", "Nice to meet you",
+                      "Where are you from", "I am from Oyo state", "Where do you live", "I live in London", "What do you do for a living",
+                      "I am a teacher", "I am a student", "I am working in a company", "How old are you", "I am 33 years old",
+                      "Which food do you like best", "I like pounded yam and okro soup", "Where are you going", "I am going home",
+                      "I am going to the market", "I am going to my workplace", "I am going to the mosque", "Where are you", "I am at home",
+                      "I am in the office", "I am in the market", "What are you doing", "I am resting", "I am eating", "I am sleeping", 
+                      "I am praying", "I am reading"]
         }
       },
       {
-        "title": "Step 2",
+        "title": "Action",
+        "lessons": ["Action in Yoruba language", "Sit down", "Stand up", "Get out", "I am going out", "Give me water", 
+                    "Give me a chair", "I want to go and sleep", "I want to eat", "Give me a plate and spoon",
+                    "I want to lay my bed", "I am going up the stairs", "I am going down stairs"],
         "limit": {
-          "lesson": 10,
-          "lessons": ["What are they talking about", "I don’t know o", "Can you help me", "I don’t know the way", "That’s sad, sorry", "How much is this",
-                      "What is this", "Happy Birthday", "I celebrate with you or congratulations", "Are you okay?"
-            ]
-        },
-        "rules": {
-          "random": true
+          "lessons": ["Action in Yoruba language", "Sit down", "Stand up", "Get out", "I am going out", "Give me water", 
+                      "Give me a chair", "I want to go and sleep", "I want to eat", "Give me a plate and spoon",
+                      "I want to lay my bed", "I am going up the stairs", "I am going down stairs"]
         }
       },
       {
-        "title": "Random",
+        "title": "Solving a misunderstanding",
+        "lessons": ["Solving a misunderstanding in Yoruba language", "Forgive me please", "I won't do that again",
+                    "It won't repeat itself", "I am sorry", "Sorry for a wrong or mistake", "No problem", "please",
+                    "Can you repeat please", "Can you speak slowly", "Do you understand what I said", "I don't understand",
+                    "I don't know", "Can you write it down"],
         "limit": {
-          "lesson": 24,
-          "exercise": 30
-        },
-        "rules": {
-          "random": true,
-          "repeat": true
+          "lessons": ["Solving a misunderstanding in Yoruba language", "Forgive me please", "I won't do that again",
+                      "It won't repeat itself", "I am sorry", "Sorry for a wrong or mistake", "No problem", "please",
+                      "Can you repeat please", "Can you speak slowly", "Do you understand what I said", "I don't understand",
+                      "I don't know", "Can you write it down"]
         }
       },
       {
-        "title": "Joined",
+        "title": "Asking for direction",
+        "lessons": ["Asking for direction", "Excuse me", "I'm lost", "I don't know the road I should follow", "can you help me", "can I help you",
+                    "I'm not from this town", "How can i get to this place", "How long does it take me to get there",
+                    "Is it a walking distance"],
         "limit": {
-          "lesson": 30,
-          "exercise": 0
-        }
-      },
-      {
-        "title": "Fatha",
-        "limit": {
-          "lesson": 30,
-          "exercise": 16
-        }
-      },
-      {
-        "title": "Kasra",
-        "limit": {
-          "lesson": 30,
-          "exercise": 20
-        }
-      },
-      {
-        "title": "Dhamma",
-        "limit": {
-          "lesson": 30,
-          "exercise": 20
-        }
-      },
-      {
-        "title": "Vowels 1",
-        "limit": {
-          "exercise": 46
-        }
-      },
-      {
-        "title": "Double fatha",
-        "limit": {
-          "lesson": 30,
-          "exercise": 24
-        }
-      },
-      {
-        "title": "Double kasra",
-        "limit": {
-          "lesson": 30,
-          "exercise": 23
-        }
-      },
-      {
-        "title": "Double dhamma",
-        "limit": {
-          "lesson": 30,
-          "exercise": 19
-        }
-      },
-      {
-        "title": "Alif vowel",
-        "limit": {
-          "lesson": 28,
-          "exercise": 31
-        }
-      },
-      {
-        "title": "Standing fatha kasra dhamma",
-        "limit": {
-          "lesson": 39,
-          "exercise": 31
-        }
-      },
-      {
-        "title": "Sukoon fatha wow",
-        "limit": {
-          "lesson": 30,
-          "exercise": 24
-        }
-      },
-      {
-        "title": "Sukoon dhamma wow",
-        "limit": {
-          "lesson": 29,
-          "exercise": 24
-        }
-      },
-      {
-        "title": "Sukoon fatha ya",
-        "limit": {
-          "lesson": 29,
-          "exercise": 26
-        }
-      },
-      {
-        "title": "Sukoon kasra ya",
-        "limit": {
-          "lesson": 29,
-          "exercise": 25
-        }
-      },
-      {
-        "title": "Sukoon",
-        "limit": {
-          "lesson": 31,
-          "exercise": 85
-        }
-      },
-      {
-        "title": "slience letter",
-        "limit": {
-          "exercise": 30
-        }
-      },
-      {
-        "title": "More practise",
-        "limit": {
-          "lesson": 12
-        }
-      },
-      {
-        "title": "Shadda",
-        "limit": {
-          "lesson": 11,
-          "exercise": 21
-        }
-      },
-      {
-        "title": "Shadda 2",
-        "limit": {
-          "lesson": 25,
-          "exercise": 47
-        }
-      },
-      {
-        "title": "Madd",
-        "limit": {
-          "exercise": 44
-        }
-      },
-      {
-        "title": "Madd 2",
-        "limit": {
-          "exercise": 13
-        }
-      },
-      {
-        "title": "Alif end",
-        "limit": {
-          "exercise": 22
-        }
-      },
-      {
-        "title": "advance",
-        "limit": {
-          "exercise": 15
-        }
-      },
-      {
-        "title": "advance 2",
-        "limit": {
-          "exercise": 20
-        }
-      },
-      {
-        "title": "advance 3",
-        "limit": {
-          "exercise": 19
-        }
-      },
-      {
-        "title": "advance 4",
-        "limit": {
-          "lesson": 18
-        }
-      },
-      {
-        "title": "Haroof e Muqataat",
-        "limit": {
-          "lesson": 16
-        }
-      },
-      {
-        "title": "sentence",
-        "limit": {
-          "lesson": 21
+          "lessons": ["Asking for direction", "Excuse me", "I'm lost", "I don't know the road I should follow", "can you help me", "can I help you",
+                      "I'm not from this town", "How can i get to this place", "How long does it take me to get there",
+                      "Is it a walking distance"]
         }
       }
     ]

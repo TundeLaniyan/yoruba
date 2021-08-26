@@ -1,17 +1,18 @@
 import React from "react";
-import { GiDiamondHard, GiGymBag, GiBugleCall } from "react-icons/gi";
-import { GrScheduleNew } from "react-icons/gr";
+import { GiDiamondHard, GiGymBag } from "react-icons/gi";
 import { SiWeasyl } from "react-icons/si";
-import { IoMdMicrophone } from "react-icons/io";
 import { FaMemory } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Progress from "../../progress/progress";
 import { connect } from "react-redux";
+// import { GrScheduleNew } from "react-icons/gr";
+// import { GiBugleCall } from "react-icons/gi";
+// import { IoMdMicrophone } from "react-icons/io";
 import "./task.css";
 
 const Task = ({ lecture, progress }) => {
   const task = {
-    lesson: GrScheduleNew,
+    // lesson: GrScheduleNew,
     exercise: GiGymBag,
     easyGame: SiWeasyl,
     // speaking: IoMdMicrophone,

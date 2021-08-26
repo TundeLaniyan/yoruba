@@ -7,26 +7,21 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { reducer } from "./reducer";
 import "./App.css";
-import { decrement, increment, set, setProgress } from "./action";
+// import { decrement, increment, set, setProgress, getProgress } from "./action";
 
 function App() {
-  const [lecture, setLecture] = useState(1);
-  // const [progress, setProgresss] = useState({});
-
-  // const setProgressa = ({ result, exercise, lecture }) => {
-  //   const current = { ...progress };
-  //   if (!current[lecture]) current[lecture] = {};
-  //   if (!(current[lecture][exercise] > result)) {
-  //     current[lecture][exercise] = result;
-  //     setProgress(current);
-  //   }
-  // };
-
+  const savedLecture = window.localStorage.getItem('Yourba-lecture') || '1';
+  const [lecture, setLecture] = useState(JSON.parse(savedLecture));
   const store = createStore(reducer);
 
+  const setSaveLecture = (value) => {
+    setLecture(value);
+    window.localStorage.setItem('Yourba-lecture', JSON.stringify(value));
+  }
+
   store.subscribe(() => {
-    console.log("store", store.getState());
-    window.localStorage.setItem("Yoruba", store.getState());
+    // console.log("store", store.getState());
+    window.localStorage.setItem("Yoruba", JSON.stringify(store.getState()));
   });
 
   // store.dispatch(increment());
@@ -38,14 +33,14 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <Header setLecture={setLecture} />
-        <Router>
+        <Header setLecture={setSaveLecture} />
+        <Router basename="/yoruba">
           <Route
             render={({ location }) => (
               <Exercise
                 location={location}
                 lecture={lecture}
-                setLecture={setLecture}
+                setLecture={setSaveLecture}
               />
             )}
           />

@@ -14,11 +14,14 @@
     min-height: 5rem;
     border-radius: 3px;
     box-shadow: 0 0 0rem 0.125rem rgba(0, 0, 0, 0.178);
+    background-color: rgb(0 0 0 / 60%);
     padding: 0 0.5rem;
     display: flex;
     align-items: center;
     text-decoration: unset;
     color: unset;
+    cursor: pointer;
+    color: cornsilk;
   }
   .task__container:hover {
     box-shadow: 0 0 0.125rem 0.25rem rgba(0, 0, 0, 0.178);
@@ -37,4 +40,10 @@
   .task__length {
     padding: 1rem 0;
     font-weight: bold;
+  }
+
+  @media screen and (max-width: 37.5em) {
+    .task__container {
+      margin: .5rem 4rem;
+    }
   }

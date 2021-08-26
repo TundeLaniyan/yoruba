@@ -19,6 +19,7 @@
     width: 25%;
     margin: 0.75% 2.5%;
     border-radius: 3px;
+    background-color: rgb(0 0 0 / 60%);
     box-shadow: 0 0 0rem 0.125rem rgba(0, 0, 0, 0.178);
     padding: 0.5rem;
     display: flex;
@@ -26,6 +27,7 @@
     text-decoration: unset;
     color: unset;
     cursor: pointer;
+    color: cornsilk;
   }
   .hard-game .container:hover {
     box-shadow: 0 0 0.125rem 0.25rem rgba(0, 0, 0, 0.178);
@@ -68,4 +70,21 @@
     color: cornsilk;
     cursor: pointer;
     margin-right: auto;
+  }
+  
+  @media screen and (max-width: 56.25em) {
+    .hard-game .select {
+      border: none;
+    }
+
+    .hard-game .container {
+      flex-direction: column;
+      font-size: .8rem;
+    }
+
+    .hard-game .img {
+      height: 10rem;
+      background-size: cover;
+    }
+    
   }

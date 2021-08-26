@@ -1,26 +1,25 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./control.css";
-import data from "../../../../data.json";
 
-const Control = ({ lecture, type, exercise }) => {
+const Control = ({ lecture, exercise }) => {
   const [speed, setSpeed] = useState(1);
 
-  const active = (check, result) => {
-    if (check === result)
-      return {
-        fontWeight: 700,
-        boxShadow: "0 .125rem 0 0 #00000026",
-        transform: "translateY(1px)",
-        borderWidth: "2px",
-      };
-  };
+  // const active = (check, result) => {
+  //   if (check === result)
+  //     return {
+  //       fontWeight: 700,
+  //       boxShadow: "0 .125rem 0 0 #00000026",
+  //       transform: "translateY(1px)",
+  //       borderWidth: "2px",
+  //     };
+  // };
 
   return (
     <div className="type">
       <div className="sound-control">
         <audio
           className="audio-setting"
-          src={`/img/lecture${lecture + 1}/${type}/${exercise}.m4a`}
+          src={`./files/lecture${lecture}/${exercise}.m4a`}
           controls
         />
         <div className="range">
