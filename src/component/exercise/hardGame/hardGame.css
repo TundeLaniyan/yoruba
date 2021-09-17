@@ -1,90 +1,25 @@
 .hard-game {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hard-game .select {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: 2.5px solid rgba(0, 0, 0, 0.178);
+  border-radius: 3px;
+  height: 80%;
+  padding: 1% 0;
+}
+
+.hard-game .text {
+  font-size: 5rem;
+}
   
+@media screen and (max-width: 56.25em) {
   .hard-game .select {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    border: 2.5px solid rgba(0, 0, 0, 0.178);
-    border-radius: 3px;
-    height: 80%;
-    padding: 1% 0;
+    border: none;
   }
-  
-  .hard-game .container {
-    height: 25%;
-    width: 25%;
-    margin: 0.75% 2.5%;
-    border-radius: 3px;
-    background-color: rgb(0 0 0 / 60%);
-    box-shadow: 0 0 0rem 0.125rem rgba(0, 0, 0, 0.178);
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    text-decoration: unset;
-    color: unset;
-    cursor: pointer;
-    color: cornsilk;
-  }
-  .hard-game .container:hover {
-    box-shadow: 0 0 0.125rem 0.25rem rgba(0, 0, 0, 0.178);
-  }
-  
-  .hard-game .img {
-    width: 100%;
-    height: 80%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-  
-  .hard-game__footer {
-    display: flex;
-    align-items: center;
-  }
-  
-  .score {
-    border-radius: 50%;
-    background-color: cornsilk;
-    border: 2.5px solid;
-    width: 2rem;
-    height: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0.5rem;
-    font-size: 1.2rem;
-  }
-  
-  .score__correct {
-    border-color: green;
-  }
-  .score__incorrect {
-    border-color: red;
-  }
-  .score__play {
-    background-color: transparent;
-    color: cornsilk;
-    cursor: pointer;
-    margin-right: auto;
-  }
-  
-  @media screen and (max-width: 56.25em) {
-    .hard-game .select {
-      border: none;
-    }
-
-    .hard-game .container {
-      flex-direction: column;
-      font-size: .8rem;
-    }
-
-    .hard-game .img {
-      height: 10rem;
-      background-size: cover;
-    }
-    
-  }
+}

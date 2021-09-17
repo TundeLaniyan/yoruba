@@ -1,0 +1,44 @@
+  .game__footer {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    /* background-image: linear-gradient(to left, #b7ab8560 50%, #b7ab85 50%); */
+  }
+
+  .langauge-text {
+    margin-right: auto;
+  }
+  
+  .score {
+    border-radius: 50%;
+    background-color: cornsilk;
+    border: 2.5px solid;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem;
+    font-size: 2.4rem;
+  }
+  
+  .score__correct {
+    border-color: green;
+  }
+  .score__incorrect {
+    border-color: red;
+  }
+  .score__play {
+    background-color: transparent;
+    color: cornsilk;
+    cursor: pointer;
+    margin-right: auto;
+  }
+
+  @media screen and (max-width: 56.25em) {
+    .score {
+      font-size: 3.6rem;
+      height: 6rem;
+      width: 6rem;
+    }
+  }

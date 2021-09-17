@@ -1,16 +1,17 @@
-import React, { useEffect, useState, useRef } from "react";
-import { GiSpeaker } from "react-icons/gi";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { connect } from "react-redux";
 import { setProgress } from "../../../action";
 import { lesson } from "../../../data.json";
-import gameLogic from "../gameLogic";
+import Sound from "../../../Sound";
+import Card from "../../card/card";
+import CardText from "../../card/cardText";
+import GameFooter from "../../gameFooter/gameFooter";
 import "./memoryGame.css";
 
-const MemoryGame = ({ lecture, setProgress }) => {
+const MemoryGame = ({ lecture, setProgress, Game }) => {
   const [state, setState] = useState([]);
   const [hidden, setHidden] = useState([]);
   const [answer, setAnswer] = useState();
-  const [input, setInput] = useState();
   const [next, setNext] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
@@ -20,43 +21,48 @@ const MemoryGame = ({ lecture, setProgress }) => {
   const [pauseInterval, setPauseInterval] = useState(false);
   const ref = useRef();
   ref.current = { next, state, percent, pauseInterval, cleanUp: intervalID };
-  const displayCard = gameLogic.displayCard;
+  const displayCard = Game.displayCard;
+  const memoryGame = next < 5;
+  const isTouchDevice = Game.isTouchDevice() && !memoryGame;
+  const [touchPlay, setTouchPlay] = useState(false);
   const gameLimit = 10;
   const cardLimit = next + 2;
 
   function nextRound() {
     setState([]);
     setPercent(100);
-    const totalCards = gameLogic.totalCards(lecture);
-    gameLogic.generateCards({ cardLimit, totalCards, setState });
+    const totalCards = Game.totalCards();
+    const lastLectureLength = lesson[lecture - 1].lessons.length
+    Game.generateCards({ cardLimit, totalCards, setState, lastLectureLength });
   }
 
   useEffect(() => () => clearInterval(ref.current.cleanUp), [])
 
   useEffect(() => {
     if (next < gameLimit) nextRound();
-    else gameLogic.endGame({ 
-        result: (200 * correct) / ((1 + gameLimit) * gameLimit),
+    else Game.endGame({ 
+        result: (200 * correct) / (((1 + gameLimit) * gameLimit) + (incorrect * 2)),
         exercise: "memoryGame",
-        lecture,
         setProgress 
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [next]);
 
   useEffect(() => {
     if (state.length === cardLimit) {
-      next > 4 && answerQuestion(state);
+      !memoryGame && answerQuestion(state);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   useEffect(() => {
     clearInterval(intervalID);
-    const increment = next < 5 ? 1000 : 3000;
+    const increment = memoryGame ? 1000 : 3000;
     const intervalId = setInterval(() => {
       if (ref.current.pauseInterval) return;
       if (ref.current.percent <= 0) {
         clearInterval(intervalId);
-        if (next < 5) {
+        if (memoryGame) {
           setHidden(ref.current.state);
           answerQuestion(ref.current.state);
         } else {
@@ -66,100 +72,103 @@ const MemoryGame = ({ lecture, setProgress }) => {
         ref.current.percent -= 5;
         setPercent((prev) => prev - 5);
       }
-    }, (12000 + next * increment) / 20);
+    }, ((memoryGame ? 5000 : 12000) + next * increment) / 20);
     setIntervalID(intervalId);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pauseInterval, next]);
 
-  useEffect(() => {
-    if (!input) return;
+  const handleOnClick = useCallback((input) => {
+    if (!active) return;
+    const { lecture: inputLecture, position } = displayCard(input, lecture);
+    Sound.start(`files/lecture${inputLecture}/${position}.m4a`);
     setActive(false);
-    next > 4 && setPauseInterval(true);
-    if (next < 5) {
+    if (memoryGame) {
       const current = [...hidden];
       const hiddenIndex = current.indexOf(input);
       current[hiddenIndex] = -current[hiddenIndex];
       setHidden(current);
-    }
-    const { lecture: inputLecture, position } = displayCard(input, lecture);
-    new Audio(`files/lecture${inputLecture}/${position}.m4a`).play();
-    setTimeout(() => {
-      if (input === answer) {
-        gameLogic.correct();
-        gameLogic.delay(2000, () => {
+    } else setPauseInterval(true);
+    Game.delay(2500, () => {
+      const correct = input === answer;
+      if (correct) {
+        Game.correct();
+        Game.delay(2000, () => {
           if (next !== ref.current.next) return;
+          isTouchDevice && setTouchPlay(true);
           setCorrect((prev) => prev + 1);
           const current = [...state];
           current.splice(current.indexOf(input), 1);
           setState(current);
-          next < 5 && setHidden(current);
+          memoryGame && setHidden(current);
           if (current.length === 1) {
-            next < 5 && setHidden([]);
+            memoryGame && setHidden([]);
             setNext((prev) => prev + 1);
           } else answerQuestion(current);
         });
       } else {
-        gameLogic.incorrect();
+        Game.incorrect();
         setIncorrect((prev) => prev + 1);
-        next < 5 && setHidden(state);
-        gameLogic.delay(1500, () => {
+        memoryGame && setHidden(state);
+        Game.delay(1500, () => {
           const { lecture: answerLecture, position } = displayCard(answer, lecture);
-          new Audio(`files/lecture${answerLecture}/${position}.m4a`).play()
+          Sound.start(`files/lecture${answerLecture}/${position}.m4a`);
           setActive(true);
+          !memoryGame && isTouchDevice && setPauseInterval(false);
         })
       }
-      next > 4 && setPauseInterval(false);
-    }, [2500]);
-  }, [input]);
+      !memoryGame && !isTouchDevice && setPauseInterval(false);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [active]);
 
-  const answerQuestion = (state) => {
-    setAnswer(gameLogic.answerQuestionMultLectures({ state, lecture, cardLimit: state.length }));
-    setActive(true);
+  function answerQuestion(state) {
+    if (isTouchDevice && !touchPlay) return setTouchPlay(true);
+    setAnswer(Game.answerQuestionMultLectures({ state, cardLimit: state.length }));
+    Game.delay(2000, () => setActive(true));
   };
+
+  useEffect(() => {
+    setPauseInterval(touchPlay);
+  }, [touchPlay])
+
+  const handleTouchPlay = () => {
+    answerQuestion(state);
+    setTouchPlay(false);
+  }
 
   return (
     <div className="memory-game">
       <div className="title">Memory Game</div>
       <div className="select">
-        {state.map((cur, index) => {
-          const { lecture: cardLecture, position } = displayCard(cur, lecture)
-          return (
-            <div
-              key={index}
-              className="container"
-              onClick={() => active && setInput(cur)}
-              style={hidden[index] ? { backgroundColor: "#bbb7aa35" } : {}}
-            >
-              <div
-                className="img"
-                style={
-                  hidden[index] >= 0
-                    ? {}
-                    : { backgroundImage: `url(./img/lecture${cardLecture}/${position}.jpg)`,}
-                }
-              ></div>
-              {!(hidden[index] >= 0) && <h5>{lesson[cardLecture - 1].lessons[position - 1]}</h5>}
-            </div>
-          )
-        })}
+        {touchPlay ? 
+          <div className="touch-play" onClick={handleTouchPlay}>Play</div> :
+          state.map((cur, index) => {
+            const { lecture: cardLecture, position } = displayCard(cur, lecture)
+            return cardLecture > 1 ?
+              <Card 
+                key={cur} 
+                state={cur} 
+                lecture={cardLecture} 
+                exercise={position} 
+                onClick={handleOnClick} 
+                hide={hidden[index]}
+              /> : 
+              <CardText
+                key={cur}
+                state={cur}
+                exercise={cur}
+                onClick={handleOnClick}
+                hide={hidden[index]}
+              />
+          })
+        }
       </div>
-      <div
-        className="memory-game__footer"
-        style={{
-          backgroundImage: `linear-gradient(to right, #b7ab85 ${percent}%, #b7ab8560 ${percent}%)`,
-        }}
-      >
-        <div
-          className="score score__play"
-          onClick={() =>
-            active &&
-            new Audio(`files/lecture${displayCard(answer, lecture).lecture}/${displayCard(answer, lecture).position}.m4a`).play()
-          }
-        >
-          <GiSpeaker />
-        </div>
-        <div className="score score__correct">{correct}</div>
-        <div className="score score__incorrect">{incorrect}</div>
-      </div>
+      <GameFooter 
+        percent={percent} 
+        audio={`files/lecture${displayCard(answer, lecture).lecture}/${displayCard(answer, lecture).position}.m4a`} 
+        correct={correct} 
+        incorrect={incorrect} 
+        active={active} />
     </div>
   );
 };

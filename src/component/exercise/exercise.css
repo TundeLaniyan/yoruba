@@ -20,12 +20,19 @@
   }
   
   .exercise__container .title {
-    font-size: 3rem;
+    font-size: 4rem;
     margin-bottom: 1rem;
     font-weight: 500;
     font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
     color: #000000b5;
     text-transform: capitalize;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    .exercise__container .title {
+      font-size: 5rem;
+      margin: 2rem 0;
+    }
   }
   
   .exercise {
@@ -151,5 +158,9 @@
   .exercise {
     padding: 0;
     height: 85vh;
+  }
+
+  .exercise .return {
+    font-size: 5rem;
   }
 }

@@ -14,7 +14,7 @@ const Task = ({ lecture, progress }) => {
   const task = {
     // lesson: GrScheduleNew,
     exercise: GiGymBag,
-    easyGame: SiWeasyl,
+    [lecture === 1 ? 'easyGameAccent' : 'easyGame']: SiWeasyl,
     // speaking: IoMdMicrophone,
     hardGame: GiDiamondHard,
     memoryGame: FaMemory,
@@ -28,6 +28,7 @@ const Task = ({ lecture, progress }) => {
           return (
             <Progress
               key={index}
+              className="task__box"
               Component={() => (
                 <Link className="task__container" to={key}>
                   <Value className="task__img" />

@@ -1,21 +1,20 @@
 import React from "react";
 import "./menu.css";
 
-const Menu = ({ active, auto, setAuto, random, setRandom }) => {
+const Menu = ({ auto, setAuto, random, setRandom, autoPlay, setAutoPlay }) => {
   return (
     <div className="menu">
       <button
         className="btn"
-        style={active(random, true)}
         onClick={() => setRandom(random ? false : true)}
       >
-        Random
+        {random ? 'Normal' : 'Random'}
       </button>
-      <div
-        className="btn"
-        onClick={() => setAuto(auto === "Auto" ? "Manual" : "Auto")}
-      >
-        {auto}
+      <div className="btn" onClick={() => setAuto(!auto)}>
+        {auto ? "Auto" : "Manual"}
+      </div>
+      <div className="btn" onClick={() => setAutoPlay(!autoPlay)}>
+        {autoPlay ? "Stop Auto Play" : "Start Auto Play"}
       </div>
     </div>
   );

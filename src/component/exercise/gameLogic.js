@@ -1,11 +1,16 @@
 import { lesson } from '../../data.json';
+import Sound from '../../Sound';
 
-export default {
-    generateCards: function({ cardLimit, totalCards, setState }) {
+class GameLogic {
+    lecture = 1;
+    generateCards = function({ cardLimit, totalCards, setState, lastLectureLength }) {
         const cards = new Set();
         let i = 0;
         while (i < cardLimit) {
-          const value = Math.ceil(Math.random() * totalCards);
+          let value; 
+          if ((!totalCards || lastLectureLength) && Math.ceil(Math.random() * 2) === 2) {
+              value = Math.ceil(Math.random() * lastLectureLength) + totalCards;
+          } else { value = Math.ceil(Math.random() * totalCards); }
           if (!cards.has(value)) {
             i++;
             cards.add(value);
@@ -13,34 +18,36 @@ export default {
         }
         setState([...cards]);
         return [...cards]
-      },
-    playCards: function({ cardLimit, setSoundState, gameSpeed, cards, lecture, autoPlay, setCleanUp }) {
+      };
+
+    playCards = function({ cardLimit, setSoundState, gameSpeed, cards, autoPlay, setCleanUp }) {
         for (let i = 0; i < cardLimit; i++) {
             this.delay(gameSpeed * i, () => {
-                autoPlay && new Audio(`files/lecture${lecture}/${cards[i]}.m4a`).play();
+                autoPlay && Sound.start(`files/lecture${this.lecture}/${cards[i]}.m4a`);
                 setSoundState(i);
             }, setCleanUp);
         }
         this.delay(gameSpeed * cardLimit, () => setSoundState(cardLimit));
-    },
-    endGame: function({ result, exercise, lecture, setProgress }) {
-        setProgress({ result, exercise, lecture });
+    };
+    endGame = function({ result, exercise, setProgress }) {
+        setProgress({ result, exercise, lecture: this.lecture });
         alert("result: " + result + "%");
-    },
-    answerQuestion: function({ state, lecture, cardLimit }) {
+    };
+
+    answerQuestion = function({ state, cardLimit }) {
         const value = Math.floor(Math.random() * cardLimit);
-        new Audio(`files/lecture${lecture}/${state[value]}.m4a`).play();
+        Sound.start(`files/lecture${this.lecture}/${state[value]}.m4a`);
         return state[value];
-    },
-    answerQuestionMultLectures: function({ state, lecture, cardLimit }) {
+    };
+    answerQuestionMultLectures = function({ state, cardLimit }) {
         const value = Math.floor(Math.random() * cardLimit);
-        const { lecture: currentLecture, position } = this.displayCard(state[value], lecture);
-        new Audio(`files/lecture${currentLecture}/${position}.m4a`).play();
+        const { lecture, position } = this.displayCard(state[value], this.lecture);
+        Sound.start(`files/lecture${lecture}/${position}.m4a`);
         return state[value];
-    },
-    correct: function() { new Audio("files/yes.m4a").play() },
-    incorrect: function() { new Audio("files/no.m4a").play() },
-    delay: function(timeout, cb, setCleanUp) { 
+    };
+    correct = function() { Sound.start("files/yes.m4a") };
+    incorrect = function() { Sound.start("files/no.m4a") };
+    delay = function(timeout, cb, setCleanUp) { 
         const timeOut = setTimeout(() => { 
             cb();
             setCleanUp && setCleanUp(prev => {
@@ -50,12 +57,12 @@ export default {
             })
         }, timeout);
         setCleanUp && setCleanUp(prev => [...prev, timeOut]);
-    },
-    isTouchDevice: () => 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0,
-    totalCards: (lecture) => lesson.slice(0, lecture).reduce((total, cur) =>
-    (typeof total === "number" ? total : total.limit.lessons.length) + cur.limit.lessons.length
-    , 0),
-    displayCard: function(state, lecture) {
+    };
+    isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+    totalCards = () => lesson.slice(0, this.lecture - 1).reduce((total, cur) =>
+        (typeof total === "number" ? total : total.lessons.length) + cur.lessons.length
+    , 0);
+    displayCard = function(state, lecture) {
         let runningTotal = state, currentLecture, position, accumulation = 0;
         for (let i = 0; i < lecture; i++) {
           const current = lesson[i].lessons.length;
@@ -67,7 +74,8 @@ export default {
           runningTotal -= current;
           accumulation +=current
         }
-    
         return { position, lecture: currentLecture }
-    }
+    };
 }
+
+export default GameLogic

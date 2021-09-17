@@ -43,7 +43,15 @@
   }
 
   @media screen and (max-width: 37.5em) {
+    .task__box {
+      margin: 1rem 0;
+    }
     .task__container {
-      margin: .5rem 4rem;
+      width: 75vw;
+      min-height: 7.5rem;
+      font-size: 2rem;
+    }
+    .task__title {
+      margin: 0 1rem;
     }
   }
