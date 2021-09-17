@@ -34,9 +34,9 @@ class GameLogic {
         alert("result: " + result + "%");
     };
 
-    answerQuestion = function({ state, cardLimit }) {
+    answerQuestion = function({ state, cardLimit, silent }) {
         const value = Math.floor(Math.random() * cardLimit);
-        Sound.start(`files/lecture${this.lecture}/${state[value]}.m4a`);
+        !silent && Sound.start(`files/lecture${this.lecture}/${state[value]}.m4a`);
         return state[value];
     };
     answerQuestionMultLectures = function({ state, cardLimit }) {

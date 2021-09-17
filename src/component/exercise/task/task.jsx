@@ -14,9 +14,10 @@ const Task = ({ lecture, progress }) => {
   const task = {
     // lesson: GrScheduleNew,
     exercise: GiGymBag,
-    [lecture === 1 ? 'easyGameAccent' : 'easyGame']: SiWeasyl,
+    [lecture === 1 ? "easyGameAccent" : "easyGame"]: SiWeasyl,
     // speaking: IoMdMicrophone,
     hardGame: GiDiamondHard,
+    reading: FaMemory,
     memoryGame: FaMemory,
     // recall: GiBugleCall,
   };

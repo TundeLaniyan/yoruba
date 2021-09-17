@@ -8,10 +8,10 @@ import EasyGameAccent from "./easyGame/easyGameAccent";
 import { TiArrowBack } from "react-icons/ti";
 import HardGame from "./hardGame/hardGame";
 import MemoryGame from "./memoryGame/memoryGame";
+import Reading from "./reading/reading";
 import "./exercise.css";
 
 const Exercise = ({ lecture, setLecture, location, Game }) => {
-
   return (
     <div className="exercise__container">
       <div className="exercise">
@@ -45,12 +45,15 @@ const Exercise = ({ lecture, setLecture, location, Game }) => {
           <Route path="/hardGame">
             <HardGame lecture={lecture} Game={Game} />
           </Route>
+          <Route path="/reading">
+            <Reading lecture={lecture} Game={Game} />
+          </Route>
           <Route path="/memoryGame">
             <MemoryGame lecture={lecture} Game={Game} />
           </Route>
           <Route path="/">
             <Lesson setLecture={setLecture} />
-          </Route> 
+          </Route>
         </Switch>
       </div>
     </div>

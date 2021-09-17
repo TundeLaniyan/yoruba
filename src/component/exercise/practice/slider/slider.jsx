@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { lesson } from '../../../../data.json';
+import { lesson } from "../../../../data.json";
 import Sound from "../../../../Sound";
 import "./slider.css";
 
@@ -7,7 +7,10 @@ const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
   const max = lesson[lecture - 1].lessons.length;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => auto && Sound.start(`files/lecture${lecture}/${exercise}.m4a`), [exercise]);
+  useEffect(
+    () => auto && Sound.start(`files/lecture${lecture}/${exercise}.m4a`),
+    [exercise]
+  );
 
   const randomNumber = (prev, value) => {
     if (random) return Math.ceil(Math.random() * max);
@@ -25,7 +28,9 @@ const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
         <div
           className="slider__img"
           onClick={() => Sound.start(`files/lecture${lecture}/${exercise}.m4a`)}
-          style={{backgroundImage: `url(./img/lecture${lecture}/${exercise}.jpg)`}}
+          style={{
+            backgroundImage: `url(./img/lecture${lecture}/${exercise}.jpg)`,
+          }}
         ></div>
         <h5>{lesson[lecture - 1].langauge?.[exercise - 1]}</h5>
         <h5>{lesson[lecture - 1].lessons[exercise - 1]}</h5>

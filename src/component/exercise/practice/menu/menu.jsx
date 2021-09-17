@@ -4,11 +4,8 @@ import "./menu.css";
 const Menu = ({ auto, setAuto, random, setRandom, autoPlay, setAutoPlay }) => {
   return (
     <div className="menu">
-      <button
-        className="btn"
-        onClick={() => setRandom(random ? false : true)}
-      >
-        {random ? 'Normal' : 'Random'}
+      <button className="btn" onClick={() => setRandom(random ? false : true)}>
+        {random ? "Normal" : "Random"}
       </button>
       <div className="btn" onClick={() => setAuto(!auto)}>
         {auto ? "Auto" : "Manual"}

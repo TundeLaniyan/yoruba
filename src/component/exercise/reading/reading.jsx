@@ -4,26 +4,24 @@ import { setProgress } from "../../../action";
 import { lesson } from "../../../data.json";
 import Sound from "../../../Sound";
 import Card from "../../card/card";
-import CardText from "../../card/cardText";
 import GameFooter from "../../gameFooter/gameFooter";
-import "./hardGame.css";
+import "./reading.css";
 
-const HardGame = memo(function ({ lecture, setProgress, Game }) {
+const Reading = memo(function ({ lecture, setProgress, Game }) {
   const [state, setState] = useState([]);
   const [answer, setAnswer] = useState();
   const [next, setNext] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
   const [active, setActive] = useState(false);
-  const gameLimit = 5;
-  const displayCard = Game.displayCard;
+  const gameLimit = 4;
 
   function nextRound() {
     setState([]);
-    const cardLimit = next + 5;
-    const totalCards = Game.totalCards();
-    const lastLectureLength = lesson[lecture - 1].lessons.length;
-    Game.generateCards({ cardLimit, totalCards, setState, lastLectureLength });
+    setAnswer("");
+    const cardLimit = 6;
+    const totalCards = lesson[lecture - 1].lessons.length;
+    Game.generateCards({ cardLimit, totalCards, setState });
   }
 
   useEffect(() => {
@@ -32,7 +30,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
     } else {
       Game.endGame({
         result: (100 * (correct - incorrect)) / correct,
-        exercise: "hardGame",
+        exercise: "reading",
         setProgress,
       });
     }
@@ -40,7 +38,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
   }, [next]);
 
   useEffect(() => {
-    if (state.length === next + 5) {
+    if (state.length === 6) {
       setTimeout(() => {
         answerQuestion(state);
       }, 2500);
@@ -50,7 +48,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
 
   function answerQuestion(state) {
     setAnswer(
-      Game.answerQuestionMultLectures({ state, cardLimit: state.length })
+      Game.answerQuestion({ state, cardLimit: state.length, silent: true })
     );
     Game.delay(2000, () => setActive(true));
   }
@@ -58,8 +56,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
   const handleOnClick = useCallback(
     (input) => {
       setActive(false);
-      const { lecture: inputLecture, position } = displayCard(input, lecture);
-      Sound.start(`files/lecture${inputLecture}/${position}.m4a`);
+      Sound.start(`files/lecture${lecture}/${input}.m4a`);
       Game.delay(2000, () => {
         if (input === answer) {
           Game.correct();
@@ -75,11 +72,6 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
           Game.incorrect();
           setIncorrect((prev) => prev + 1);
           Game.delay(1500, () => {
-            const { lecture: answerLecture, position } = displayCard(
-              answer,
-              lecture
-            );
-            Sound.start(`files/lecture${answerLecture}/${position}.m4a`);
             setActive(true);
           });
         }
@@ -90,36 +82,22 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
   );
   return (
     <div className="hard-game">
-      <div className="title">Hard Game</div>
-      <div className="select">
-        {state.map((cur) => {
-          const { lecture: cardLecture, position } = displayCard(cur, lecture);
-          return cardLecture > 1 ? (
-            <Card
-              key={cur}
-              state={cur}
-              lecture={cardLecture}
-              exercise={position}
-              onClick={handleOnClick}
-            />
-          ) : (
-            <CardText
-              key={cur}
-              state={cur}
-              exercise={cur}
-              onClick={handleOnClick}
-            />
-          );
-        })}
+      <div className="title">Reading</div>
+      <div className="text-block">
+        {answer ? lesson[lecture - 1].language[answer - 1] : "?"}
       </div>
-      <GameFooter
-        audio={`files/lecture${displayCard(answer, lecture).lecture}/${
-          displayCard(answer, lecture).position
-        }.m4a`}
-        correct={correct}
-        incorrect={incorrect}
-        active={active}
-      />
+      <div className="select">
+        {state.map((cur) => (
+          <Card
+            key={cur}
+            state={cur}
+            lecture={lecture}
+            exercise={cur}
+            onClick={handleOnClick}
+          />
+        ))}
+      </div>
+      <GameFooter correct={correct} incorrect={incorrect} active={active} />
     </div>
   );
 });
@@ -128,4 +106,4 @@ const mapStateToDispatch = (dispatch) => ({
   setProgress: (payload) => dispatch(setProgress(payload)),
 });
 
-export default connect(undefined, mapStateToDispatch)(HardGame);
+export default connect(undefined, mapStateToDispatch)(Reading);
