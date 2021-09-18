@@ -100,8 +100,8 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
         },
         setCleanUp
       );
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [active, touchPlay, answer]
   );
 

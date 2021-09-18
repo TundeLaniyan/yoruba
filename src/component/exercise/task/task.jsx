@@ -1,5 +1,5 @@
 import React from "react";
-import { GiDiamondHard, GiGymBag } from "react-icons/gi";
+import { GiDiamondHard, GiGymBag, GiBookCover } from "react-icons/gi";
 import { SiWeasyl } from "react-icons/si";
 import { FaMemory } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -17,10 +17,12 @@ const Task = ({ lecture, progress }) => {
     [lecture === 1 ? "easyGameAccent" : "easyGame"]: SiWeasyl,
     // speaking: IoMdMicrophone,
     hardGame: GiDiamondHard,
-    reading: FaMemory,
+    reading: GiBookCover,
     memoryGame: FaMemory,
     // recall: GiBugleCall,
   };
+  if (lecture === 1) delete task.reading;
+
   return (
     <div className="task">
       <div className="title">Select Task</div>

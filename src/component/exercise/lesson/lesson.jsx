@@ -5,7 +5,7 @@ import { lesson } from "../../../data.json";
 import Progress from "../../progress/progress";
 import "./lesson.css";
 
-const Lesson = ({ setLecture, progress }) => {
+const Lesson = ({ setLecture, lecture, progress }) => {
   const noOfExercise = 4;
   const [progression, setProgression] = useState([]);
   const [passed, setPassed] = useState(0);
@@ -20,7 +20,7 @@ const Lesson = ({ setLecture, progress }) => {
         const percentage =
           levelProgressArray.reduce(
             (total, currentValue) => total + currentValue
-          ) / noOfExercise;
+          ) / (lecture > 1 ? noOfExercise : noOfExercise - 1);
         percentage >= 75 && setPassed((prev) => prev + 1);
         return { ...cur, percentage, passed };
       })

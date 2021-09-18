@@ -123,8 +123,8 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
         }
         !memoryGame && !isTouchDevice && setPauseInterval(false);
       });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [active]
   );
 

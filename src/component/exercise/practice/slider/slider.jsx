@@ -6,9 +6,9 @@ import "./slider.css";
 const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
   const max = lesson[lecture - 1].lessons.length;
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
     () => auto && Sound.start(`files/lecture${lecture}/${exercise}.m4a`),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [exercise]
   );
 

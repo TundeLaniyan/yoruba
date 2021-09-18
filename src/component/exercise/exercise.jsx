@@ -52,7 +52,7 @@ const Exercise = ({ lecture, setLecture, location, Game }) => {
             <MemoryGame lecture={lecture} Game={Game} />
           </Route>
           <Route path="/">
-            <Lesson setLecture={setLecture} />
+            <Lesson setLecture={setLecture} lecture={lecture} />
           </Route>
         </Switch>
       </div>
