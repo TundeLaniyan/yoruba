@@ -12,7 +12,7 @@ const GameFooter = ({
   active,
   noText,
 }) => {
-  const [langaugeText, setLangaugeText] = useState("");
+  const [languageText, setlanguageText] = useState("");
 
   useEffect(() => {
     if (noText) return;
@@ -22,7 +22,7 @@ const GameFooter = ({
       .split("/");
     setTimeout(() => {
       if (exercise !== "files" && exercise > 0)
-        setLangaugeText(lesson[exercise - 1].langauge?.[lecture - 1]);
+        setlanguageText(lesson[exercise - 1].language?.[lecture - 1]);
     }, 1500);
     // eslint-disable-next-line
   }, [Sound.url]);
@@ -42,7 +42,7 @@ const GameFooter = ({
           <GiSpeaker />
         </div>
       )}
-      <h5 className="langauge-text">{langaugeText}</h5>
+      <h5 className="language-text">{languageText}</h5>
       <div className="score score__correct">{correct}</div>
       <div className="score score__incorrect">{incorrect}</div>
     </div>

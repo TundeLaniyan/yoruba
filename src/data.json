@@ -35,10 +35,25 @@
     {
       "title": "Body parts", 
       "language": ["Orí", "Etí", "Imú", "Ẹnu", "Irun", "Ọrùn", "Ọwọ́", "Ikùn", "Gbogbo ará", "Ìdí", "Itan", 
-        "Ojúgun", "Ìgúnpá", "Eyín", "Ẹ̀yìn", "Awọ", "Ẹsẹ̀"],
-      "words": ["head", "ear", "nose", "mouth", "hair", "neck", "hand", "stomach", "body", "bottom", 
-        "thigh", "knee cap", "elbow", "teeth", "back", "skin", "leg"]
+        "Ojúgun", "Ìgúnpá", "Eyín", "Ẹ̀yìn", "Awọ", "Ẹsẹ̀", "Ahọ́n"],
+      "words": ["Head", "Ear", "Nose", "Mouth", "Hair", "Neck", "Hand", "Stomach", "Body", "Bottom", 
+        "Thigh", "Knee cap", "Elbow", "Teeth", "Back", "Skin", "Leg", "Tongue"]
     }, 
+    {
+      "title": "Animals and Food",
+      "words": [ "Meat", "Goat", "Sheep", "Cow", "Chicken", "Turkey", "Fish", "Amala", "Eba", "Okro"],
+      "language": [ "Ẹran", "Ewúrẹ́", "Àgùntàn", "Màálù", "Adìẹ", "Tòlótòló", "Ẹja", "Àmàlà", "Ẹ̀bà", "Ilá"]
+    },
+    {
+      "title": "Short sentence",
+      "words": ["Don't be angry", "I want to eat", "I am hungry", "I am from Awẹ", "I want to drink water", 
+        "I want to excrete", "I want to bath", "I want to buy house", 
+        "I am eating", "I am working", "I am going home", "Our house is big", "My car is good", 
+        "It is cold", "It is hot", "This clothes is good"],
+      "language": ["Ẹ máa bínú", "Mo fẹ́ jẹun", "Ebi ń pamí", "Ọmọ Awẹ ni mí", "Mo fẹ́ mú omi", 
+        "Mo fẹ́ yàgbẹ́", "Mo fẹ́ wẹ̀", "Mo fẹ́ rà ilé", "Mo ń jẹun", "Mo ń ṣısẹ́", 
+        "Mo ń lọ ilé", "Ilé wa tóbi", "Ọkọ̀ mi dára", "Òtútù ń mú", "Ooru ń mú", "Aṣọ yìí dára"]
+    },
     {
       "title": "Introducing yourself",
       "words": ["Introducing oneself in Yoruba language", "What is your name", "My name is Remi Olaniyan", "Nice to meet you",

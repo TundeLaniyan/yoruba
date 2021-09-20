@@ -32,7 +32,7 @@ const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
             backgroundImage: `url(./img/lecture${lecture}/${exercise}.jpg)`,
           }}
         ></div>
-        <h5>{lesson[lecture - 1].langauge?.[exercise - 1]}</h5>
+        <h5>{lesson[lecture - 1].language?.[exercise - 1]}</h5>
         <h5>{lesson[lecture - 1].words[exercise - 1]}</h5>
       </div>
       <button
