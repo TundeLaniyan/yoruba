@@ -14,7 +14,7 @@ const Practice = ({ lecture }) => {
   const [intervalId, setIntervalId] = useState();
   const currentIntervalId = useRef();
   currentIntervalId.current = intervalId;
-  const max = lesson[lecture - 1].lessons.length;
+  const max = lesson[lecture - 1].words.length;
 
   useEffect(() => () => clearInterval(currentIntervalId.current), []);
 

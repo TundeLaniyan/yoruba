@@ -22,7 +22,7 @@ const CardText = memo(function CardText({
       }
     >
       <h1 className="card__text--large">
-        {!(hide >= 0) && lesson[0].lessons[exercise - 1]}
+        {!(hide >= 0) && lesson[0].words[exercise - 1]}
       </h1>
     </div>
   );

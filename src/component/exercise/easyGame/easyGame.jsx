@@ -43,8 +43,8 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
   function nextRound() {
     setState([]);
     setTouchPlay(false);
-    const totalCards = lesson[lecture - 1].lessons.length;
-    const cards = Game.generateCards({ cardLimit, totalCards, setState });
+    const totalLength = lesson[lecture - 1].words.length;
+    const cards = Game.generateCards({ cardLimit, totalLength, setState });
     if (isTouchDevice) setActive(true);
     else
       Game.playCards({
@@ -76,26 +76,13 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
       Game.delay(
         gameSpeed,
         () => {
-          if (input === answer) {
+          const CORRECT = input === answer;
+          if (CORRECT) {
             Game.correct();
-            Game.delay(
-              2000,
-              () => {
-                setNext((prev) => prev + 1);
-              },
-              setCleanUp
-            );
+            Game.delay(2000, () => setNext((prev) => prev + 1), setCleanUp);
           } else {
             Game.incorrect();
-            Game.delay(
-              2000,
-              () => {
-                Sound.start(`files/lecture${lecture}/${answer}.m4a`);
-                setIncorrect((prev) => prev + 1);
-                setActive(true);
-              },
-              setCleanUp
-            );
+            Game.delay(2000, () => incorrectInput(), setCleanUp);
           }
         },
         setCleanUp
@@ -104,6 +91,12 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active, touchPlay, answer]
   );
+
+  function incorrectInput() {
+    Sound.start(`files/lecture${lecture}/${answer}.m4a`);
+    setIncorrect((prev) => prev + 1);
+    setActive(true);
+  }
 
   return (
     <div className="easy-game">

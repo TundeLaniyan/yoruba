@@ -34,7 +34,7 @@ const Card = memo(function Card({
       />
       {!(hide >= 0) && (
         <h5 className="card__text">
-          {lesson[lecture - 1].lessons[exercise - 1]}
+          {lesson[lecture - 1].words[exercise - 1]}
         </h5>
       )}
     </div>

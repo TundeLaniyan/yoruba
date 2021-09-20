@@ -21,9 +21,9 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
   function nextRound() {
     setState([]);
     const cardLimit = next + 5;
-    const totalCards = Game.totalCards();
-    const lastLectureLength = lesson[lecture - 1].lessons.length;
-    Game.generateCards({ cardLimit, totalCards, setState, lastLectureLength });
+    const totalLength = Game.totalCards();
+    const currentLength = lesson[lecture - 1].words.length;
+    Game.generateCards({ cardLimit, totalLength, setState, currentLength });
   }
 
   useEffect(() => {
@@ -40,11 +40,8 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
   }, [next]);
 
   useEffect(() => {
-    if (state.length === next + 5) {
-      setTimeout(() => {
-        answerQuestion(state);
-      }, 2500);
-    }
+    if (state.length === next + 5)
+      setTimeout(() => answerQuestion(state), 2500);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
@@ -57,49 +54,61 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
 
   const handleOnClick = useCallback(
     (input) => {
+      if (!active) return;
       setActive(false);
-      const { lecture: inputLecture, position } = displayCard(input, lecture);
-      Sound.start(`files/lecture${inputLecture}/${position}.m4a`);
+      const curInput = displayCard(input, lecture);
+      Sound.start(`files/lecture${curInput.lecture}/${curInput.exercise}.m4a`);
       Game.delay(2000, () => {
-        if (input === answer) {
-          Game.correct();
-          setCorrect((prev) => prev + 1);
-          Game.delay(1500, () => {
-            const current = [...state];
-            current.splice(current.indexOf(input), 1);
-            setState(current);
-            if (current.length === 1) setNext((prev) => prev + 1);
-            else answerQuestion(current);
-          });
-        } else {
-          Game.incorrect();
-          setIncorrect((prev) => prev + 1);
-          Game.delay(1500, () => {
-            const { lecture: answerLecture, position } = displayCard(
-              answer,
-              lecture
-            );
-            Sound.start(`files/lecture${answerLecture}/${position}.m4a`);
-            setActive(true);
-          });
-        }
+        const correct = input === answer;
+        if (correct) correctInput(input);
+        else incorrectInput();
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active]
   );
+
+  function correctInput(input) {
+    Game.correct();
+    setCorrect((prev) => prev + 1);
+    Game.delay(1500, () => {
+      const state = updateState(input);
+      if (state.length === 1) setNext((prev) => prev + 1);
+      else answerQuestion(state);
+    });
+  }
+
+  function updateState(input) {
+    const current = [...state];
+    current.splice(current.indexOf(input), 1);
+    setState(current);
+    return current;
+  }
+
+  function incorrectInput() {
+    Game.incorrect();
+    setIncorrect((prev) => prev + 1);
+    Game.delay(1500, () => {
+      const currentAnswer = displayCard(answer, lecture);
+      Sound.start(
+        `files/lecture${currentAnswer.lecture}/${currentAnswer.exercise}.m4a`
+      );
+      setActive(true);
+    });
+  }
+
   return (
     <div className="hard-game">
       <div className="title">Hard Game</div>
       <div className="select">
         {state.map((cur) => {
-          const { lecture: cardLecture, position } = displayCard(cur, lecture);
-          return cardLecture > 1 ? (
+          const display = displayCard(cur, lecture);
+          return display.lecture > 1 ? (
             <Card
               key={cur}
               state={cur}
-              lecture={cardLecture}
-              exercise={position}
+              lecture={display.lecture}
+              exercise={display.exercise}
               onClick={handleOnClick}
             />
           ) : (
@@ -114,7 +123,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
       </div>
       <GameFooter
         audio={`files/lecture${displayCard(answer, lecture).lecture}/${
-          displayCard(answer, lecture).position
+          displayCard(answer, lecture).exercise
         }.m4a`}
         correct={correct}
         incorrect={incorrect}

@@ -18,7 +18,7 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
   const [cleanUp, setCleanUp] = useState([]);
   const unMount = useRef();
   unMount.current = cleanUp;
-  const gameLimit = lesson[0].lessons.length / 3;
+  const gameLimit = lesson[0].words.length / 3;
   const gameSpeed = 3500;
   const cardLimit = 3;
   const isTouchDevice = Game.isTouchDevice();
@@ -64,7 +64,7 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
       Game.endGame({
         setProgress,
         result: (gameLimit * 100) / (gameLimit + incorrect),
-        exercise: "easyGame",
+        exercise: "easyGameAccent",
       });
   }
 
@@ -77,26 +77,13 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
       Game.delay(
         gameSpeed,
         () => {
-          if (input === answer) {
+          const CORRECT = input === answer;
+          if (CORRECT) {
             Game.correct();
-            Game.delay(
-              2000,
-              () => {
-                setNext((prev) => prev + 1);
-              },
-              setCleanUp
-            );
+            Game.delay(2000, () => setNext((prev) => prev + 1), setCleanUp);
           } else {
             Game.incorrect();
-            Game.delay(
-              2000,
-              () => {
-                Sound.start(`files/lecture${lecture}/${answer}.m4a`);
-                setIncorrect((prev) => prev + 1);
-                setActive(true);
-              },
-              setCleanUp
-            );
+            Game.delay(2000, () => incorrectInput(), setCleanUp);
           }
         },
         setCleanUp
@@ -106,6 +93,12 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
     [active, touchPlay, answer]
   );
 
+  function incorrectInput() {
+    Sound.start(`files/lecture${lecture}/${answer}.m4a`);
+    setIncorrect((prev) => prev + 1);
+    setActive(true);
+  }
+
   return (
     <div className="easy-game">
       <div className="title">Easy Game</div>
@@ -114,7 +107,7 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
           Play
         </div>
       )}
-      <div className="select">
+      <div className="select select--accent">
         {state.map((cur, index) => (
           <CardText
             key={cur}

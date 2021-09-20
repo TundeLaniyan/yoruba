@@ -4,7 +4,7 @@ import Sound from "../../../../Sound";
 import "./slider.css";
 
 const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
-  const max = lesson[lecture - 1].lessons.length;
+  const max = lesson[lecture - 1].words.length;
 
   useEffect(
     () => auto && Sound.start(`files/lecture${lecture}/${exercise}.m4a`),
@@ -33,7 +33,7 @@ const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
           }}
         ></div>
         <h5>{lesson[lecture - 1].langauge?.[exercise - 1]}</h5>
-        <h5>{lesson[lecture - 1].lessons[exercise - 1]}</h5>
+        <h5>{lesson[lecture - 1].words[exercise - 1]}</h5>
       </div>
       <button
         className="switch"

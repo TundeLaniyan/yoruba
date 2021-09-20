@@ -18,10 +18,10 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
 
   function nextRound() {
     setState([]);
-    setAnswer("");
+    setAnswer();
     const cardLimit = 6;
-    const totalCards = lesson[lecture - 1].lessons.length;
-    Game.generateCards({ cardLimit, totalCards, setState });
+    const totalLength = lesson[lecture - 1].words.length;
+    Game.generateCards({ cardLimit, totalLength, setState });
   }
 
   useEffect(() => {
@@ -47,39 +47,50 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
   }, [state]);
 
   function answerQuestion(state) {
-    setAnswer(
-      Game.answerQuestion({ state, cardLimit: state.length, silent: true })
-    );
+    const cardLimit = state.length;
+    const answer = Game.answerQuestion({ state, cardLimit, silent: true });
+    setAnswer(answer);
     Game.delay(2000, () => setActive(true));
   }
 
   const handleOnClick = useCallback(
     (input) => {
+      if (!active) return;
       setActive(false);
       Sound.start(`files/lecture${lecture}/${input}.m4a`);
       Game.delay(2000, () => {
-        if (input === answer) {
-          Game.correct();
-          setCorrect((prev) => prev + 1);
-          Game.delay(1500, () => {
-            const current = [...state];
-            current.splice(current.indexOf(input), 1);
-            setState(current);
-            if (current.length === 1) setNext((prev) => prev + 1);
-            else answerQuestion(current);
-          });
-        } else {
-          Game.incorrect();
-          setIncorrect((prev) => prev + 1);
-          Game.delay(1500, () => {
-            setActive(true);
-          });
-        }
+        const CORRECT = input === answer;
+        if (CORRECT) correctInput(input);
+        else incorrectInput();
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active]
   );
+
+  function correctInput(input) {
+    Game.correct();
+    setCorrect((prev) => prev + 1);
+    Game.delay(1500, () => {
+      const state = updateState(input);
+      if (state.length === 1) setNext((prev) => prev + 1);
+      else answerQuestion(state);
+    });
+  }
+
+  function updateState(input) {
+    const current = [...state];
+    current.splice(current.indexOf(input), 1);
+    setState(current);
+    return current;
+  }
+
+  function incorrectInput() {
+    Game.incorrect();
+    setIncorrect((prev) => prev + 1);
+    Game.delay(1500, () => setActive(true));
+  }
+
   return (
     <div className="hard-game">
       <div className="title">Reading</div>
