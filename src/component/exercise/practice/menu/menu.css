@@ -1,13 +1,21 @@
 .menu {
-    display: flex;
-    margin-top: .25rem;
-    justify-content: center;
-    margin-bottom: .25rem;
+  /* display: flex; */
+  margin-top: 0.25rem;
+  /* justify-content: center; */
+  margin-bottom: 0.25rem;
 }
 
 .menu .btn {
-    padding: 1.25rem 2.5rem;
-    text-transform: capitalize;
-    font-size: 700;
-    border-radius: 1px;
+  padding: 1.25rem 2.5rem;
+  text-transform: capitalize;
+  font-size: 700;
+  border-radius: 1px;
+}
+
+.menu .button {
+  margin: 2rem 0;
+  height: 8rem;
+  line-height: 8rem;
+  font-family: Gilroy-Medium;
+  font-size: 22px;
 }

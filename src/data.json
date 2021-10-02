@@ -1,6 +1,7 @@
 { "lesson": [
     {
       "title": "Accent",
+      "description": "Learn the different tonal sound in the Yoruba language",
       "words": ["Bà", "Ba", "Bá", "Bè", "Be", "Bé", "Bẹ̀", "Bẹ", "Bẹ́", "Bí", "Bi", "Bì", "Bó", "Bo", 
         "Bò", "Bọ́", "Bọ", "Bọ̀", "Bú", "Bu", "Bù", "Dà", "Da", "Dá", "Dè", "De", "Dé", "Dẹ̀", "Dẹ", "Dẹ́",
         "Dì", "Di", "Dí", "Dò", "Do", "Dó", "Dọ̀", "Dọ", "Dọ́", "Dù", "Du", "Dú", "Fì", "Fi", "Fí", "Fà",
@@ -8,7 +9,8 @@
       ]
     },
     {
-      "title": "Introducing words",
+      "title": "Words 1",
+      "description": "Introduction to general words",
       "words": ["Dog", "Crown", "Shoe", "Father", "Dreadlocks", "Black", "Crawfish", "Lips", "Cap", "Lamp", 
         "Bucket", "Long", "Cassava", "All", "Forgery", "House", "Dance", "Soldier", "Stolen", "Sponge", 
         "Big", "Butterfly", "Lanray", "Moimoi", "Centipeak", "Niniola", "At home"],
@@ -17,14 +19,16 @@
         "Kọ̀bìtì", "Labalábá", "Lánre", "Mọ́ímọ́í", "Mọ̀nímọ̀ní", "Níníọlá", "Nílé"]
     },
     {
-      "title": "Introducing words 2",
+      "title": "Words 2",
+      "description": "Introducing more words",
       "words": ["Theif", "Title", "Revolt", "Fool", "Red", "Board", "Buy", "Remi", "Run", "To house", "Osogbo", 
-        "Yam", "Last twin", "Last twin", "Cricket (insets)", "pounded yam", "Nose", "Ease", "Come", "Fruit", "Yoruba"],
+        "Yam", "First twin", "First twin", "Cricket (insets)", "pounded yam", "Nose", "Ease", "Come", "Fruit", "Yoruba"],
       "language": ["Olè", "Oyè", "Ọ̀tẹ̀", "Ọ̀dẹ̀", "Pupa", "Pátákó", "Rà", "Rẹ̀mí", "Sá", "Sílé", "Òṣogbo", "Iṣu", 
         "Táyé", "Táíwò", "Tata", "Iṣu", "Imú", "Wọ́rọ́wọ́", "Wá", "Yó", "Yorùbá"]
     }, 
     {
       "title": "Greeting",
+      "description": "Learning how to greet people",
       "words": ["Greetings in Yoruba language", "Good Morning", "Hope you wake up well", "Hope you wake up well", 
         "Thank God", "Good afternoon", "How are you", "Good evening(sunset)", "Good evening", "Good bye", "Good night", 
         "Greeting someone at home", "Your welcome", "Did I meet you well", "I meat you well", "Well done",
@@ -33,7 +37,8 @@
         "Ọ dàbọ", "Ó dà àárọ̀", "", "Ẹ Káàbọ", "", "", "Ẹ kú isé", "", "", ""]
     },
     {
-      "title": "Body parts", 
+      "title": "Body parts",
+      "description": "The different body parts",
       "language": ["Orí", "Etí", "Imú", "Ẹnu", "Irun", "Ọrùn", "Ọwọ́", "Ikùn", "Gbogbo ará", "Ìdí", "Itan", 
         "Ojúgun", "Ìgúnpá", "Eyín", "Ẹ̀yìn", "Awọ", "Ẹsẹ̀", "Ahọ́n"],
       "words": ["Head", "Ear", "Nose", "Mouth", "Hair", "Neck", "Hand", "Stomach", "Body", "Bottom", 
@@ -41,11 +46,13 @@
     }, 
     {
       "title": "Animals and Food",
+      "description": "Names of animals and Yoruba foods",
       "words": [ "Meat", "Goat", "Sheep", "Cow", "Chicken", "Turkey", "Fish", "Amala", "Eba", "Okro"],
       "language": [ "Ẹran", "Ewúrẹ́", "Àgùntàn", "Màálù", "Adìẹ", "Tòlótòló", "Ẹja", "Àmàlà", "Ẹ̀bà", "Ilá"]
     },
     {
       "title": "Short sentence",
+      "description": "Constructing small sentence",
       "words": ["Don't be angry", "I want to eat", "I am hungry", "I am from Awẹ", "I want to drink water", 
         "I want to excrete", "I want to bath", "I want to buy house", 
         "I am eating", "I am working", "I am going home", "Our house is big", "My car is good", 
@@ -56,45 +63,57 @@
     },
     {
       "title": "Introducing yourself",
+      "description": "Learning how to describing yourself",
       "words": ["Introducing oneself in Yoruba language", "What is your name", "My name is Remi Olaniyan", "Nice to meet you",
         "Where are you from", "I am from Oyo state", "Where do you live", "I live in London", "What do you do for a living",
         "I am a teacher", "I am a student", "I am working in a company", "How old are you", "I am 33 years old",
         "Which food do you like best", "I like pounded yam and okro soup", "Where are you going", "I am going home",
         "I am going to the market", "I am going to my workplace", "I am going to the mosque", "Where are you", "I am at home",
         "I am in the office", "I am in the market", "What are you doing", "I am resting", "I am eating", "I am sleeping", 
-        "I am praying", "I am reading"]
+        "I am praying", "I am reading"],
+      "language": []
     },
     {
-      "title": "Action",
+      "title": "Verbs",
+      "description": "Learn the different actions",
       "words": ["Action in Yoruba language", "Sit down", "Stand up", "Get out", "I am going out", "Give me water", 
         "Give me a chair", "I want to go and sleep", "I want to eat", "Give me a plate and spoon",
-        "I want to lay my bed", "I am going up the stairs", "I am going down stairs"]
+        "I want to lay my bed", "I am going up the stairs", "I am going down stairs"],
+      "language": []
     },
     {
-      "title": "Solving a misunderstanding",
+      "title": "Solving misunderstandings",
+      "description": "Learn how to solve misunderstanding",
       "words": ["Solving a misunderstanding in Yoruba language", "Forgive me please", "I won't do that again",
         "It won't repeat itself", "I am sorry", "Sorry for a wrong or mistake", "No problem", "please",
         "Can you repeat please", "Can you speak slowly", "Do you understand what I said", "I don't understand",
-        "I don't know", "Can you write it down"]
+        "I don't know", "Can you write it down"],
+      "language": []
     },
     {
-      "title": "Asking for direction",
+      "title": "Direction",
+      "description": "Learn how to ask for direction",
       "words": ["Asking for direction", "Excuse me", "I'm lost", "I don't know the road I should follow", "can you help me", "can I help you",
         "I'm not from this town", "How can i get to this place", "How long does it take me to get there",
-        "Is it a walking distance"]
+        "Is it a walking distance"],
+      "language": []
     },
     {
-      "title": "Conversation in Yoruba language 1",
+      "title": "Conversation 1",
+      "description": "Learn conversation in Yoruba language",
       "words": ["Conversation in Yoruba language", "I am hungry", "I want us to be friend", "I love you (1)", 
         "I love you (2)", "I want to date you", "I want to marry you", "Please sit", "Do you want water", 
         "No I don't want", "Let us go together", "I can go by myself", "I want to see you", "Come let me see you",
-        "Come let's talk", "I want to urinate (1)", "I want to urinate (2)", "I want to sleep", "Give me my money", "Come and eat"]
+        "Come let's talk", "I want to urinate (1)", "I want to urinate (2)", "I want to sleep", "Give me my money", "Come and eat"],
+      "language": []
     },
     {
-      "title": "Conversation in Yoruba language 2",
+      "title": "Conversation 2",
+      "description": "Learn more conversation in Yoruba language",
       "words": ["What do you say", "What does this mean", "Can I ask you something", "What is the time?", "What day is today",
         "Today is Thursday ", "I can't hear you", "What is this", "What is going on", "What happened ", "What are you doing",
-        "Let me see it", "I am travelling"]
+        "Let me see it", "I am travelling"],
+      "language": []
     }
   ]
 }

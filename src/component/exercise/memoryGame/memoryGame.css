@@ -1,72 +1,70 @@
 .memory-game {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .memory-game .select {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    border: 2.5px solid rgba(0, 0, 0, 0.178);
-    border-radius: 3px;
-    height: 80%;
-    padding: 1% 0;
-    position: relative;
-  }
-  
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+}
+
+.memory-game .select {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 80%;
+  padding: 1% 0;
+}
+
+.memory-game .container {
+  height: 20%;
+  width: 20%;
+  margin: 0.75% 2.5%;
+  border-radius: 3px;
+  background-color: rgb(0 0 0 / 60%);
+  box-shadow: 0 0 0rem 0.125rem rgba(0, 0, 0, 0.178);
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  text-decoration: unset;
+  color: unset;
+  cursor: pointer;
+  color: cornsilk;
+}
+.memory-game .container:hover {
+  box-shadow: 0 0 0.125rem 0.25rem rgba(0, 0, 0, 0.178);
+}
+
+.memory-game .img {
+  width: 100%;
+  height: 80%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* .memory-game .touch-play {
+  width: 100%;
+  height: 78%;
+  position: absolute;
+  background-color: #00000060;
+  color: cornsilk;
+  font-size: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+@media screen and (max-width: 56.25em) {
   .memory-game .container {
-    height: 20%;
-    width: 20%;
-    margin: 0.75% 2.5%;
-    border-radius: 3px;
-    background-color: rgb(0 0 0 / 60%);
-    box-shadow: 0 0 0rem 0.125rem rgba(0, 0, 0, 0.178);
-    padding: 0.5rem;
-    display: flex;
-    align-items: center;
-    text-decoration: unset;
-    color: unset;
-    cursor: pointer;
-    color: cornsilk;
+    flex-direction: column;
+    font-size: 0.8rem;
+    height: 25%;
   }
-  .memory-game .container:hover {
-    box-shadow: 0 0 0.125rem 0.25rem rgba(0, 0, 0, 0.178);
-  }
-  
+
   .memory-game .img {
-    width: 100%;
-    height: 80%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    height: 10rem;
+    background-size: cover;
   }
 
-  .touch-play {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: #00000060;
-    color: cornsilk;
-    font-size: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .memory-game .container__text {
+    font-size: 1.5rem;
   }
-
-  @media screen and (max-width: 56.25em) {
-    .memory-game .container {
-      flex-direction: column;
-      font-size: .8rem;
-      height: 25%;
-    }
-
-    .memory-game .img {
-      height: 10rem;
-      background-size: cover;
-    }
-    
-    .memory-game .container__text {
-      font-size: 1.5rem;
-    }
-  }
+}

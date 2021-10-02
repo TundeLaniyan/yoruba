@@ -3,12 +3,7 @@ import Sound from "../../Sound";
 
 class GameLogic {
   lecture = 1;
-  generateCards = function ({
-    cardLimit,
-    setState,
-    totalLength,
-    currentLength,
-  }) {
+  generateCards = function ({ cardLimit, totalLength, currentLength = 0 }) {
     const cards = new Set();
     let i = 0;
     while (i < cardLimit) {
@@ -22,7 +17,6 @@ class GameLogic {
         cards.add(value);
       }
     }
-    setState([...cards]);
     return [...cards];
   };
 
@@ -45,7 +39,8 @@ class GameLogic {
         setCleanUp
       );
     }
-    this.delay(gameSpeed * cardLimit, () => setSoundState(cardLimit));
+    return gameSpeed * cardLimit;
+    // this.delay(gameSpeed * cardLimit, () => setSoundState(cardLimit));
   };
   endGame = function ({ result, exercise, setProgress }) {
     setProgress({ result, exercise, lecture: this.lecture });
@@ -110,6 +105,31 @@ class GameLogic {
       accumulation += current;
     }
     return { exercise, lecture: currentLecture, state };
+  };
+  setResult = function ({ input, answer, results, state }) {
+    const current = [...results];
+    const index = state.findIndex((cur) => cur === input);
+    current[index] = { input, answer };
+    return current;
+  };
+  clearIncorrect = function (results) {
+    const result = results.map((cur) =>
+      cur?.answer === "correct" ? cur : { ...cur, answer: "" }
+    );
+    return result;
+  };
+  remainingState = function ({ state, results }) {
+    return state.filter((cur) => {
+      const index = results.findIndex((el) => el?.input === cur);
+      return index === -1 || results[index].answer !== "correct";
+    });
+  };
+  answerQuestions = function ({ state, results }) {
+    const remainingState = this.remainingState({ state, results });
+    return this.answerQuestionMultLectures({
+      state: remainingState,
+      cardLimit: remainingState.length,
+    });
   };
 }
 

@@ -5,50 +5,54 @@ import { lesson } from "../../../data.json";
 import Sound from "../../../Sound";
 import Card from "../../card/card";
 import GameFooter from "../../gameFooter/gameFooter";
+import Navigation from "../navigation/navigation";
 import "./reading.css";
 
 const Reading = memo(function ({ lecture, setProgress, Game }) {
   const [state, setState] = useState([]);
   const [answer, setAnswer] = useState();
+  const [results, setResults] = useState([]);
   const [next, setNext] = useState(0);
+  const [currentRound, setCurrentRound] = useState();
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
   const [active, setActive] = useState(false);
   const gameLimit = 4;
+  const cardLimit = 6;
 
   function nextRound() {
-    setState([]);
+    const results = [];
+    setResults(results);
+    setCurrentRound(0);
     setAnswer();
-    const cardLimit = 6;
     const totalLength = lesson[lecture - 1].words.length;
-    Game.generateCards({ cardLimit, totalLength, setState });
+    const cards = Game.generateCards({ cardLimit, totalLength });
+    setState(cards);
+    Game.delay(2500, () => answerQuestion(cards, results));
   }
 
   useEffect(() => {
-    if (next < gameLimit) {
-      nextRound();
-    } else {
+    if (next < gameLimit) nextRound();
+    else
       Game.endGame({
         result: (100 * (correct - incorrect)) / correct,
         exercise: "reading",
         setProgress,
       });
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [next]);
 
-  useEffect(() => {
-    if (state.length === 6) {
-      setTimeout(() => {
-        answerQuestion(state);
-      }, 2500);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
+  function answerQuestion(state, result = results) {
+    const remainingState = state.filter((cur) => {
+      const index = result.findIndex((el) => el?.input === cur);
+      return index === -1 || result[index].answer !== "correct";
+    });
 
-  function answerQuestion(state) {
-    const cardLimit = state.length;
-    const answer = Game.answerQuestion({ state, cardLimit, silent: true });
+    const answer = Game.answerQuestion({
+      state: remainingState,
+      cardLimit: remainingState.length,
+      silent: true,
+    });
     setAnswer(answer);
     Game.delay(2000, () => setActive(true));
   }
@@ -61,7 +65,7 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
       Game.delay(2000, () => {
         const CORRECT = input === answer;
         if (CORRECT) correctInput(input);
-        else incorrectInput();
+        else incorrectInput(input);
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,42 +73,40 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
   );
 
   function correctInput(input) {
+    let result = Game.setResult({ input, state, results, answer: "correct" });
     Game.correct();
     setCorrect((prev) => prev + 1);
     Game.delay(1500, () => {
-      const state = updateState(input);
-      if (state.length === 1) setNext((prev) => prev + 1);
-      else answerQuestion(state);
+      setCurrentRound(currentRound + 1);
+      result = Game.clearIncorrect(result);
+      setResults(result);
+      if (currentRound === cardLimit - 2) setNext((prev) => prev + 1);
+      else answerQuestion(state, result);
     });
   }
 
-  function updateState(input) {
-    const current = [...state];
-    current.splice(current.indexOf(input), 1);
-    setState(current);
-    return current;
-  }
-
-  function incorrectInput() {
+  function incorrectInput(input) {
+    setResults(Game.setResult({ input, state, results, answer: "incorrect" }));
     Game.incorrect();
     setIncorrect((prev) => prev + 1);
     Game.delay(1500, () => setActive(true));
   }
 
   return (
-    <div className="hard-game">
-      <div className="title">Reading</div>
+    <div className="reading">
+      <Navigation challenge="Reading" lecture={lecture} />
       <div className="text-block">
         {answer ? lesson[lecture - 1].language[answer - 1] : "?"}
       </div>
       <div className="select">
-        {state.map((cur) => (
+        {state.map((cur, index) => (
           <Card
             key={cur}
             state={cur}
             lecture={lecture}
             exercise={cur}
             onClick={handleOnClick}
+            answer={results[index]?.answer}
           />
         ))}
       </div>

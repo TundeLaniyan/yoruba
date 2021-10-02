@@ -1,0 +1,96 @@
+.task {
+  height: 100%;
+  flex-direction: column;
+
+  &__cover-img {
+    width: 100%;
+  }
+
+  &-icon {
+    position: absolute;
+    margin: 1rem;
+    right: 0;
+    font-family: KG What the Teacher Wants;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #6fcf97;
+  }
+
+  &__select {
+    width: 100%;
+    margin-top: 5rem;
+  }
+
+  &__container {
+    border-bottom: 2px solid #e0e0e0;
+    padding: 2.5rem 0;
+    display: flex;
+    align-items: center;
+  }
+
+  &__challenge {
+    margin: 0 auto 0 5rem;
+    font-family: Gilroy-Medium;
+    font-size: 3.5rem;
+    font-weight: 600;
+    line-height: 23px;
+    color: #333333;
+    text-transform: capitalize;
+  }
+
+  &__progress {
+    margin-right: 2rem;
+    color: #1a9842;
+  }
+
+  &__icon {
+    width: 4rem;
+  }
+
+  &__img {
+    width: 2rem;
+    height: 50%;
+    margin: 0 0.25rem;
+  }
+
+  &__content {
+    padding: 2rem;
+  }
+
+  &__title {
+    font-family: Sansation;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 7rem;
+    color: #704b3f;
+  }
+
+  &__text {
+    font-family: Gilroy-Bold;
+    font-size: 4rem;
+    margin: 1rem 0 3rem;
+    color: #828282;
+    font-weight: 600;
+  }
+
+  &__length {
+    padding: 1rem 0;
+    font-weight: bold;
+  }
+
+  @media screen and (max-width: 37.5em) {
+    &__box {
+      margin: 1rem 0;
+    }
+    &__container {
+      min-height: 7.5rem;
+      font-size: 2rem;
+    }
+  }
+}
+
+.return {
+  position: absolute;
+  margin: 1rem;
+}

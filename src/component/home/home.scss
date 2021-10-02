@@ -1,0 +1,56 @@
+.home {
+  background: url(../../img/pexels-dekunle-caleb-7596455.jpg);
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: 50% 0%;
+
+  animation: fadeOut 6s;
+
+  .logo-container {
+    text-align: left;
+    padding: 2rem;
+  }
+
+  .logo {
+    height: 6rem;
+  }
+
+  .title-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
+  .title {
+    font-style: normal;
+    font-weight: 650;
+    font-size: 8.2rem;
+    text-align: center;
+    color: #6fcf97;
+  }
+  .sub-title {
+    font-family: Sansation;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.3rem;
+    line-height: 18px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    color: #ffffff;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

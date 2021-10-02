@@ -1,8 +1,11 @@
 .game__footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   align-items: center;
-  border-radius: 10px;
-  /* background-image: linear-gradient(to left, #b7ab8560 50%, #b7ab85 50%); */
+  padding: 1.25rem;
 }
 
 .language-text {
@@ -11,7 +14,7 @@
 
 .score {
   border-radius: 50%;
-  background-color: cornsilk;
+  background-color: rgb(255, 255, 255);
   border: 2.5px solid;
   width: 4rem;
   height: 4rem;

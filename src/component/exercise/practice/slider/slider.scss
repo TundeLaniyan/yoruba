@@ -1,0 +1,45 @@
+.slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  // height: 25rem;
+
+  &__img-container {
+    height: 100%;
+  }
+
+  &__img {
+    width: 35vw;
+    height: 80%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 1rem;
+  }
+
+  .prev,
+  .next {
+    border-radius: 50%;
+    border: 1px solid #333333;
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: white;
+  }
+
+  .next {
+    transform: rotate(180deg);
+  }
+
+  &__text {
+    text-align: center;
+    font-family: Gilroy-Bold;
+    font-size: 36px;
+    line-height: 42px;
+    color: #333333;
+  }
+}

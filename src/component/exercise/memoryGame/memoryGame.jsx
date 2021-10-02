@@ -6,13 +6,17 @@ import Sound from "../../../Sound";
 import Card from "../../card/card";
 import CardText from "../../card/cardText";
 import GameFooter from "../../gameFooter/gameFooter";
+import TouchPlay from "../../touchPlay/touchPlay";
+import Navigation from "../navigation/navigation";
 import "./memoryGame.css";
 
 const MemoryGame = ({ lecture, setProgress, Game }) => {
   const [state, setState] = useState([]);
   const [hidden, setHidden] = useState([]);
   const [answer, setAnswer] = useState();
+  const [results, setResults] = useState([]);
   const [next, setNext] = useState(0);
+  const [currentRound, setCurrentRound] = useState();
   const [correct, setCorrect] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
   const [active, setActive] = useState(false);
@@ -22,18 +26,19 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
   const ref = useRef();
   ref.current = { next, state, percent, pauseInterval, cleanUp: intervalID };
   const displayCard = Game.displayCard;
-  const memoryGame = next < 5;
-  const isTouchDevice = Game.isTouchDevice() && !memoryGame;
+  const isTouchDevice = Game.isTouchDevice();
   const [touchPlay, setTouchPlay] = useState(false);
-  const gameLimit = 10;
+  const gameLimit = 6;
   const cardLimit = next + 2;
 
   function nextRound() {
-    setState([]);
+    setResults([]);
     setPercent(100);
+    setCurrentRound(0);
     const totalLength = Game.totalCards();
     const currentLength = lesson[lecture - 1].words.length;
-    Game.generateCards({ cardLimit, setState, totalLength, currentLength });
+    const cards = Game.generateCards({ cardLimit, totalLength, currentLength });
+    setState(cards);
   }
 
   useEffect(() => () => clearInterval(ref.current.cleanUp), []);
@@ -50,30 +55,19 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
   }, [next]);
 
   useEffect(() => {
-    if (state.length === cardLimit) {
-      !memoryGame && answerQuestion(state);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
-
-  useEffect(() => {
     clearInterval(intervalID);
-    const increment = memoryGame ? 1000 : 3000;
+    const increment = 1000;
     const intervalId = setInterval(() => {
       if (ref.current.pauseInterval) return;
       if (ref.current.percent <= 0) {
         clearInterval(intervalId);
-        if (memoryGame) {
-          setHidden(ref.current.state);
-          answerQuestion(ref.current.state);
-        } else {
-          setNext((prev) => prev + 1);
-        }
+        setHidden(ref.current.state);
+        answerQuestion(ref.current.state);
       } else {
         ref.current.percent -= 5;
         setPercent((prev) => prev - 5);
       }
-    }, ((memoryGame ? 5000 : 12000) + next * increment) / 20);
+    }, (5000 + next * increment) / 20);
     setIntervalID(intervalId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pauseInterval, next]);
@@ -84,13 +78,11 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
       const { lecture: inputLecture, exercise } = displayCard(input, lecture);
       Sound.start(`files/lecture${inputLecture}/${exercise}.m4a`);
       setActive(false);
-      if (memoryGame) revealCard(input);
-      else setPauseInterval(true);
+      revealCard(input);
       Game.delay(2500, () => {
         const CORRECT = input === answer;
         if (CORRECT) correctInput(input);
-        else incorrectInput();
-        !memoryGame && !isTouchDevice && setPauseInterval(false);
+        else incorrectInput(input);
       });
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -105,56 +97,52 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
   }
 
   function correctInput(input) {
+    let result = Game.setResult({ input, state, results, answer: "correct" });
     Game.correct();
     Game.delay(2000, () => {
       // I dont understand this line
-      if (next !== ref.current.next) return;
+      // if (next !== ref.current.next) return;
 
-      isTouchDevice && setTouchPlay(true);
       setCorrect((prev) => prev + 1);
-      const state = updateState(input);
-      const ENDOFROUND = state.length === 1;
+      setCurrentRound(currentRound + 1);
+      result = Game.clearIncorrect(result);
+      setResults(result);
+      const ENDOFROUND = currentRound === cardLimit - 2;
       if (ENDOFROUND) {
-        memoryGame && setHidden([]);
+        setHidden([]);
         setNext((prev) => prev + 1);
       } else {
-        memoryGame && setHidden(state);
-        answerQuestion(state);
+        // isTouchDevice && setTouchPlay(true);
+        setHidden(state);
+        answerQuestion(state, result);
       }
     });
   }
 
-  function updateState(input) {
-    const current = [...state];
-    current.splice(current.indexOf(input), 1);
-    setState(current);
-    return current;
-  }
-
-  function incorrectInput() {
+  function incorrectInput(input) {
+    setResults(Game.setResult({ input, state, results, answer: "incorrect" }));
     Game.incorrect();
     setIncorrect((prev) => prev + 1);
-    memoryGame && setHidden(state);
+    setHidden(state);
     Game.delay(1500, () => {
       const curAnswer = displayCard(answer, lecture);
       Sound.start(
         `files/lecture${curAnswer.lecture}/${curAnswer.exercise}.m4a`
       );
       setActive(true);
-      !memoryGame && isTouchDevice && setPauseInterval(false);
     });
   }
 
-  function answerQuestion(state) {
+  function answerQuestion(state, result = results) {
     if (isTouchDevice && !touchPlay) return setTouchPlay(true);
-    setAnswer(
-      Game.answerQuestionMultLectures({ state, cardLimit: state.length })
-    );
-    Game.delay(2000, () => setActive(true));
+    const answer = Game.answerQuestions({ state, results: result });
+    setAnswer(answer);
+    Game.delay(500, () => setActive(true));
   }
 
   useEffect(() => {
-    setPauseInterval(touchPlay);
+    percent > 0 && setPauseInterval(touchPlay);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [touchPlay]);
 
   const handleTouchPlay = () => {
@@ -164,12 +152,10 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
 
   return (
     <div className="memory-game">
-      <div className="title">Memory Game</div>
+      <Navigation challenge="Memory Game" lecture={lecture} />
       <div className="select">
         {touchPlay ? (
-          <div className="touch-play" onClick={handleTouchPlay}>
-            Play
-          </div>
+          <TouchPlay round={currentRound} onClick={handleTouchPlay} />
         ) : (
           state.map((cur, index) => {
             const display = displayCard(cur, lecture);
@@ -181,6 +167,7 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
                 exercise={display.exercise}
                 onClick={handleOnClick}
                 hide={hidden[index]}
+                answer={results[index]?.answer}
               />
             ) : (
               <CardText
@@ -189,6 +176,7 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
                 exercise={cur}
                 onClick={handleOnClick}
                 hide={hidden[index]}
+                answer={results[index]?.answer}
               />
             );
           })

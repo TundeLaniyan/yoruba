@@ -5,12 +5,15 @@ import { setProgress } from "../../../action";
 import GameFooter from "../../gameFooter/gameFooter";
 import Sound from "../../../Sound";
 import Card from "../../card/card";
+import Button from "../../button/button";
+import Navigation from "../navigation/navigation";
 import "./easyGame.css";
 
 const EasyGame = ({ lecture, setProgress, Game }) => {
   const [state, setState] = useState([]);
   const [soundState, setSoundState] = useState();
   const [answer, setAnswer] = useState();
+  const [results, setResults] = useState([]);
   const [next, setNext] = useState(0);
   const [incorrect, setIncorrect] = useState(0);
   const [active, setActive] = useState(false);
@@ -31,23 +34,23 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => nextResponse(), [next]);
 
-  useEffect(() => {
-    if (soundState === cardLimit || touchPlay) {
-      setAnswer(Game.answerQuestion({ state, cardLimit }));
-      setState((prev) => prev.sort(() => (Math.random() > 0.5 ? 1 : -1)));
-      setActive(true);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [soundState, touchPlay]);
+  function answerQuestion(state) {
+    const answer = Game.answerQuestion({ state, cardLimit });
+    setAnswer(answer);
+    setState((prev) => prev.sort(() => (Math.random() > 0.5 ? 1 : -1)));
+    setActive(true);
+  }
 
   function nextRound() {
     setState([]);
+    setResults([]);
     setTouchPlay(false);
     const totalLength = lesson[lecture - 1].words.length;
-    const cards = Game.generateCards({ cardLimit, totalLength, setState });
+    const cards = Game.generateCards({ cardLimit, totalLength });
+    setState(cards);
     if (isTouchDevice) setActive(true);
-    else
-      Game.playCards({
+    else {
+      const delay = Game.playCards({
         cards,
         cardLimit,
         gameSpeed,
@@ -55,6 +58,8 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
         setCleanUp,
         autoPlay: true,
       });
+      Game.delay(delay, () => answerQuestion(cards));
+    }
   }
 
   function nextResponse() {
@@ -78,9 +83,15 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
         () => {
           const CORRECT = input === answer;
           if (CORRECT) {
+            setResults(
+              Game.setResult({ input, state, results, answer: "correct" })
+            );
             Game.correct();
             Game.delay(2000, () => setNext((prev) => prev + 1), setCleanUp);
           } else {
+            setResults(
+              Game.setResult({ input, state, results, answer: "incorrect" })
+            );
             Game.incorrect();
             Game.delay(2000, () => incorrectInput(), setCleanUp);
           }
@@ -98,14 +109,14 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
     setActive(true);
   }
 
+  function handleTouchPlay() {
+    setTouchPlay(true);
+    answerQuestion(state);
+  }
+
   return (
     <div className="easy-game">
-      <div className="title">Easy Game</div>
-      {!touchPlay && isTouchDevice && (
-        <div className="touch-btn" onClick={() => setTouchPlay(true)}>
-          Play
-        </div>
-      )}
+      <Navigation challenge="Easy Game" lecture={lecture} />
       <div className="select">
         {state.map((cur, index) => (
           <Card
@@ -115,9 +126,17 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
             exercise={cur}
             onClick={handleOnClick}
             brightness={index === soundState ? 2 : 1}
+            answer={results[index]?.answer}
           />
         ))}
       </div>
+      {!touchPlay && isTouchDevice && (
+        <Button
+          className="easy-game__button"
+          onClick={handleTouchPlay}
+          content="Play"
+        />
+      )}
       <GameFooter
         audio={`files/lecture${lecture}/${answer}.m4a`}
         correct={next}

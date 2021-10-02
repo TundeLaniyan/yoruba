@@ -1,0 +1,19 @@
+.button {
+  height: 33px;
+  padding: 0 1rem;
+  background: #054d54;
+  border-radius: 5px;
+  font-family: Sansation;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 33px;
+  display: block;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  &:hover {
+    box-shadow: 0 0 0.125rem 0.25rem rgba(0, 0, 0, 0.178);
+  }
+}

@@ -1,5 +1,6 @@
 const saveState = window.localStorage.getItem("Yoruba") || "{}";
-const defaultState = saveState !== "[object Object]" ? JSON.parse(saveState) : {};
+const defaultState =
+  saveState !== "[object Object]" ? JSON.parse(saveState) : {};
 
 export const reducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -19,6 +20,9 @@ export const reducer = (state = defaultState, action) => {
       if (!(current[lecture][exercise] > result))
         current[lecture][exercise] = result;
       return current;
+
+    case "RESETPROGRESS":
+      return {};
 
     default:
       return state;

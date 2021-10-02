@@ -2,7 +2,11 @@ import React, { useEffect, useState, useRef } from "react";
 import Slider from "./slider/slider";
 import { lesson } from "../../../data.json";
 import Menu from "./menu/menu";
-import "./practice.css";
+import { Link } from "react-router-dom";
+import Button from "../../button/button";
+import "./practice.scss";
+import Sound from "../../../Sound";
+import Navigation from "../navigation/navigation";
 
 const Practice = ({ lecture }) => {
   const [auto, setAuto] = useState(true);
@@ -31,9 +35,17 @@ const Practice = ({ lecture }) => {
   }, [autoPlay]);
 
   return (
-    <div>
-      <div className="title">{lesson[lecture - 1].title}</div>
-      <div className="practice">
+    <div className="practice">
+      <Navigation challenge="Exercise" lecture={lecture} />
+      <div className="practice__content">
+        <div
+          className="practice__img"
+          onClick={() => Sound.start(`files/lecture${lecture}/${exercise}.m4a`)}
+          style={{
+            backgroundImage: `url(./img/lecture${lecture}/${exercise}.jpg)`,
+          }}
+        ></div>
+
         <Slider
           lecture={lecture}
           auto={auto}

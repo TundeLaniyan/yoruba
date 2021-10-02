@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { lesson } from "../../../data.json";
-import Progress from "../../progress/progress";
-import "./lesson.css";
+import Button from "../../button/button";
+import "./lesson.scss";
 
 const Lesson = ({ setLecture, lecture, progress }) => {
-  const noOfExercise = 4;
+  const noOfExercise = 5;
   const [progression, setProgression] = useState([]);
   const [passed, setPassed] = useState(0);
 
@@ -30,32 +30,44 @@ const Lesson = ({ setLecture, lecture, progress }) => {
 
   return (
     <div className="lesson">
-      <div className="title">Select Level</div>
-      <div className="lesson__length">
-        {passed} / {lesson.length}
+      <div className="title">Choose your interests</div>
+      <div className="sub-title">
+        Choose your catergory and procceed to start learining youruba
       </div>
-      {progression.map((cur, index) => (
-        <Progress
-          key={index}
-          Component={() => (
-            <Link
-              key={index}
-              className="lesson__container"
-              to="/task"
-              onClick={() => setLecture(index + 1)}
-            >
+      {/* <div className="lesson__length">
+        {passed} / {lesson.length}
+      </div> */}
+      <div>
+        {progression.map((cur, index) => (
+          <div key={index} className="lesson__container">
+            <div className="lesson__container-top">
               <div
                 className="lesson__img"
                 style={{
-                  backgroundImage: `url(./img/lecture${index + 1}/1.jpg)`,
+                  backgroundImage: `url(./img/lecture${index + 1}/cover.svg)`,
                 }}
               />
-              <div style={{ fontWeight: 700 }}>{cur.title}</div>
-            </Link>
-          )}
-          percentage={cur.percentage}
-        />
-      ))}
+              <div className="lesson__content">
+                <div className="lesson__title">{cur.title}</div>
+                <div className="lesson__description">{cur.description}</div>
+                <Link to="/task" onClick={() => setLecture(index + 1)}>
+                  <Button content={"Continue"} />
+                </Link>
+              </div>
+            </div>
+            <div className="progress-bar">
+              <div className="progress-bar__text">
+                {cur.percentage.toFixed(1)}%
+              </div>
+              <div
+                className="progress-bar__percentage"
+                style={{ width: cur.percentage + "%" }}
+              ></div>
+            </div>
+            {/* percentage={cur.percentage} */}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

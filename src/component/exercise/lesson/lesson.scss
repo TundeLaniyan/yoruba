@@ -1,0 +1,130 @@
+.lesson {
+  background: #e5e5e5;
+  padding: 2rem 6rem 5rem;
+  // height: 100%;
+  // display: flex;
+  // flex-direction: column;
+  a {
+    text-decoration: none;
+  }
+
+  &__select {
+    display: flex;
+    justify-content: center;
+    align-items: unset;
+  }
+
+  &__input {
+    text-align: center;
+    font-weight: 700;
+    width: 3rem;
+    border-radius: 5px;
+  }
+
+  &__btn {
+    border-radius: 3px;
+    background-color: rgb(182, 106, 80);
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 0 0.75rem;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__container {
+    text-decoration: unset;
+    color: unset;
+    background: #ffffff;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0 / 25%);
+    border-radius: 5px;
+    margin: 5rem auto;
+    padding: 2rem;
+    height: 40vw;
+    width: 80vw;
+    max-width: 50rem;
+    max-height: 25rem;
+    &-top {
+      display: flex;
+      height: 80%;
+    }
+  }
+
+  &__img {
+    flex: 0 0 50%;
+    background-size: cover;
+    background-position: center;
+    margin-right: 1rem;
+  }
+
+  &__content {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    font-family: Gilroy-Black;
+    font-size: 2.3rem;
+    font-weight: 600;
+    line-height: 19px;
+    color: #333333;
+  }
+
+  &__description {
+    font-family: Gibson;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 12px;
+    color: #828282;
+    margin: auto 0;
+  }
+
+  .button {
+    margin-left: auto;
+    width: 103px;
+  }
+
+  &__length {
+    padding: 1rem 0;
+    font-weight: bold;
+  }
+
+  .title {
+    font-family: Sansation;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 7rem;
+    color: #704b3f;
+    margin-bottom: 2rem;
+  }
+
+  .sub-title {
+    font-family: Sansation;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 16px;
+    color: #333333;
+  }
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: grey;
+  margin: 1rem 0;
+  border-radius: 3px;
+  overflow: hidden;
+  &__text {
+    line-height: 20px;
+    text-align: center;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &__percentage {
+    height: 20px;
+    background-color: #054d54;
+  }
+}

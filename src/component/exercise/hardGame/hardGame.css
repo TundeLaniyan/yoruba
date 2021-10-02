@@ -2,13 +2,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 2.5rem;
 }
 
 .hard-game .select {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  border: 2.5px solid rgba(0, 0, 0, 0.178);
+  /* border: 2.5px solid rgba(0, 0, 0, 0.178); */
   border-radius: 3px;
   height: 80%;
   padding: 1% 0;
@@ -17,7 +18,7 @@
 .hard-game .text {
   font-size: 5rem;
 }
-  
+
 @media screen and (max-width: 56.25em) {
   .hard-game .select {
     border: none;

@@ -21,8 +21,10 @@ const GameFooter = ({
       .replace(".m4a", "")
       .split("/");
     setTimeout(() => {
-      if (exercise !== "files" && exercise > 0)
+      if (exercise !== "files" && exercise > 0) {
         setlanguageText(lesson[exercise - 1].language?.[lecture - 1]);
+        setTimeout(() => setlanguageText(""), 3000);
+      }
     }, 1500);
     // eslint-disable-next-line
   }, [Sound.url]);
@@ -31,7 +33,7 @@ const GameFooter = ({
     <div
       className="game__footer"
       style={{
-        backgroundImage: `linear-gradient(to right, rgb(90 44 29 / 100%) ${percent}%, rgb(90 44 29 / 23%) ${percent}%)`,
+        backgroundImage: `linear-gradient(to right, #054d54 ${percent}%, #054d5459 ${percent}%)`,
       }}
     >
       {audio && (

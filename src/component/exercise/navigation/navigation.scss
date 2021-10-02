@@ -1,0 +1,38 @@
+.navigation {
+  .return {
+    margin: 0;
+  }
+
+  .navigation-icon {
+    width: 133px;
+    height: 7rem;
+    line-height: 7rem;
+    margin-left: auto;
+    margin-bottom: 5rem;
+    margin-top: 0;
+    font-family: KG What the Teacher Wants;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    color: #6fcf97;
+  }
+
+  .title {
+    font-family: Sansation;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 20px;
+    color: #6fcf97;
+  }
+
+  &__exercise {
+    font-family: Gilroy-Bold;
+    font-size: 36px;
+    line-height: 42px;
+    color: #704b3f;
+    span {
+      margin-left: 2rem;
+    }
+  }
+}
