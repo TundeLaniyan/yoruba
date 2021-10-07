@@ -2,8 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import Slider from "./slider/slider";
 import { lesson } from "../../../data.json";
 import Menu from "./menu/menu";
-import { Link } from "react-router-dom";
-import Button from "../../button/button";
 import "./practice.scss";
 import Sound from "../../../Sound";
 import Navigation from "../navigation/navigation";
@@ -40,7 +38,7 @@ const Practice = ({ lecture }) => {
       <div className="practice__content">
         <div
           className="practice__img"
-          onClick={() => Sound.start(`files/lecture${lecture}/${exercise}.m4a`)}
+          onClick={() => Sound.play(`files/lecture${lecture}/${exercise}.m4a`)}
           style={{
             backgroundImage: `url(./img/lecture${lecture}/${exercise}.jpg)`,
           }}

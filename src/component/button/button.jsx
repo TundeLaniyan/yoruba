@@ -1,12 +1,12 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import "./button.scss";
 
-const Button = ({ className, content, ...props }) => {
+const Button = forwardRef(({ className, content, ...props }, ref) => {
   return (
-    <div className={`button ${className}`} {...props}>
+    <div ref={ref} className={`button ${className}`} {...props}>
       {content}
     </div>
   );
-};
+});
 
 export default Button;

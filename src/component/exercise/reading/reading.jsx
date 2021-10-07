@@ -42,54 +42,50 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [next]);
 
-  function answerQuestion(state, result = results) {
+  async function answerQuestion(state, result = results) {
     const remainingState = state.filter((cur) => {
       const index = result.findIndex((el) => el?.input === cur);
       return index === -1 || result[index].answer !== "correct";
     });
 
-    const answer = Game.answerQuestion({
+    const answer = await Game.answerQuestion({
       state: remainingState,
       cardLimit: remainingState.length,
       silent: true,
     });
     setAnswer(answer);
-    Game.delay(2000, () => setActive(true));
+    setActive(true);
   }
 
   const handleOnClick = useCallback(
-    (input) => {
+    async (input) => {
       if (!active) return;
       setActive(false);
-      Sound.start(`files/lecture${lecture}/${input}.m4a`);
-      Game.delay(2000, () => {
-        const CORRECT = input === answer;
-        if (CORRECT) correctInput(input);
-        else incorrectInput(input);
-      });
+      await Sound.play(`files/lecture${lecture}/${input}.m4a`);
+      const CORRECT = input === answer;
+      if (CORRECT) correctInput(input);
+      else incorrectInput(input);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active]
   );
 
-  function correctInput(input) {
+  async function correctInput(input) {
     let result = Game.setResult({ input, state, results, answer: "correct" });
-    Game.correct();
+    await Game.correct();
     setCorrect((prev) => prev + 1);
-    Game.delay(1500, () => {
-      setCurrentRound(currentRound + 1);
-      result = Game.clearIncorrect(result);
-      setResults(result);
-      if (currentRound === cardLimit - 2) setNext((prev) => prev + 1);
-      else answerQuestion(state, result);
-    });
+    setCurrentRound(currentRound + 1);
+    result = Game.clearIncorrect(result);
+    setResults(result);
+    if (currentRound === cardLimit - 2) setNext((prev) => prev + 1);
+    else answerQuestion(state, result);
   }
 
-  function incorrectInput(input) {
+  async function incorrectInput(input) {
     setResults(Game.setResult({ input, state, results, answer: "incorrect" }));
-    Game.incorrect();
+    await Game.incorrect();
     setIncorrect((prev) => prev + 1);
-    Game.delay(1500, () => setActive(true));
+    setActive(true);
   }
 
   return (
@@ -107,6 +103,7 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
             exercise={cur}
             onClick={handleOnClick}
             answer={results[index]?.answer}
+            active={active}
           />
         ))}
       </div>

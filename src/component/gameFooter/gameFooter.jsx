@@ -39,7 +39,7 @@ const GameFooter = ({
       {audio && (
         <div
           className="score score__play"
-          onClick={() => active && Sound.start(audio)}
+          onClick={async () => active && Sound.play(audio)}
         >
           <GiSpeaker />
         </div>

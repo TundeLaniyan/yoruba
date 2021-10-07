@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Pages from "./pages/pages";
-import Header from "./component/header/header";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { createStore } from "redux";
 import { Provider } from "react-redux";

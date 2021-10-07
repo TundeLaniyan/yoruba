@@ -7,7 +7,7 @@ const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
   const max = lesson[lecture - 1].words.length;
 
   useEffect(
-    () => auto && Sound.start(`files/lecture${lecture}/${exercise}.m4a`),
+    () => auto && Sound.play(`files/lecture${lecture}/${exercise}.m4a`),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [exercise]
   );
@@ -24,7 +24,7 @@ const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
         onClick={() => setExercise((prev) => randomNumber(prev, -1))}
         className="prev"
       >
-        <img src="./img/return.svg" />
+        <img src="./img/return.svg" alt="<" />
       </button>
       <div className="slider__text">
         <div>{lesson[lecture - 1].words[exercise - 1]}</div>
@@ -35,7 +35,7 @@ const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
         onClick={() => setExercise((prev) => randomNumber(prev, 1))}
         className="next"
       >
-        <img src="./img/return.svg" />
+        <img src="./img/return.svg" alt=">" />
       </button>
     </div>
   );

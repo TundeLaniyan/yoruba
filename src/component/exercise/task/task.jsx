@@ -1,12 +1,11 @@
 import React from "react";
 import { lesson } from "../../../data.json";
-import { GiDiamondHard, GiGymBag, GiBookCover } from "react-icons/gi";
-import { SiWeasyl } from "react-icons/si";
-import { FaMemory } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import Progress from "../../progress/progress";
 import { connect } from "react-redux";
-import { GiFastArrow } from "react-icons/gi";
+// import { GiDiamondHard, GiGymBag, GiBookCover } from "react-icons/gi";
+// import { SiWeasyl } from "react-icons/si";
+// import { FaMemory } from "react-icons/fa";
+// import { GiFastArrow } from "react-icons/gi";
 // import { GrScheduleNew } from "react-icons/gr";
 // import { IoMdMicrophone } from "react-icons/io";
 import "./task.scss";
@@ -38,11 +37,12 @@ const Task = ({ lecture, progress, location }) => {
   return (
     <div className="task">
       <Link to="/" className="return">
-        <img src="./img/return.svg" />
+        <img src="./img/return.svg" alt="<" />
       </Link>
       <Button className="task-icon" content="Learn Yoruba" />
       <img
         className="task__cover-img"
+        alt=""
         src={`./img/lecture${lecture}/cover.svg`}
       />
       <div className="task__content">
@@ -52,7 +52,7 @@ const Task = ({ lecture, progress, location }) => {
           {Object.entries(task).map(([key, value], index) => {
             return (
               <div key={index} className="task__container" to={key}>
-                <img className="task__icon" src={`./img/${key}.svg`} />
+                <img className="task__icon" src={`./img/${key}.svg`} alt="" />
                 <div className="task__challenge">{key}</div>
                 {index > 0 && (
                   <div className="task__progress">
@@ -60,7 +60,7 @@ const Task = ({ lecture, progress, location }) => {
                   </div>
                 )}
                 <Link to={value}>
-                  <img className="task__icon" src="./img/advance.svg" />
+                  <img className="task__icon" src="./img/advance.svg" alt="" />
                 </Link>
               </div>
             );

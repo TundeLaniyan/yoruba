@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  createRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { connect } from "react-redux";
 import { setProgress } from "../../../action";
 import GameFooter from "../../gameFooter/gameFooter";
@@ -19,6 +25,7 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
   const [active, setActive] = useState(false);
   const [touchPlay, setTouchPlay] = useState(false);
   const [cleanUp, setCleanUp] = useState([]);
+  const buttonRef = createRef();
   const unMount = useRef();
   unMount.current = cleanUp;
   const gameLimit = lesson[0].words.length / 3;
@@ -34,11 +41,21 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => nextResponse(), [next]);
 
-  function answerQuestion(state) {
-    const answer = Game.answerQuestion({ state, cardLimit });
+  async function answerQuestion(state) {
+    const answer = await Game.answerQuestion({ state, cardLimit });
     setAnswer(answer);
     setState((prev) => prev.sort(() => (Math.random() > 0.5 ? 1 : -1)));
     setActive(true);
+  }
+
+  function nextResponse() {
+    if (next < gameLimit) nextRound();
+    else
+      Game.endGame({
+        setProgress,
+        result: (gameLimit * 100) / (gameLimit + incorrect),
+        exercise: "easyGameAccent",
+      });
   }
 
   function nextRound() {
@@ -61,38 +78,28 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
     }
   }
 
-  function nextResponse() {
-    if (next < gameLimit) nextRound();
-    else
-      Game.endGame({
-        setProgress,
-        result: (gameLimit * 100) / (gameLimit + incorrect),
-        exercise: "easyGameAccent",
-      });
-  }
-
   const handleOnClick = useCallback(
-    (input) => {
+    async (input) => {
       if (!active) return;
-      Sound.start(`files/lecture${lecture}/${input}.m4a`);
+      await Sound.play(`files/lecture${lecture}/${input}.m4a`);
       if (isTouchDevice && !touchPlay) return;
       setActive(false);
       Game.delay(
         gameSpeed,
-        () => {
+        async () => {
           const CORRECT = input === answer;
           if (CORRECT) {
             setResults(
               Game.setResult({ input, state, results, answer: "correct" })
             );
-            Game.correct();
-            Game.delay(2000, () => setNext((prev) => prev + 1), setCleanUp);
+            await Game.correct();
+            setNext((prev) => prev + 1);
           } else {
             setResults(
               Game.setResult({ input, state, results, answer: "incorrect" })
             );
-            Game.incorrect();
-            Game.delay(2000, () => incorrectInput(), setCleanUp);
+            await Game.incorrect();
+            incorrectInput();
           }
         },
         setCleanUp
@@ -103,7 +110,7 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
   );
 
   function incorrectInput() {
-    Sound.start(`files/lecture${lecture}/${answer}.m4a`);
+    Sound.play(`files/lecture${lecture}/${answer}.m4a`);
     setIncorrect((prev) => prev + 1);
     setActive(true);
   }
@@ -125,6 +132,7 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
             onClick={handleOnClick}
             brightness={index === soundState ? 2 : 1}
             answer={results[index]?.answer}
+            active={active}
           />
         ))}
       </div>
@@ -132,9 +140,11 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
         <Button
           className="easy-game__button"
           onClick={handleTouchPlay}
+          ref={buttonRef}
           content="Play"
         />
       )}
+      <div style={{ marginBottom: "9rem" }} />
       <GameFooter
         audio={`files/lecture1/${answer}.m4a`}
         correct={next}

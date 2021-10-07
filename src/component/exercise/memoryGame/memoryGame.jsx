@@ -73,17 +73,15 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
   }, [pauseInterval, next]);
 
   const handleOnClick = useCallback(
-    (input) => {
+    async (input) => {
       if (!active) return;
       const { lecture: inputLecture, exercise } = displayCard(input, lecture);
-      Sound.start(`files/lecture${inputLecture}/${exercise}.m4a`);
       setActive(false);
       revealCard(input);
-      Game.delay(2500, () => {
-        const CORRECT = input === answer;
-        if (CORRECT) correctInput(input);
-        else incorrectInput(input);
-      });
+      await Sound.play(`files/lecture${inputLecture}/${exercise}.m4a`);
+      const CORRECT = input === answer;
+      if (CORRECT) correctInput(input);
+      else incorrectInput(input);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active]
@@ -96,48 +94,41 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
     setHidden(current);
   }
 
-  function correctInput(input) {
+  async function correctInput(input) {
     let result = Game.setResult({ input, state, results, answer: "correct" });
-    Game.correct();
-    Game.delay(2000, () => {
-      // I dont understand this line
-      // if (next !== ref.current.next) return;
-
-      setCorrect((prev) => prev + 1);
-      setCurrentRound(currentRound + 1);
-      result = Game.clearIncorrect(result);
-      setResults(result);
-      const ENDOFROUND = currentRound === cardLimit - 2;
-      if (ENDOFROUND) {
-        setHidden([]);
-        setNext((prev) => prev + 1);
-      } else {
-        // isTouchDevice && setTouchPlay(true);
-        setHidden(state);
-        answerQuestion(state, result);
-      }
-    });
+    await Game.correct();
+    setCorrect((prev) => prev + 1);
+    setCurrentRound(currentRound + 1);
+    result = Game.clearIncorrect(result);
+    setResults(result);
+    const ENDOFROUND = currentRound === cardLimit - 2;
+    if (ENDOFROUND) {
+      setHidden([]);
+      setNext((prev) => prev + 1);
+    } else {
+      // isTouchDevice && setTouchPlay(true);
+      setHidden(state);
+      answerQuestion(state, result);
+    }
   }
 
-  function incorrectInput(input) {
+  async function incorrectInput(input) {
     setResults(Game.setResult({ input, state, results, answer: "incorrect" }));
-    Game.incorrect();
+    await Game.incorrect();
     setIncorrect((prev) => prev + 1);
     setHidden(state);
-    Game.delay(1500, () => {
-      const curAnswer = displayCard(answer, lecture);
-      Sound.start(
-        `files/lecture${curAnswer.lecture}/${curAnswer.exercise}.m4a`
-      );
-      setActive(true);
-    });
+    const curAnswer = displayCard(answer, lecture);
+    await Sound.play(
+      `files/lecture${curAnswer.lecture}/${curAnswer.exercise}.m4a`
+    );
+    setActive(true);
   }
 
-  function answerQuestion(state, result = results) {
+  async function answerQuestion(state, result = results) {
     if (isTouchDevice && !touchPlay) return setTouchPlay(true);
-    const answer = Game.answerQuestions({ state, results: result });
+    const answer = await Game.answerQuestions({ state, results: result });
     setAnswer(answer);
-    Game.delay(500, () => setActive(true));
+    setActive(true);
   }
 
   useEffect(() => {
@@ -155,7 +146,11 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
       <Navigation challenge="Memory Game" lecture={lecture} />
       <div className="select">
         {touchPlay ? (
-          <TouchPlay round={currentRound} onClick={handleTouchPlay} />
+          <TouchPlay
+            round={currentRound}
+            onClick={handleTouchPlay}
+            Sound={Sound}
+          />
         ) : (
           state.map((cur, index) => {
             const display = displayCard(cur, lecture);
@@ -168,6 +163,7 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
                 onClick={handleOnClick}
                 hide={hidden[index]}
                 answer={results[index]?.answer}
+                active={active}
               />
             ) : (
               <CardText
@@ -177,6 +173,7 @@ const MemoryGame = ({ lecture, setProgress, Game }) => {
                 onClick={handleOnClick}
                 hide={hidden[index]}
                 answer={results[index]?.answer}
+                active={active}
               />
             );
           })

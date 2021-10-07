@@ -47,54 +47,50 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [next]);
 
-  function answerQuestion(state, result = results) {
+  async function answerQuestion(state, result = results) {
     if (isTouchDevice && !touchPlay) return setTouchPlay(true);
-    const answer = Game.answerQuestions({ state, results: result });
+    const answer = await Game.answerQuestions({ state, results: result });
     setAnswer(answer);
-    Game.delay(2000, () => setActive(true));
+    setActive(true);
   }
 
   const handleOnClick = useCallback(
-    (input) => {
+    async (input) => {
       if (!active) return;
       setActive(false);
       const curInput = displayCard(input, lecture);
-      Sound.start(`files/lecture${curInput.lecture}/${curInput.exercise}.m4a`);
-      Game.delay(2000, () => {
-        const CORRECT = input === answer;
-        if (CORRECT) correctInput(input);
-        else incorrectInput(input);
-      });
+      await Sound.play(
+        `files/lecture${curInput.lecture}/${curInput.exercise}.m4a`
+      );
+      const CORRECT = input === answer;
+      if (CORRECT) correctInput(input);
+      else incorrectInput(input);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active]
   );
 
-  function correctInput(input) {
+  async function correctInput(input) {
     let result = Game.setResult({ input, state, results, answer: "correct" });
-    Game.correct();
+    await Game.correct();
     setCorrect((prev) => prev + 1);
-    Game.delay(1500, () => {
-      isTouchDevice && setTouchPlay(true);
-      setCurrentRound(currentRound + 1);
-      result = Game.clearIncorrect(result);
-      setResults(result);
-      if (currentRound === cardLimit - 2) setNext((prev) => prev + 1);
-      else answerQuestion(state, result);
-    });
+    isTouchDevice && setTouchPlay(true);
+    setCurrentRound(currentRound + 1);
+    result = Game.clearIncorrect(result);
+    setResults(result);
+    if (currentRound === cardLimit - 2) setNext((prev) => prev + 1);
+    else answerQuestion(state, result);
   }
 
-  function incorrectInput(input) {
+  async function incorrectInput(input) {
     setResults(Game.setResult({ input, state, results, answer: "incorrect" }));
-    Game.incorrect();
+    await Game.incorrect();
     setIncorrect((prev) => prev + 1);
-    Game.delay(1500, () => {
-      const currentAnswer = displayCard(answer, lecture);
-      Sound.start(
-        `files/lecture${currentAnswer.lecture}/${currentAnswer.exercise}.m4a`
-      );
-      setActive(true);
-    });
+    const currentAnswer = displayCard(answer, lecture);
+    await Sound.play(
+      `files/lecture${currentAnswer.lecture}/${currentAnswer.exercise}.m4a`
+    );
+    setActive(true);
   }
 
   const handleTouchPlay = () => {
@@ -107,7 +103,11 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
       <Navigation challenge="Hard Game" lecture={lecture} />
       <div className="select">
         {touchPlay ? (
-          <TouchPlay round={currentRound} onClick={handleTouchPlay} />
+          <TouchPlay
+            round={currentRound}
+            onClick={handleTouchPlay}
+            Sound={Sound}
+          />
         ) : (
           state.map((cur, index) => {
             const display = displayCard(cur, lecture);
@@ -119,6 +119,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
                 exercise={display.exercise}
                 onClick={handleOnClick}
                 answer={results[index]?.answer}
+                active={active}
               />
             ) : (
               <CardText
@@ -127,6 +128,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
                 exercise={cur}
                 onClick={handleOnClick}
                 answer={results[index]?.answer}
+                active={active}
               />
             );
           })

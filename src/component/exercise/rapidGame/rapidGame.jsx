@@ -13,6 +13,7 @@ import "./rapidGame.css";
 const RapidGame = ({ lecture, setProgress, Game }) => {
   const [state, setState] = useState([]);
   const [answer, setAnswer] = useState();
+  const [activeAnswer, setActiveAnswer] = useState(true);
   const [results, setResults] = useState([]);
   const [next, setNext] = useState(0);
   const [currentRound, setCurrentRound] = useState();
@@ -22,6 +23,7 @@ const RapidGame = ({ lecture, setProgress, Game }) => {
   const [percent, setPercent] = useState(100);
   const [intervalID, setIntervalID] = useState(0);
   const [pauseInterval, setPauseInterval] = useState(false);
+  const selectRef = useRef();
   const ref = useRef();
   ref.current = { next, state, percent, pauseInterval, cleanUp: intervalID };
   const displayCard = Game.displayCard;
@@ -30,7 +32,7 @@ const RapidGame = ({ lecture, setProgress, Game }) => {
   const gameLimit = 5;
   const cardLimit = next + 7;
 
-  function nextRound() {
+  async function nextRound() {
     setState([]);
     const results = [];
     setResults(results);
@@ -40,10 +42,17 @@ const RapidGame = ({ lecture, setProgress, Game }) => {
     const currentLength = lesson[lecture - 1].words.length;
     const cards = Game.generateCards({ cardLimit, totalLength, currentLength });
     setState(cards);
-    answerQuestion(cards, results);
+    !isTouchDevice && setPauseInterval(true);
+    await answerQuestion(cards, results);
+    !isTouchDevice && setPauseInterval(false);
   }
 
   useEffect(() => () => clearInterval(ref.current.cleanUp), []);
+
+  useEffect(
+    () => selectRef.current.scrollIntoView({ behavior: "smooth" }),
+    [touchPlay]
+  );
 
   useEffect(() => {
     if (next < gameLimit) nextRound();
@@ -67,83 +76,81 @@ const RapidGame = ({ lecture, setProgress, Game }) => {
         ref.current.percent -= 5;
         setPercent((prev) => prev - 5);
       }
-    }, ((7 + next) * 1750) / 20);
+    }, ((7 + next) * 1000) / 20);
     setIntervalID(intervalId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pauseInterval, next]);
 
   const handleOnClick = useCallback(
-    (input) => {
+    async (input) => {
       if (!active) return;
       const { lecture: inputLecture, exercise } = displayCard(input, lecture);
-      Sound.start(`files/lecture${inputLecture}/${exercise}.m4a`);
       setActive(false);
       setPauseInterval(true);
-      Game.delay(2500, () => {
-        const CORRECT = input === answer;
-        if (CORRECT) correctInput(input);
-        else incorrectInput(input);
-        !isTouchDevice && Game.delay(2500, () => setPauseInterval(false));
-      });
+      await Sound.play(`files/lecture${inputLecture}/${exercise}.m4a`);
+      const CORRECT = input === answer;
+      if (CORRECT) await correctInput(input);
+      else await incorrectInput(input);
+      !isTouchDevice && setPauseInterval(false);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [active, state, answer]
+    [active, state, answer, touchPlay, pauseInterval]
   );
 
-  function correctInput(input) {
+  async function correctInput(input) {
     let result = Game.setResult({ input, state, results, answer: "correct" });
-    Game.correct();
-    Game.delay(2000, () => {
-      // I dont understand this line
-      // if (next !== ref.current.next) return;
-
-      isTouchDevice && setTouchPlay(true);
-      setCorrect((prev) => prev + 1);
-      setCurrentRound(currentRound + 1);
-      result = Game.clearIncorrect(result);
-      setResults(result);
-      const ENDOFROUND = currentRound === cardLimit - 2;
-      if (ENDOFROUND) setNext((prev) => prev + 1);
-      else answerQuestion(state);
-    });
+    await Game.correct();
+    setCorrect((prev) => prev + 1);
+    setCurrentRound(currentRound + 1);
+    result = Game.clearIncorrect(result);
+    setResults(result);
+    const ENDOFROUND = currentRound === cardLimit - 2;
+    if (ENDOFROUND) setNext((prev) => prev + 1);
+    else await answerQuestion(state, result);
   }
 
-  function incorrectInput(input) {
+  async function incorrectInput(input) {
     setResults(Game.setResult({ input, state, results, answer: "incorrect" }));
-    Game.incorrect();
+    await Game.incorrect();
     setIncorrect((prev) => prev + 1);
-    Game.delay(1500, () => {
-      const curAnswer = displayCard(answer, lecture);
-      Sound.start(
-        `files/lecture${curAnswer.lecture}/${curAnswer.exercise}.m4a`
-      );
-      setActive(true);
-      isTouchDevice && setPauseInterval(false);
-    });
+    const curAnswer = displayCard(answer, lecture);
+    await Sound.play(
+      `files/lecture${curAnswer.lecture}/${curAnswer.exercise}.m4a`
+    );
+    setActive(true);
+    isTouchDevice && setPauseInterval(false);
   }
 
-  function answerQuestion(state, result = results) {
+  async function answerQuestion(state, result = results) {
     if (isTouchDevice && !touchPlay) return setTouchPlay(true);
-    const answer = Game.answerQuestions({ state, results: result });
+    const answer = await Game.answerQuestions({ state, results: result });
     setAnswer(answer);
-    Game.delay(500, () => setActive(true));
+    setActive(true);
   }
 
   useEffect(() => {
-    setPauseInterval(touchPlay);
+    isTouchDevice && setPauseInterval(touchPlay);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [touchPlay]);
 
-  const handleTouchPlay = () => {
-    answerQuestion(state);
+  const handleTouchPlay = async () => {
+    if (!activeAnswer) return;
+    setActiveAnswer(false);
+    await answerQuestion(state);
     setTouchPlay(false);
+    setActiveAnswer(true);
   };
 
   return (
     <div className="rapid-game">
       <Navigation challenge="Rapid Game" lecture={lecture} />
-      <div className="select">
+      <div className="select" ref={selectRef}>
         {touchPlay ? (
-          <TouchPlay round={currentRound} onClick={handleTouchPlay} />
+          <TouchPlay
+            round={currentRound}
+            onClick={handleTouchPlay}
+            Sound={Sound}
+          />
         ) : (
           state.map((cur, index) => {
             const display = displayCard(cur, lecture);

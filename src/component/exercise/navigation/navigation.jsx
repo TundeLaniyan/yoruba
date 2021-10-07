@@ -8,12 +8,12 @@ const Navigation = ({ challenge, lecture }) => {
   return (
     <div className="navigation">
       <Link to="/task" className="return">
-        <img src="./img/return.svg" />
+        <img src="./img/return.svg" alt="<" />
       </Link>
       <Button className="navigation-icon" content="Learn Yoruba" />
       <div className="title">{lesson[lecture - 1].title}</div>
       <div className="navigation__exercise">
-        <img src="./img/exercise.svg" />
+        <img src="./img/exercise.svg" alt="" />
         <span>{challenge}</span>
       </div>
     </div>

@@ -47,23 +47,20 @@ class GameLogic {
     alert("result: " + result + "%");
   };
 
-  answerQuestion = function ({ state, cardLimit, silent }) {
+  answerQuestion = async function ({ state, cardLimit, silent }) {
     const value = Math.floor(Math.random() * cardLimit);
-    !silent && Sound.start(`files/lecture${this.lecture}/${state[value]}.m4a`);
+    !silent &&
+      (await Sound.play(`files/lecture${this.lecture}/${state[value]}.m4a`));
     return state[value];
   };
-  answerQuestionMultLectures = function ({ state, cardLimit }) {
+  answerQuestionMultLectures = async function ({ state, cardLimit }) {
     const value = Math.floor(Math.random() * cardLimit);
     const { lecture, exercise } = this.displayCard(state[value], this.lecture);
-    Sound.start(`files/lecture${lecture}/${exercise}.m4a`);
+    await Sound.play(`files/lecture${lecture}/${exercise}.m4a`);
     return state[value];
   };
-  correct = function () {
-    Sound.start("files/yes.m4a");
-  };
-  incorrect = function () {
-    Sound.start("files/no.m4a");
-  };
+  correct = async () => await Sound.play("files/yes.m4a");
+  incorrect = async () => await Sound.play("files/no.m4a");
   delay = function (timeout, cb, setCleanUp) {
     const timeOut = setTimeout(() => {
       cb();
@@ -124,9 +121,9 @@ class GameLogic {
       return index === -1 || results[index].answer !== "correct";
     });
   };
-  answerQuestions = function ({ state, results }) {
+  answerQuestions = async function ({ state, results }) {
     const remainingState = this.remainingState({ state, results });
-    return this.answerQuestionMultLectures({
+    return await this.answerQuestionMultLectures({
       state: remainingState,
       cardLimit: remainingState.length,
     });
