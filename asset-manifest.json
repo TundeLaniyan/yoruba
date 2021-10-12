@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/yoruba/static/css/main.3f0e66b3.chunk.css",
-    "main.js": "/yoruba/static/js/main.2d8004ab.chunk.js",
-    "main.js.map": "/yoruba/static/js/main.2d8004ab.chunk.js.map",
+    "main.js": "/yoruba/static/js/main.2b847e5b.chunk.js",
+    "main.js.map": "/yoruba/static/js/main.2b847e5b.chunk.js.map",
     "runtime-main.js": "/yoruba/static/js/runtime-main.b8b15550.js",
     "runtime-main.js.map": "/yoruba/static/js/runtime-main.b8b15550.js.map",
-    "static/js/2.ad64f465.chunk.js": "/yoruba/static/js/2.ad64f465.chunk.js",
-    "static/js/2.ad64f465.chunk.js.map": "/yoruba/static/js/2.ad64f465.chunk.js.map",
+    "static/js/2.244e2dc7.chunk.js": "/yoruba/static/js/2.244e2dc7.chunk.js",
+    "static/js/2.244e2dc7.chunk.js.map": "/yoruba/static/js/2.244e2dc7.chunk.js.map",
     "static/js/3.9f6d3521.chunk.js": "/yoruba/static/js/3.9f6d3521.chunk.js",
     "static/js/3.9f6d3521.chunk.js.map": "/yoruba/static/js/3.9f6d3521.chunk.js.map",
     "index.html": "/yoruba/index.html",
     "static/css/main.3f0e66b3.chunk.css.map": "/yoruba/static/css/main.3f0e66b3.chunk.css.map",
-    "static/js/2.ad64f465.chunk.js.LICENSE.txt": "/yoruba/static/js/2.ad64f465.chunk.js.LICENSE.txt",
+    "static/js/2.244e2dc7.chunk.js.LICENSE.txt": "/yoruba/static/js/2.244e2dc7.chunk.js.LICENSE.txt",
     "static/media/logo.271d96d0.png": "/yoruba/static/media/logo.271d96d0.png",
     "static/media/home.scss": "/yoruba/static/media/pexels-dekunle-caleb-7596455.b8ce02f5.jpg",
     "static/media/pages.css": "/yoruba/static/media/yoruba3.04c60fd0.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.b8b15550.js",
-    "static/js/2.ad64f465.chunk.js",
+    "static/js/2.244e2dc7.chunk.js",
     "static/css/main.3f0e66b3.chunk.css",
-    "static/js/main.2d8004ab.chunk.js"
+    "static/js/main.2b847e5b.chunk.js"
   ]
 }
