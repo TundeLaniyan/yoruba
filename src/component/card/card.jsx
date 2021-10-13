@@ -1,7 +1,9 @@
 import React, { memo, useState } from "react";
 import { TiTick, TiTimes } from "react-icons/ti";
 import { lesson } from "../../data.json";
+import { NATIVELANGUAGE } from "../../constant";
 import "./card.css";
+import GameLogic from "../exercise/gameLogic";
 
 const Card = memo(function Card({
   state,
@@ -15,6 +17,8 @@ const Card = memo(function Card({
 }) {
   const Answer = answer === "correct" ? TiTick : TiTimes;
   const [light, setLight] = useState(brightness);
+  const text = lesson[lecture - 1].text[exercise - 1][NATIVELANGUAGE];
+
   const handleOnClick = () => {
     if (answer || !active) return;
     setLight(0.5);
@@ -36,7 +40,10 @@ const Card = memo(function Card({
           hide >= 0 && !answer
             ? {}
             : {
-                backgroundImage: `url(./img/lecture${lecture}/${exercise}.jpg)`,
+                backgroundImage: `url(./images/${new GameLogic().getWord(
+                  lecture,
+                  exercise
+                )}.jpg)`,
               }
         }
       />
@@ -45,11 +52,7 @@ const Card = memo(function Card({
           <Answer className="card__answer-img" />
         </div>
       )}
-      {!(hide >= 0) && (
-        <h5 className="card__text">
-          {lesson[lecture - 1].words[exercise - 1]}
-        </h5>
-      )}
+      {!(hide >= 0) && <h5 className="card__text">{text}</h5>}
     </div>
   );
 });

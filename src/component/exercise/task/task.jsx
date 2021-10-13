@@ -11,7 +11,7 @@ import { connect } from "react-redux";
 import "./task.scss";
 import Button from "../../button/button";
 
-const Task = ({ lecture, progress, location }) => {
+const Task = ({ lecture, progress }) => {
   // const task = {
   //   // lesson: GrScheduleNew,
   //   exercise: GiGymBag,
@@ -25,7 +25,8 @@ const Task = ({ lecture, progress, location }) => {
   // };
   const task = {
     exercise: "exercise",
-    easy: lecture === 1 ? "easyGameAccent" : "easyGame",
+    // easy: lecture === 1 ? "easyGameAccent" : "easyGame",
+    easy: "easyGame",
     hard: "hardGame",
     reading: "reading",
     memory: "memoryGame",
@@ -43,7 +44,7 @@ const Task = ({ lecture, progress, location }) => {
       <img
         className="task__cover-img"
         alt=""
-        src={`./img/lecture${lecture}/cover.svg`}
+        src={`./images/lecture${lecture}.svg`}
       />
       <div className="task__content">
         <div className="task__title">{lesson[lecture - 1].title}</div>
@@ -70,15 +71,6 @@ const Task = ({ lecture, progress, location }) => {
     </div>
   );
 };
-
-// export default Task;
-
-// const mapStateToProps = (state) => {
-//   return {
-//     progress: selectExpenses(state.expenses, state.filters)
-//   };
-// };
-
 const mapStateToProps = (state) => ({
   progress: state,
 });

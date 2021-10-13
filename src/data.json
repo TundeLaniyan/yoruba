@@ -1,119 +1,1000 @@
-{ "lesson": [
+{
+  "lesson": [
     {
       "title": "Accent",
       "description": "Learn the different tonal sound in the Yoruba language",
-      "words": ["Bà", "Ba", "Bá", "Bè", "Be", "Bé", "Bẹ̀", "Bẹ", "Bẹ́", "Bí", "Bi", "Bì", "Bó", "Bo", 
-        "Bò", "Bọ́", "Bọ", "Bọ̀", "Bú", "Bu", "Bù", "Dà", "Da", "Dá", "Dè", "De", "Dé", "Dẹ̀", "Dẹ", "Dẹ́",
-        "Dì", "Di", "Dí", "Dò", "Do", "Dó", "Dọ̀", "Dọ", "Dọ́", "Dù", "Du", "Dú", "Fì", "Fi", "Fí", "Fà",
-        "Fa", "Fá", "Fè", "Fe", "Fé", "Fẹ̀", "Fẹ", "Fẹ́", "Fò", "Fo", "Fó", "Fọ̀", "Fọ", "Fọ́", "Fù", "Fu", "Fú"
+      "text": [
+        {
+          "English": "-Bà",
+          "Yoruba": "Bà"
+        },
+        {
+          "English": "-Ba",
+          "Yoruba": "Ba"
+        },
+        {
+          "English": "-Bá",
+          "Yoruba": "Bá"
+        },
+        {
+          "English": "-Bè",
+          "Yoruba": "Bè"
+        },
+        {
+          "English": "-Be",
+          "Yoruba": "Be"
+        },
+        {
+          "English": "-Bé",
+          "Yoruba": "Bé"
+        },
+        {
+          "English": "-Bẹ̀",
+          "Yoruba": "Bẹ̀"
+        },
+        {
+          "English": "-Bẹ",
+          "Yoruba": "Bẹ"
+        },
+        {
+          "English": "-Bẹ́",
+          "Yoruba": "Bẹ́"
+        },
+        {
+          "English": "-Bì",
+          "Yoruba": "Bì"
+        },
+        {
+          "English": "-Bi",
+          "Yoruba": "Bi"
+        },
+        {
+          "English": "-Bí",
+          "Yoruba": "Bí"
+        },
+        {
+          "English": "-Bò",
+          "Yoruba": "Bò"
+        },
+        {
+          "English": "-Bo",
+          "Yoruba": "Bo"
+        },
+        {
+          "English": "-Bó",
+          "Yoruba": "Bó"
+        },
+        {
+          "English": "-Bọ̀",
+          "Yoruba": "Bọ̀"
+        },
+        {
+          "English": "-Bọ",
+          "Yoruba": "Bọ"
+        },
+        {
+          "English": "-Bọ́",
+          "Yoruba": "Bọ́"
+        },
+        {
+          "English": "-Bù",
+          "Yoruba": "Bù"
+        },
+        {
+          "English": "-Bu",
+          "Yoruba": "Bu"
+        },
+        {
+          "English": "-Bú",
+          "Yoruba": "Bú"
+        },
+        {
+          "English": "Pour",
+          "Yoruba": "Dà"
+        },
+        {
+          "English": "Good",
+          "Yoruba": "Da"
+        },
+        {
+          "English": "Break",
+          "Yoruba": "Dá"
+        },
+        {
+          "English": "Bond",
+          "Yoruba": "Dè"
+        },
+        {
+          "English": "Cover",
+          "Yoruba": "De"
+        },
+        {
+          "English": "Arrived",
+          "Yoruba": "Dé"
+        },
+        {
+          "English": "Soft",
+          "Yoruba": "Dẹ̀"
+        },
+        {
+          "English": "-Dẹ",
+          "Yoruba": "Dẹ"
+        },
+        {
+          "English": "-Dẹ́",
+          "Yoruba": "Dẹ́"
+        },
+        {
+          "English": "-Dì",
+          "Yoruba": "Dì"
+        },
+        {
+          "English": "-Di",
+          "Yoruba": "Di"
+        },
+        {
+          "English": "-Dí",
+          "Yoruba": "Dí"
+        },
+        {
+          "English": "-Dò",
+          "Yoruba": "Dò"
+        },
+        {
+          "English": "-Do",
+          "Yoruba": "Do"
+        },
+        {
+          "English": "-Dó",
+          "Yoruba": "Dó"
+        },
+        {
+          "English": "-Dọ̀",
+          "Yoruba": "Dọ̀"
+        },
+        {
+          "English": "-Dọ",
+          "Yoruba": "Dọ"
+        },
+        {
+          "English": "-Dọ́",
+          "Yoruba": "Dọ́"
+        },
+        {
+          "English": "-Dù",
+          "Yoruba": "Dù"
+        },
+        {
+          "English": "-Du",
+          "Yoruba": "Du"
+        },
+        {
+          "English": "-Dú",
+          "Yoruba": "Dú"
+        },
+        {
+          "English": "-Fì",
+          "Yoruba": "Fì"
+        },
+        {
+          "English": "-Fi",
+          "Yoruba": "Fi"
+        },
+        {
+          "English": "-Fí",
+          "Yoruba": "Fí"
+        },
+        {
+          "English": "-Fà",
+          "Yoruba": "Fà"
+        },
+        {
+          "English": "-Fa",
+          "Yoruba": "Fa"
+        },
+        {
+          "English": "-Fá",
+          "Yoruba": "Fá"
+        },
+        {
+          "English": "-Fè",
+          "Yoruba": "Fè"
+        },
+        {
+          "English": "-Fe",
+          "Yoruba": "Fe"
+        },
+        {
+          "English": "-Fé",
+          "Yoruba": "Fé"
+        },
+        {
+          "English": "-Fẹ̀",
+          "Yoruba": "Fẹ̀"
+        },
+        {
+          "English": "-Fẹ",
+          "Yoruba": "Fẹ"
+        },
+        {
+          "English": "-Fẹ́",
+          "Yoruba": "Fẹ́"
+        },
+        {
+          "English": "-Fò",
+          "Yoruba": "Fò"
+        },
+        {
+          "English": "-Fo",
+          "Yoruba": "Fo"
+        },
+        {
+          "English": "-Fó",
+          "Yoruba": "Fó"
+        },
+        {
+          "English": "-Fọ̀",
+          "Yoruba": "Fọ̀"
+        },
+        {
+          "English": "-Fọ",
+          "Yoruba": "Fọ"
+        },
+        {
+          "English": "-Fọ́",
+          "Yoruba": "Fọ́"
+        },
+        {
+          "English": "-Fù",
+          "Yoruba": "Fù"
+        },
+        {
+          "English": "-Fu",
+          "Yoruba": "Fu"
+        },
+        {
+          "English": "-Fú",
+          "Yoruba": "Fú"
+        }
       ]
     },
     {
       "title": "Words 1",
       "description": "Introduction to general words",
-      "words": ["Dog", "Crown", "Shoe", "Father", "Dreadlocks", "Black", "Crawfish", "Lips", "Cap", "Lamp", 
-        "Bucket", "Long", "Cassava", "All", "Forgery", "House", "Dance", "Soldier", "Stolen", "Sponge", 
-        "Big", "Butterfly", "Lanray", "Moimoi", "Centipeak", "Niniola", "At home"],
-      "language": ["Ajá", "Adé", "Bàtà", "Bàbá", "Dàda", "Dúdú", "Edé", "Ètè", "Fìlà", "Fìtílà", "Garawa", 
-        "Gúngùn", "Gbágùdá", "Gbogbo", "Hẹ-hẹn-hẹ-hẹ", "Ilé", "Ijó", "Jagunjagun", "Jalè", "Kọ̀ìnkọ̀ìn", 
-        "Kọ̀bìtì", "Labalábá", "Lánre", "Mọ́ímọ́í", "Mọ̀nímọ̀ní", "Níníọlá", "Nílé"]
+      "text": [
+        {
+          "English": "Crown",
+          "Yoruba": "Adé"
+        },
+        {
+          "English": "Shoes",
+          "Yoruba": "Bàtà"
+        },
+        {
+          "English": "Father",
+          "Yoruba": "Bàbá"
+        },
+        {
+          "English": "Dreadlocks",
+          "Yoruba": "Dàda"
+        },
+        {
+          "English": "Black",
+          "Yoruba": "Dúdú"
+        },
+        {
+          "English": "Crawfish",
+          "Yoruba": "Edé"
+        },
+        {
+          "English": "Cap",
+          "Yoruba": "Fìlà"
+        },
+        {
+          "English": "Lamp",
+          "Yoruba": "Fìtílà"
+        },
+        {
+          "English": "Bucket",
+          "Yoruba": "Garawa"
+        },
+        {
+          "English": "Long",
+          "Yoruba": "Gúngùn"
+        },
+        {
+          "English": "Cassava",
+          "Yoruba": "Gbágùdá"
+        },
+        {
+          "English": "All",
+          "Yoruba": "Gbogbo"
+        },
+        {
+          "English": "Forgery",
+          "Yoruba": "Hẹ-hẹn-hẹ-hẹ"
+        },
+        {
+          "English": "House",
+          "Yoruba": "Ilé"
+        },
+        {
+          "English": "Soldier",
+          "Yoruba": "Jagunjagun"
+        },
+        {
+          "English": "Sponge",
+          "Yoruba": "Kọ̀ìnkọ̀ìn"
+        },
+        {
+          "English": "Big",
+          "Yoruba": "Kọ̀bìtì"
+        },
+        {
+          "English": "Butterfly",
+          "Yoruba": "Labalábá"
+        },
+        {
+          "English": "Lanray",
+          "Yoruba": "Lánre"
+        },
+        {
+          "English": "Moimoi",
+          "Yoruba": "Mọ́ímọ́í"
+        },
+        {
+          "English": "Centipeak",
+          "Yoruba": "Mọ̀nímọ̀ní"
+        },
+        {
+          "English": "Niniola",
+          "Yoruba": "Níníọlá"
+        },
+        {
+          "English": "At home",
+          "Yoruba": "Nílé"
+        }
+      ]
     },
     {
       "title": "Words 2",
       "description": "Introducing more words",
-      "words": ["Theif", "Title", "Revolt", "Fool", "Red", "Board", "Buy", "Remi", "Run", "To house", "Osogbo", 
-        "Yam", "First twin", "First twin", "Cricket (insets)", "pounded yam", "Nose", "Ease", "Come", "Fruit", "Yoruba"],
-      "language": ["Olè", "Oyè", "Ọ̀tẹ̀", "Ọ̀dẹ̀", "Pupa", "Pátákó", "Rà", "Rẹ̀mí", "Sá", "Sílé", "Òṣogbo", "Iṣu", 
-        "Táyé", "Táíwò", "Tata", "Iṣu", "Imú", "Wọ́rọ́wọ́", "Wá", "Yó", "Yorùbá"]
-    }, 
+      "text": [
+        {
+          "English": "Theif",
+          "Yoruba": "Olè"
+        },
+        {
+          "English": "Title",
+          "Yoruba": "Oyè"
+        },
+        {
+          "English": "Revolt",
+          "Yoruba": "Ọ̀tẹ̀"
+        },
+        {
+          "English": "Fool",
+          "Yoruba": "Ọ̀dẹ̀"
+        },
+        {
+          "English": "Red",
+          "Yoruba": "Pupa"
+        },
+        {
+          "English": "Board",
+          "Yoruba": "Pátákó"
+        },
+        {
+          "English": "Remi",
+          "Yoruba": "Rẹ̀mí"
+        },
+        {
+          "English": "To house",
+          "Yoruba": "Sílé"
+        },
+        {
+          "English": "Osogbo",
+          "Yoruba": "Òṣogbo"
+        },
+        {
+          "English": "Yam",
+          "Yoruba": "Iṣu"
+        },
+        {
+          "English": "First twin",
+          "Yoruba": "Táyé"
+        },
+        {
+          "English": "First twin (long)",
+          "Yoruba": "Táíwò"
+        },
+        {
+          "English": "Cricket (insets)",
+          "Yoruba": "Tata"
+        },
+        {
+          "English": "Pounded yam",
+          "Yoruba": "Iṣu"
+        },
+        {
+          "English": "Ease",
+          "Yoruba": "Wọ́rọ́wọ́"
+        },
+        {
+          "English": "Fruit",
+          "Yoruba": "Yó"
+        },
+        {
+          "English": "Yoruba",
+          "Yoruba": "Yorùbá"
+        },
+        {
+          "English": "Hole",
+          "Yoruba": "Ọkọ́"
+        },
+        {
+          "English": "Vehicle",
+          "Yoruba": "Ọkọ̀"
+        },
+        {
+          "English": "Parents",
+          "Yoruba": "Òbí"
+        },
+        {
+          "English": "Wife",
+          "Yoruba": "ìyàwó"
+        },
+        {
+          "English": "Husband",
+          "Yoruba": "Ọkọ"
+        },
+        {
+          "English": "Junior sibling",
+          "Yoruba": "Àbúrò"
+        },
+        {
+          "English": "Older sibling",
+          "Yoruba": "Ẹ̀gbọ́n"
+        },
+        {
+          "English": "My friend",
+          "Yoruba": "Ọ̀rẹ́ mi"
+        },
+        {
+          "English": "Person",
+          "Yoruba": "Ènìyàn"
+        },
+        {
+          "English": "Human being",
+          "Yoruba": "Èèyàn"
+        },
+        {
+          "English": "Okay",
+          "Yoruba": "Mo ti gbọ́"
+        },
+        {
+          "English": "Tomorrow",
+          "Yoruba": "Ọ̀la"
+        },
+        {
+          "English": "Today",
+          "Yoruba": "Òní"
+        },
+        {
+          "English": "Yesterday",
+          "Yoruba": "Àná"
+        },
+        {
+          "English": "Ground",
+          "Yoruba": "Ilẹ̀"
+        }
+      ]
+    },
     {
       "title": "Greeting",
       "description": "Learning how to greet people",
-      "words": ["Greetings in Yoruba language", "Good Morning", "Hope you wake up well", "Hope you wake up well", 
-        "Thank God", "Good afternoon", "How are you", "Good evening (sunset)", "Good evening", "Good bye", "Good night", 
-        "Greeting someone at home", "Your welcome", "Did I meet you well", "I meat you well", "Well done",
-        "Thank you", "You are well seated", "Hello"],
-      "language": ["Ìkíni ní èdè Yorùbá", "Ẹ Káàárọ", "Se daada le ji", "Ajirebi", "Adupe", "Ẹ Káàsán", "", "", "Ẹ Káàlẹ",
-        "Ọ dàbọ", "Ó dà àárọ̀", "", "Ẹ Káàbọ", "", "", "Ẹ kú isé", "", "", ""]
+      "text": [
+        {
+          "English": "Greetings in Yoruba language",
+          "Yoruba": "Ìkíni ní èdè Yorùbá"
+        },
+        {
+          "English": "Good morning",
+          "Yoruba": "Ẹ Káàárọ"
+        },
+        {
+          "English": "Hope you woke up well",
+          "Yoruba": "Se daada le ji"
+        },
+        {
+          "English": "I woke up well",
+          "Yoruba": "Ajirebi"
+        },
+        {
+          "English": "We give thanks",
+          "Yoruba": "Adupe"
+        },
+        {
+          "English": "Good afternoon",
+          "Yoruba": "Ẹ Káàsán"
+        },
+        {
+          "English": "How are you",
+          "Yoruba": ""
+        },
+        {
+          "English": "Good evening (sunset)",
+          "Yoruba": ""
+        },
+        {
+          "English": "Good evening",
+          "Yoruba": "Ẹ Káàlẹ"
+        },
+        {
+          "English": "Good bye",
+          "Yoruba": "Ọ dàbọ"
+        },
+        {
+          "English": "Good night",
+          "Yoruba": "Ó dà àárọ̀"
+        },
+        {
+          "English": "House greeting",
+          "Yoruba": ""
+        },
+        {
+          "English": "Your welcome",
+          "Yoruba": "Ẹ Káàbọ"
+        },
+        {
+          "English": "Did I meet you well",
+          "Yoruba": ""
+        },
+        {
+          "English": "I meat you well",
+          "Yoruba": ""
+        },
+        {
+          "English": "Well done",
+          "Yoruba": "Ẹ kú isé"
+        },
+        {
+          "English": "Thank you",
+          "Yoruba": ""
+        },
+        {
+          "English": "You are well seated",
+          "Yoruba": ""
+        },
+        {
+          "English": "Hello",
+          "Yoruba": ""
+        }
+      ]
     },
     {
       "title": "Body parts",
       "description": "The different body parts",
-      "language": ["Orí", "Etí", "Imú", "Ẹnu", "Irun", "Ọrùn", "Ọwọ́", "Ikùn", "Gbogbo ará", "Ìdí", "Itan", 
-        "Ojúgun", "Ìgúnpá", "Eyín", "Ẹ̀yìn", "Awọ", "Ẹsẹ̀", "Ahọ́n"],
-      "words": ["Head", "Ear", "Nose", "Mouth", "Hair", "Neck", "Hand", "Stomach", "Body", "Bottom", 
-        "Thigh", "Knee cap", "Elbow", "Teeth", "Back", "Skin", "Leg", "Tongue"]
-    }, 
+      "text": [
+        {
+          "English": "Head",
+          "Yoruba": "Orí"
+        },
+        {
+          "English": "Ear",
+          "Yoruba": "Etí"
+        },
+        {
+          "English": "Nose",
+          "Yoruba": "Imú"
+        },
+        {
+          "English": "Mouth",
+          "Yoruba": "Ẹnu"
+        },
+        {
+          "English": "Hair",
+          "Yoruba": "Irun"
+        },
+        {
+          "English": "Neck",
+          "Yoruba": "Ọrùn"
+        },
+        {
+          "English": "Hand",
+          "Yoruba": "Ọwọ́"
+        },
+        {
+          "English": "Stomach",
+          "Yoruba": "Ikùn"
+        },
+        {
+          "English": "Body",
+          "Yoruba": "Gbogbo ará"
+        },
+        {
+          "English": "Bum",
+          "Yoruba": "Ìdí"
+        },
+        {
+          "English": "Thigh",
+          "Yoruba": "Itan"
+        },
+        {
+          "English": "Knee cap",
+          "Yoruba": "Ojúgun"
+        },
+        {
+          "English": "Elbow",
+          "Yoruba": "Ìgúnpá"
+        },
+        {
+          "English": "Teeth",
+          "Yoruba": "Eyín"
+        },
+        {
+          "English": "Back",
+          "Yoruba": "Ẹ̀yìn"
+        },
+        {
+          "English": "Skin",
+          "Yoruba": "Awọ"
+        },
+        {
+          "English": "Leg",
+          "Yoruba": "Ẹsẹ̀"
+        },
+        {
+          "English": "Tongue",
+          "Yoruba": "Ahọ́n"
+        },
+        {
+          "English": "Lips",
+          "Yoruba": "Ètè"
+        },
+        {
+          "English": "Nose",
+          "Yoruba": "Imú"
+        }
+      ]
+    },
     {
       "title": "Animals and Food",
       "description": "Names of animals and Yoruba foods",
-      "words": [ "Meat", "Goat", "Sheep", "Cow", "Chicken", "Turkey", "Fish", "Amala", "Eba", "Okro"],
-      "language": [ "Ẹran", "Ewúrẹ́", "Àgùntàn", "Màálù", "Adìẹ", "Tòlótòló", "Ẹja", "Àmàlà", "Ẹ̀bà", "Ilá"]
-    },
-    {
-      "title": "Short sentence",
-      "description": "Constructing small sentence",
-      "words": ["Don't be angry", "I want to eat", "I am hungry", "I am from Awẹ", "I want to drink water", 
-        "I want to excrete", "I want to bath", "I want to buy house", 
-        "I am eating", "I am working", "I am going home", "Our house is big", "My car is good", 
-        "It is cold", "It is hot", "This clothes is good"],
-      "language": ["Ẹ máa bínú", "Mo fẹ́ jẹun", "Ebi ń pamí", "Ọmọ Awẹ ni mí", "Mo fẹ́ mú omi", 
-        "Mo fẹ́ yàgbẹ́", "Mo fẹ́ wẹ̀", "Mo fẹ́ rà ilé", "Mo ń jẹun", "Mo ń ṣısẹ́", 
-        "Mo ń lọ ilé", "Ilé wa tóbi", "Ọkọ̀ mi dára", "Òtútù ń mú", "Ooru ń mú", "Aṣọ yìí dára"]
-    },
-    {
-      "title": "Introducing yourself",
-      "description": "Learning how to describing yourself",
-      "words": ["Introducing oneself in Yoruba language", "What is your name", "My name is Remi Olaniyan", "Nice to meet you",
-        "Where are you from", "I am from Oyo state", "Where do you live", "I live in London", "What do you do for a living",
-        "I am a teacher", "I am a student", "I am working in a company", "How old are you", "I am 33 years old",
-        "Which food do you like best", "I like pounded yam and okro soup", "Where are you going", "I am going home",
-        "I am going to the market", "I am going to my workplace", "I am going to the mosque", "Where are you", "I am at home",
-        "I am in the office", "I am in the market", "What are you doing", "I am resting", "I am eating", "I am sleeping", 
-        "I am praying", "I am reading"],
-      "language": []
+      "text": [
+        {
+          "English": "Meat",
+          "Yoruba": "Ẹran"
+        },
+        {
+          "English": "Goat",
+          "Yoruba": "Ewúrẹ́"
+        },
+        {
+          "English": "Sheep",
+          "Yoruba": "Àgùntàn"
+        },
+        {
+          "English": "Cow",
+          "Yoruba": "Màálù"
+        },
+        {
+          "English": "Chicken",
+          "Yoruba": "Adìẹ"
+        },
+        {
+          "English": "Turkey",
+          "Yoruba": "Tòlótòló"
+        },
+        {
+          "English": "Fish",
+          "Yoruba": "Ẹja"
+        },
+        {
+          "English": "Dog",
+          "Yoruba": "Ajá"
+        },
+        {
+          "English": "Amala",
+          "Yoruba": "Àmàlà"
+        },
+        {
+          "English": "Eba",
+          "Yoruba": "Ẹ̀bà"
+        },
+        {
+          "English": "Okra",
+          "Yoruba": "Ilá"
+        },
+        {
+          "English": "Bitternut",
+          "Yoruba": "Orógbó"
+        },
+        {
+          "English": "Kolanut",
+          "Yoruba": "Obì"
+        },
+        {
+          "English": "Groundnut oil",
+          "Yoruba": "Òróró"
+        },
+        {
+          "English": "Groundnut",
+          "Yoruba": "Ẹ̀pà"
+        },
+        {
+          "English": "Palm oil",
+          "Yoruba": "Epo"
+        }
+      ]
     },
     {
       "title": "Verbs",
       "description": "Learn the different actions",
-      "words": ["Action in Yoruba language", "Sit down", "Stand up", "Get out", "I am going out", "Give me water", 
-        "Give me a chair", "I want to go and sleep", "I want to eat", "Give me a plate and spoon",
-        "I want to lay my bed", "I am going up the stairs", "I am going down stairs"],
-      "language": []
+      "text": [
+        {
+          "English": "Dance",
+          "Yoruba": "Ijó"
+        },
+        {
+          "English": "Stolen",
+          "Yoruba": "Jalè"
+        },
+        {
+          "English": "Buy",
+          "Yoruba": "Rà"
+        },
+        {
+          "English": "Run",
+          "Yoruba": "Sá"
+        },
+        {
+          "English": "Come",
+          "Yoruba": "Wá"
+        },
+        {
+          "English": "Ablution",
+          "Yoruba": "Àlùwàlá"
+        },
+        {
+          "English": "Look",
+          "Yoruba": "Wò"
+        },
+        {
+          "English": "Do",
+          "Yoruba": "Ṣe"
+        },
+        {
+          "English": "Wash",
+          "Yoruba": "Fọ̀"
+        },
+        {
+          "English": "Go",
+          "Yoruba": "Lọ"
+        },
+        {
+          "English": "Sell",
+          "Yoruba": "Tà"
+        },
+        {
+          "English": "Read",
+          "Yoruba": "Kà"
+        }
+      ]
     },
     {
-      "title": "Solving misunderstandings",
-      "description": "Learn how to solve misunderstanding",
-      "words": ["Solving a misunderstanding in Yoruba language", "Forgive me please", "I won't do that again",
-        "It won't repeat itself", "I am sorry", "Sorry for a wrong or mistake", "No problem", "please",
-        "Can you repeat please", "Can you speak slowly", "Do you understand what I said", "I don't understand",
-        "I don't know", "Can you write it down"],
-      "language": []
+      "title": "Subject with verbs",
+      "description": "Short sentence that connect prononus with verbs",
+      "text": [
+        {
+          "English": "I am walking",
+          "Yoruba": "Mo ń rìn"
+        },
+        {
+          "English": "I want to urinate",
+          "Yoruba": "Mo fẹ́ tọ̀"
+        },
+        {
+          "English": "I have finished it",
+          "Yoruba": "Mi ṣé tán"
+        },
+        {
+          "English": "I did not finish it",
+          "Yoruba": "Mi ò ṣé tán"
+        },
+        {
+          "English": "I am not yet ready",
+          "Yoruba": "Mi ò tíì ṣe tán"
+        },
+        {
+          "English": "I am ready",
+          "Yoruba": "Mo ti ṣe tán"
+        },
+        {
+          "English": "Are you ready?",
+          "Yoruba": "Ṣé ẹ ti ṣe tán?"
+        },
+        {
+          "English": "I have done ablution",
+          "Yoruba": "Mo ṣe Àlùwàlá"
+        },
+        {
+          "English": "I am doing ablution",
+          "Yoruba": "Mò ń ṣe Àlùwàlá"
+        },
+        {
+          "English": "I want to make Salah",
+          "Yoruba": "Mo fẹ́ kírun"
+        },
+        {
+          "English": "They are the one who ate it",
+          "Yoruba": "Àwọn ni ó jẹ́"
+        },
+        {
+          "English": "It is you who ate it",
+          "Yoruba": "Ẹ̀yin ni ẹ jẹ́"
+        },
+        {
+          "English": "We are the one who ate it",
+          "Yoruba": "Àwa la jẹ́"
+        },
+        {
+          "English": "He is the one who ate it",
+          "Yoruba": "Òun ni ó jẹ́"
+        },
+        {
+          "English": "You are the one who ate it",
+          "Yoruba": "Ìwọ ni ó jẹ́"
+        },
+        {
+          "English": "I am the one that ate it",
+          "Yoruba": "Èmi ni mo jẹ́"
+        },
+        {
+          "English": "Kunle watch a scene",
+          "Yoruba": "Kúnlé wo ìran"
+        },
+        {
+          "English": "Wale did not come home",
+          "Yoruba": "Wálé kò wá ilé"
+        },
+        {
+          "English": "Femi wants to sell shoes",
+          "Yoruba": "Fẹ́mi fẹ́ ta bàtà"
+        },
+        {
+          "English": "Femi will sell shoes",
+          "Yoruba": "Fẹ́mi yóò tá bàtà"
+        },
+        {
+          "English": "Femi has sold shoes",
+          "Yoruba": "Fẹ́mi ti tà bàtà"
+        },
+        {
+          "English": "Femi is not selling shoes",
+          "Yoruba": "Fẹ́mi kò tà bàtà"
+        },
+        {
+          "English": "Femi is selling shoes",
+          "Yoruba": "Fẹ́mi ń tà bàtà"
+        },
+        {
+          "English": "Femi sold shoes",
+          "Yoruba": "Fẹ́mi tà bàtà"
+        }
+      ]
     },
     {
-      "title": "Direction",
-      "description": "Learn how to ask for direction",
-      "words": ["Asking for direction", "Excuse me", "I'm lost", "I don't know the road I should follow", "can you help me", "can I help you",
-        "I'm not from this town", "How can i get to this place", "How long does it take me to get there",
-        "Is it a walking distance"],
-      "language": []
+      "title": "Short sentence",
+      "description": "Constructing small sentence",
+      "text": [
+        {
+          "English": "Do not be angry",
+          "Yoruba": "Ẹ máa bínú"
+        },
+        {
+          "English": "I want to eat",
+          "Yoruba": "Mo fẹ́ jẹun"
+        },
+        {
+          "English": "I am hungry",
+          "Yoruba": "Ebi ń pamí"
+        },
+        {
+          "English": "I am from Awẹ",
+          "Yoruba": "Ọmọ Awẹ ni mí"
+        },
+        {
+          "English": "I want to drink water",
+          "Yoruba": "Mo fẹ́ mú omi"
+        },
+        {
+          "English": "I want to excrete",
+          "Yoruba": "Mo fẹ́ yàgbẹ́"
+        },
+        {
+          "English": "I want to bath",
+          "Yoruba": "Mo fẹ́ wẹ̀"
+        },
+        {
+          "English": "I want to buy house",
+          "Yoruba": "Mo fẹ́ rà ilé"
+        },
+        {
+          "English": "I am eating",
+          "Yoruba": "Mo ń jẹun"
+        },
+        {
+          "English": "I am working",
+          "Yoruba": "Mo ń ṣısẹ́"
+        },
+        {
+          "English": "I am going home",
+          "Yoruba": "Mo ń lọ ilé"
+        },
+        {
+          "English": "Our house is big",
+          "Yoruba": "Ilé wa tóbi"
+        },
+        {
+          "English": "My car is good",
+          "Yoruba": "Ọkọ̀ mi dára"
+        },
+        {
+          "English": "It is cold",
+          "Yoruba": "Òtútù ń mú"
+        },
+        {
+          "English": "It is hot",
+          "Yoruba": "Ooru ń mú"
+        },
+        {
+          "English": "This clothes is good",
+          "Yoruba": "Aṣọ yìí dára"
+        }
+      ]
     },
     {
-      "title": "Conversation 1",
-      "description": "Learn conversation in Yoruba language",
-      "words": ["Conversation in Yoruba language", "I am hungry", "I want us to be friend", "I love you (1)", 
-        "I love you (2)", "I want to date you", "I want to marry you", "Please sit", "Do you want water", 
-        "No I don't want", "Let us go together", "I can go by myself", "I want to see you", "Come let me see you",
-        "Come let's talk", "I want to urinate (1)", "I want to urinate (2)", "I want to sleep", "Give me my money", "Come and eat"],
-      "language": []
-    },
-    {
-      "title": "Conversation 2",
-      "description": "Learn more conversation in Yoruba language",
-      "words": ["What do you say", "What does this mean", "Can I ask you something", "What is the time?", "What day is today",
-        "Today is Thursday ", "I can't hear you", "What is this", "What is going on", "What happened ", "What are you doing",
-        "Let me see it", "I am travelling"],
-      "language": []
+      "title": "Yoruba poems",
+      "description": "Common Yoruba poems",
+      "text": [
+        {
+          "English": "A child that disrespects his mum",
+          "Yoruba": "Ọmọ tó mọ́ ìyá rẹ lójú ó"
+        },
+        {
+          "English": "Do not look back",
+          "Yoruba": "Ẹ má wẹ̀yìn"
+        },
+        {
+          "English": "Children call each other to play",
+          "Yoruba": "Àwọn ọmọdé pe ara wọn jọ láti ṣeré"
+        },
+        {
+          "English": "After forming a circle, Tọ́lá stay behind the circle",
+          "Yoruba": "Lẹ́yìn tí wọ́n pagbo bíríkíti ni Tọ́lá bọ́ sí ẹ̀yìn agbo"
+        },
+        {
+          "English": "He holds a small cloth",
+          "Yoruba": "Ó mú aṣọ kékeré kan lọ́wọ́"
+        },
+        {
+          "English": "He walks round the circle while singing",
+          "Yoruba": "Ó sì ń rìn yíká agbo náà, ó ń dá orin"
+        },
+        {
+          "English": "Do not look behind",
+          "Yoruba": "Ẹ má wẹ̀yìn"
+        },
+        {
+          "English": "Do not gossip",
+          "Yoruba": "Ẹ má sòfófó"
+        },
+        {
+          "English": "Stop stealing",
+          "Yoruba": "Ẹ má jalè mọ́"
+        }
+      ]
     }
   ]
 }

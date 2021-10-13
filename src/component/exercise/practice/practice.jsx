@@ -6,7 +6,7 @@ import "./practice.scss";
 import Sound from "../../../Sound";
 import Navigation from "../navigation/navigation";
 
-const Practice = ({ lecture }) => {
+const Practice = ({ lecture, getWord }) => {
   const [auto, setAuto] = useState(true);
   const [random, setRandom] = useState(false);
   const [exercise, setExercise] = useState(1);
@@ -16,7 +16,7 @@ const Practice = ({ lecture }) => {
   const [intervalId, setIntervalId] = useState();
   const currentIntervalId = useRef();
   currentIntervalId.current = intervalId;
-  const max = lesson[lecture - 1].words.length;
+  const max = lesson[lecture - 1].text.length;
 
   useEffect(() => () => clearInterval(currentIntervalId.current), []);
 
@@ -38,18 +38,18 @@ const Practice = ({ lecture }) => {
       <div className="practice__content">
         <div
           className="practice__img"
-          onClick={() => Sound.play(`files/lecture${lecture}/${exercise}.m4a`)}
+          onClick={() => Sound.play(`audio/${getWord(lecture, exercise)}.m4a`)}
           style={{
-            backgroundImage: `url(./img/lecture${lecture}/${exercise}.jpg)`,
+            backgroundImage: `url(./images/${getWord(lecture, exercise)}.jpg)`,
           }}
-        ></div>
-
+        />
         <Slider
           lecture={lecture}
           auto={auto}
           random={random}
           exercise={exercise}
           setExercise={setExercise}
+          getWord={getWord}
         />
         <Menu
           auto={auto}

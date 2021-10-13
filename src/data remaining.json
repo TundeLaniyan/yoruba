@@ -1,0 +1,536 @@
+{
+  "lesson": [
+    {
+      "title": "Pronoun",
+      "description": "Subject identifier",
+      "text": [
+        {
+          "English": "I (standard)",
+          "Yoruba": "Mo"
+        },
+        {
+          "English": "I (emphatic)",
+          "Yoruba": "Èmi"
+        },
+        {
+          "English": "You (standard)",
+          "Yoruba": "Ó"
+        },
+        {
+          "English": "You (emphatic)",
+          "Yoruba": "Ìwọ"
+        },
+        {
+          "English": "He/She (standard)",
+          "Yoruba": "Ó"
+        },
+        {
+          "English": "He/She (emphatic)",
+          "Yoruba": "Òun"
+        },
+        {
+          "English": "We (standard)",
+          "Yoruba": "A"
+        },
+        {
+          "English": "We (emphatic)",
+          "Yoruba": "Àwa"
+        },
+        {
+          "English": "You all (standard)",
+          "Yoruba": "Ẹ"
+        },
+        {
+          "English": "You all (emphatic)",
+          "Yoruba": "Ẹ̀yin"
+        },
+        {
+          "English": "They (standard)",
+          "Yoruba": "Wọ́n"
+        },
+        {
+          "English": "They (emphatic)",
+          "Yoruba": "Àwọn"
+        },
+        {
+          "English": "I ate",
+          "Yoruba": "Mo jẹ"
+        },
+        {
+          "English": "I washed",
+          "Yoruba": "Mo fọ"
+        },
+        {
+          "English": "I bought",
+          "Yoruba": "Mo rà"
+        },
+        {
+          "English": "You washed",
+          "Yoruba": "O fọ"
+        },
+        {
+          "English": "He danced",
+          "Yoruba": "Ó jó"
+        },
+        {
+          "English": "We bought",
+          "Yoruba": "A rà"
+        },
+        {
+          "English": "They bought",
+          "Yoruba": "Wọ́n rà"
+        },
+        {
+          "English": "Me",
+          "Yoruba": "Mi"
+        },
+        {
+          "English": "You",
+          "Yoruba": "Ọ/Ẹ"
+        },
+        {
+          "English": "Us",
+          "Yoruba": "Wa"
+        },
+        {
+          "English": "They all",
+          "Yoruba": "Yín"
+        },
+        {
+          "English": "Them",
+          "Yoruba": "Wọn"
+        }
+      ]
+    },
+    {
+      "title": "Introducing yourself",
+      "description": "Learning how to describing yourself",
+      "text": [
+        {
+          "English": "Introducing oneself in Yoruba language",
+          "Yoruba": ""
+        },
+        {
+          "English": "What is your name",
+          "Yoruba": ""
+        },
+        {
+          "English": "My name is Remi Olaniyan",
+          "Yoruba": ""
+        },
+        {
+          "English": "Nice to meet you",
+          "Yoruba": ""
+        },
+        {
+          "English": "Where are you from",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am from Oyo state",
+          "Yoruba": ""
+        },
+        {
+          "English": "Where do you live",
+          "Yoruba": ""
+        },
+        {
+          "English": "I live in London",
+          "Yoruba": ""
+        },
+        {
+          "English": "What do you do for a living",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am a teacher",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am a student",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am working in a company",
+          "Yoruba": ""
+        },
+        {
+          "English": "How old are you",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am 33 years old",
+          "Yoruba": ""
+        },
+        {
+          "English": "Which food do you like best",
+          "Yoruba": ""
+        },
+        {
+          "English": "I like pounded yam and okro soup",
+          "Yoruba": ""
+        },
+        {
+          "English": "Where are you going",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am going home",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am going to the market",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am going to my workplace",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am going to the mosque",
+          "Yoruba": ""
+        },
+        {
+          "English": "Where are you",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am at home",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am in the office",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am in the market",
+          "Yoruba": ""
+        },
+        {
+          "English": "What are you doing",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am resting",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am eating",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am sleeping",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am praying",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am reading",
+          "Yoruba": ""
+        }
+      ]
+    },
+    {
+      "title": "Solving misunderstandings",
+      "description": "Learn how to solve misunderstanding",
+      "text": [
+        {
+          "English": "Solving a misunderstanding in Yoruba language",
+          "Yoruba": ""
+        },
+        {
+          "English": "Forgive me please",
+          "Yoruba": ""
+        },
+        {
+          "English": "I won't do that again",
+          "Yoruba": ""
+        },
+        {
+          "English": "It won't repeat itself",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am sorry",
+          "Yoruba": ""
+        },
+        {
+          "English": "Sorry for a wrong or mistake",
+          "Yoruba": ""
+        },
+        {
+          "English": "No problem",
+          "Yoruba": ""
+        },
+        {
+          "English": "please",
+          "Yoruba": ""
+        },
+        {
+          "English": "Can you repeat please",
+          "Yoruba": ""
+        },
+        {
+          "English": "Can you speak slowly",
+          "Yoruba": ""
+        },
+        {
+          "English": "Do you understand what I said",
+          "Yoruba": ""
+        },
+        {
+          "English": "I don't understand",
+          "Yoruba": ""
+        },
+        {
+          "English": "I don't know",
+          "Yoruba": ""
+        },
+        {
+          "English": "Can you write it down",
+          "Yoruba": ""
+        }
+      ]
+    },
+    {
+      "title": "Direction",
+      "description": "Learn how to ask for direction",
+      "text": [
+        {
+          "English": "Asking for direction",
+          "Yoruba": ""
+        },
+        {
+          "English": "Excuse me",
+          "Yoruba": ""
+        },
+        {
+          "English": "I'm lost",
+          "Yoruba": ""
+        },
+        {
+          "English": "I don't know the road I should follow",
+          "Yoruba": ""
+        },
+        {
+          "English": "can you help me",
+          "Yoruba": ""
+        },
+        {
+          "English": "can I help you",
+          "Yoruba": ""
+        },
+        {
+          "English": "I'm not from this town",
+          "Yoruba": ""
+        },
+        {
+          "English": "How can i get to this place",
+          "Yoruba": ""
+        },
+        {
+          "English": "How long does it take me to get there",
+          "Yoruba": ""
+        },
+        {
+          "English": "Is it a walking distance",
+          "Yoruba": ""
+        }
+      ]
+    },
+    {
+      "title": "Conversation 1",
+      "description": "Learn conversation in Yoruba language",
+      "text": [
+        {
+          "English": "Conversation in Yoruba language",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am hungry",
+          "Yoruba": ""
+        },
+        {
+          "English": "I want us to be friend",
+          "Yoruba": ""
+        },
+        {
+          "English": "I love you (1)",
+          "Yoruba": ""
+        },
+        {
+          "English": "I love you (2)",
+          "Yoruba": ""
+        },
+        {
+          "English": "I want to date you",
+          "Yoruba": ""
+        },
+        {
+          "English": "I want to marry you",
+          "Yoruba": ""
+        },
+        {
+          "English": "Please sit",
+          "Yoruba": ""
+        },
+        {
+          "English": "Do you want water",
+          "Yoruba": ""
+        },
+        {
+          "English": "No I don't want",
+          "Yoruba": ""
+        },
+        {
+          "English": "Let us go together",
+          "Yoruba": ""
+        },
+        {
+          "English": "I can go by myself",
+          "Yoruba": ""
+        },
+        {
+          "English": "I want to see you",
+          "Yoruba": ""
+        },
+        {
+          "English": "Come let me see you",
+          "Yoruba": ""
+        },
+        {
+          "English": "Come let's talk",
+          "Yoruba": ""
+        },
+        {
+          "English": "I want to urinate (1)",
+          "Yoruba": ""
+        },
+        {
+          "English": "I want to urinate (2)",
+          "Yoruba": ""
+        },
+        {
+          "English": "I want to sleep",
+          "Yoruba": ""
+        },
+        {
+          "English": "Give me my money",
+          "Yoruba": ""
+        },
+        {
+          "English": "Come and eat",
+          "Yoruba": ""
+        }
+      ]
+    },
+    {
+      "title": "Conversation 2",
+      "description": "Learn more conversation in Yoruba language",
+      "text": [
+        {
+          "English": "What do you say",
+          "Yoruba": ""
+        },
+        {
+          "English": "What does this mean",
+          "Yoruba": ""
+        },
+        {
+          "English": "Can I ask you something",
+          "Yoruba": ""
+        },
+        {
+          "English": "What is the time?",
+          "Yoruba": ""
+        },
+        {
+          "English": "What day is today",
+          "Yoruba": ""
+        },
+        {
+          "English": "Today is Thursday ",
+          "Yoruba": ""
+        },
+        {
+          "English": "I can't hear you",
+          "Yoruba": ""
+        },
+        {
+          "English": "What is this",
+          "Yoruba": ""
+        },
+        {
+          "English": "What is going on",
+          "Yoruba": ""
+        },
+        {
+          "English": "What happened ",
+          "Yoruba": ""
+        },
+        {
+          "English": "What are you doing",
+          "Yoruba": ""
+        },
+        {
+          "English": "Let me see it",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am travelling",
+          "Yoruba": ""
+        },
+        {
+          "English": "Action in Yoruba language",
+          "Yoruba": ""
+        },
+        {
+          "English": "Sit down",
+          "Yoruba": ""
+        },
+        {
+          "English": "Stand up",
+          "Yoruba": ""
+        },
+        {
+          "English": "Get out",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am going out",
+          "Yoruba": ""
+        },
+        {
+          "English": "Give me water",
+          "Yoruba": ""
+        },
+        {
+          "English": "Give me a chair",
+          "Yoruba": ""
+        },
+        {
+          "English": "I want to go and sleep",
+          "Yoruba": ""
+        },
+        {
+          "English": "Give me a plate and spoon",
+          "Yoruba": ""
+        },
+        {
+          "English": "I want to lay my bed",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am going up the stairs",
+          "Yoruba": ""
+        },
+        {
+          "English": "I am going down stairs",
+          "Yoruba": ""
+        }
+      ]
+    }
+  ]
+}

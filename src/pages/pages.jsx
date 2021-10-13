@@ -23,10 +23,10 @@ const Pages = ({ lecture, setLecture, location, Game, handleRestart }) => {
         </Route> */}
         <Switch>
           <Route path="/exercise">
-            <Practice lecture={lecture} type="exercise" />
+            <Practice lecture={lecture} getWord={Game.getWord} />
           </Route>
           <Route path="/task">
-            <Task lecture={lecture} Game={Game} location={location} />
+            <Task lecture={lecture} />
           </Route>
           <Route path="/easyGame">
             <EasyGame lecture={lecture} Game={Game} />

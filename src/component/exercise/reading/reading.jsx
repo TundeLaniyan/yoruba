@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState, memo } from "react";
 import { connect } from "react-redux";
 import { setProgress } from "../../../action";
+import { TARGETLANGUAGE } from "../../../constant";
 import { lesson } from "../../../data.json";
 import Sound from "../../../Sound";
 import Card from "../../card/card";
@@ -25,7 +26,7 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
     setResults(results);
     setCurrentRound(0);
     setAnswer();
-    const totalLength = lesson[lecture - 1].words.length;
+    const totalLength = lesson[lecture - 1].text.length;
     const cards = Game.generateCards({ cardLimit, totalLength });
     setState(cards);
     Game.delay(2500, () => answerQuestion(cards, results));
@@ -61,7 +62,7 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
     async (input) => {
       if (!active) return;
       setActive(false);
-      await Sound.play(`files/lecture${lecture}/${input}.m4a`);
+      await Sound.play(`audio/${Game.getWord(lecture, input)}.m4a`);
       const CORRECT = input === answer;
       if (CORRECT) correctInput(input);
       else incorrectInput(input);
@@ -92,7 +93,7 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
     <div className="reading">
       <Navigation challenge="Reading" lecture={lecture} />
       <div className="text-block">
-        {answer ? lesson[lecture - 1].language[answer - 1] : "?"}
+        {answer ? lesson[lecture - 1].text[answer - 1][TARGETLANGUAGE] : "?"}
       </div>
       <div className="select">
         {state.map((cur, index) => (
@@ -107,7 +108,12 @@ const Reading = memo(function ({ lecture, setProgress, Game }) {
           />
         ))}
       </div>
-      <GameFooter correct={correct} incorrect={incorrect} active={active} />
+      <GameFooter
+        correct={correct}
+        incorrect={incorrect}
+        active={active}
+        Sound={Sound}
+      />
     </div>
   );
 });

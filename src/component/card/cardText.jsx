@@ -1,5 +1,6 @@
 import React, { memo, useState } from "react";
 import { TiTick, TiTimes } from "react-icons/ti";
+import { TARGETLANGUAGE } from "../../constant";
 import { lesson } from "../../data.json";
 import "./card.css";
 
@@ -30,7 +31,8 @@ const CardText = memo(function CardText({
       style={!hide && light ? { filter: `brightness(${light})` } : {}}
     >
       <h1 className="card__text--large">
-        {(!(hide >= 0) || answer) && lesson[0].words[exercise - 1]}
+        {(!(hide >= 0) || answer) &&
+          lesson[0].text[exercise - 1][TARGETLANGUAGE]}
       </h1>
       {answer && (
         <div className={`card__answer card__answer--${answer}`}>

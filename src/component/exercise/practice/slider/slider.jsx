@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
+import { NATIVELANGUAGE, TARGETLANGUAGE } from "../../../../constant";
 import { lesson } from "../../../../data.json";
 import Sound from "../../../../Sound";
 import "./slider.scss";
 
-const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
-  const max = lesson[lecture - 1].words.length;
+const Slider = ({ lecture, auto, random, exercise, setExercise, getWord }) => {
+  const max = lesson[lecture - 1].text.length;
 
   useEffect(
-    () => auto && Sound.play(`files/lecture${lecture}/${exercise}.m4a`),
+    () => auto && Sound.play(`audio/${getWord(lecture, exercise)}.m4a`),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [exercise]
   );
@@ -27,8 +28,11 @@ const Slider = ({ lecture, auto, random, exercise, setExercise }) => {
         <img src="./img/return.svg" alt="<" />
       </button>
       <div className="slider__text">
-        <div>{lesson[lecture - 1].words[exercise - 1]}</div>
-        <div>{lesson[lecture - 1].language?.[exercise - 1]}</div>
+        <div>
+          {lecture !== 1 &&
+            lesson[lecture - 1].text[exercise - 1][NATIVELANGUAGE]}
+        </div>
+        <div>{lesson[lecture - 1].text[exercise - 1][TARGETLANGUAGE]}</div>
       </div>
       <button
         disabled={!random && exercise > max - 1}

@@ -28,7 +28,7 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
   const buttonRef = createRef();
   const unMount = useRef();
   unMount.current = cleanUp;
-  const gameLimit = lesson[0].words.length / 3;
+  const gameLimit = lesson[0].text.length / 3;
   const gameSpeed = 3500;
   const cardLimit = 3;
   const isTouchDevice = Game.isTouchDevice();
@@ -146,11 +146,12 @@ const EasyGameAccent = ({ lecture, setProgress, Game }) => {
       )}
       <div style={{ marginBottom: "9rem" }} />
       <GameFooter
-        audio={`files/lecture1/${answer}.m4a`}
+        audio={`audio/${Game.getWord(1, answer)}.m4a`}
         correct={next}
         incorrect={incorrect}
         active={active}
         noText={true}
+        Sound={Sound}
       />
     </div>
   );

@@ -39,7 +39,7 @@ const RapidGame = ({ lecture, setProgress, Game }) => {
     setPercent(100);
     setCurrentRound(0);
     const totalLength = Game.totalCards();
-    const currentLength = lesson[lecture - 1].words.length;
+    const currentLength = lesson[lecture - 1].text.length;
     const cards = Game.generateCards({ cardLimit, totalLength, currentLength });
     setState(cards);
     !isTouchDevice && setPauseInterval(true);
@@ -84,10 +84,9 @@ const RapidGame = ({ lecture, setProgress, Game }) => {
   const handleOnClick = useCallback(
     async (input) => {
       if (!active) return;
-      const { lecture: inputLecture, exercise } = displayCard(input, lecture);
       setActive(false);
       setPauseInterval(true);
-      await Sound.play(`files/lecture${inputLecture}/${exercise}.m4a`);
+      await Sound.play(`audio/${Game.getWordMult(input, lecture)}.m4a`);
       const CORRECT = input === answer;
       if (CORRECT) await correctInput(input);
       else await incorrectInput(input);
@@ -113,10 +112,7 @@ const RapidGame = ({ lecture, setProgress, Game }) => {
     setResults(Game.setResult({ input, state, results, answer: "incorrect" }));
     await Game.incorrect();
     setIncorrect((prev) => prev + 1);
-    const curAnswer = displayCard(answer, lecture);
-    await Sound.play(
-      `files/lecture${curAnswer.lecture}/${curAnswer.exercise}.m4a`
-    );
+    await Sound.play(`audio/${Game.getWordMult(answer, lecture)}.m4a`);
     setActive(true);
     isTouchDevice && setPauseInterval(false);
   }
@@ -154,21 +150,13 @@ const RapidGame = ({ lecture, setProgress, Game }) => {
         ) : (
           state.map((cur, index) => {
             const display = displayCard(cur, lecture);
-            return display.lecture > 1 ? (
-              <Card
+            const CurrentCard = display.lecture > 1 ? Card : CardText;
+            return (
+              <CurrentCard
                 key={cur}
                 state={cur}
                 lecture={display.lecture}
                 exercise={display.exercise}
-                onClick={handleOnClick}
-                active={active}
-                answer={results[index]?.answer}
-              />
-            ) : (
-              <CardText
-                key={cur}
-                state={cur}
-                exercise={cur}
                 onClick={handleOnClick}
                 active={active}
                 answer={results[index]?.answer}
@@ -179,12 +167,11 @@ const RapidGame = ({ lecture, setProgress, Game }) => {
       </div>
       <GameFooter
         percent={percent}
-        audio={`files/lecture${displayCard(answer, lecture).lecture}/${
-          displayCard(answer, lecture).exercise
-        }.m4a`}
+        audio={`audio/${Game.getWordMult(answer, lecture)}.m4a`}
         correct={correct}
         incorrect={incorrect}
         active={active}
+        Sound={Sound}
       />
     </div>
   );

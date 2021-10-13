@@ -1,3 +1,4 @@
+import { NATIVELANGUAGE, TARGETLANGUAGE } from "../../constant";
 import { lesson } from "../../data.json";
 import Sound from "../../Sound";
 
@@ -33,7 +34,7 @@ class GameLogic {
         gameSpeed * i,
         () => {
           autoPlay &&
-            Sound.start(`files/lecture${this.lecture}/${cards[i]}.m4a`);
+            Sound.start(`audio/${this.getWord(this.lecture, cards[i])}.m4a`);
           setSoundState(i);
         },
         setCleanUp
@@ -50,17 +51,19 @@ class GameLogic {
   answerQuestion = async function ({ state, cardLimit, silent }) {
     const value = Math.floor(Math.random() * cardLimit);
     !silent &&
-      (await Sound.play(`files/lecture${this.lecture}/${state[value]}.m4a`));
+      (await Sound.play(
+        `audio/${this.getWord(this.lecture, state[value])}.m4a`
+      ));
     return state[value];
   };
   answerQuestionMultLectures = async function ({ state, cardLimit }) {
     const value = Math.floor(Math.random() * cardLimit);
     const { lecture, exercise } = this.displayCard(state[value], this.lecture);
-    await Sound.play(`files/lecture${lecture}/${exercise}.m4a`);
+    await Sound.play(`audio/${this.getWord(lecture, exercise)}.m4a`);
     return state[value];
   };
-  correct = async () => await Sound.play("files/yes.m4a");
-  incorrect = async () => await Sound.play("files/no.m4a");
+  correct = async () => await Sound.play("audio/yes.m4a");
+  incorrect = async () => await Sound.play("audio/no.m4a");
   delay = function (timeout, cb, setCleanUp) {
     const timeOut = setTimeout(() => {
       cb();
@@ -82,8 +85,8 @@ class GameLogic {
       .slice(0, this.lecture - 1)
       .reduce(
         (total, cur) =>
-          (typeof total === "number" ? total : total.words.length) +
-          cur.words.length,
+          (typeof total === "number" ? total : total.text.length) +
+          cur.text.length,
         0
       );
   displayCard = function (state, lecture) {
@@ -92,7 +95,7 @@ class GameLogic {
       exercise,
       accumulation = 0;
     for (let i = 0; i < lecture; i++) {
-      const current = lesson[i].words.length;
+      const current = lesson[i].text.length;
       if (runningTotal - current <= 0) {
         exercise = state - accumulation;
         currentLecture = i + 1;
@@ -127,6 +130,36 @@ class GameLogic {
       state: remainingState,
       cardLimit: remainingState.length,
     });
+  };
+  getWord = (lecture, exercise) => {
+    if (!lecture || !exercise) return "";
+    return lesson[lecture - 1].text[exercise - 1][NATIVELANGUAGE].replace(
+      /[()\s?]+/g,
+      (s) => (s === " " ? "-" : s === "?" ? "" : "+")
+    );
+  };
+  getWordMult = (state, currentLecture) => {
+    if (!state || !currentLecture) return "";
+    const { lecture, exercise } = this.displayCard(state, currentLecture);
+    return this.getWord(lecture, exercise);
+  };
+  translate = (translate) => {
+    if (!translate) return "";
+    let text = "",
+      currentLesson;
+    loop: for (let i = 0; i < lesson.length; i++) {
+      for (let k = 0; k < lesson[i].text.length; k++) {
+        if (
+          translate.toLowerCase() ===
+          lesson[i].text[k][NATIVELANGUAGE].toLowerCase()
+        ) {
+          text = lesson[i].text[k][TARGETLANGUAGE];
+          currentLesson = i + 1;
+          break loop;
+        }
+      }
+    }
+    return { text, lesson: currentLesson };
   };
 }
 

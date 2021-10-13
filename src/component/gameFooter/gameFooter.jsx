@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { GiSpeaker } from "react-icons/gi";
-import { lesson } from "../../data.json";
-import Sound from "../../Sound";
+// import { lesson } from "../../data.json";
+import GameLogic from "../exercise/gameLogic";
 import "./gameFooter.css";
+const Game = new GameLogic();
 
 const GameFooter = ({
   percent = 100,
@@ -11,21 +12,19 @@ const GameFooter = ({
   incorrect,
   active,
   noText,
+  Sound,
 }) => {
-  const [languageText, setlanguageText] = useState("");
+  const [languageText, setLanguageText] = useState("");
 
   useEffect(() => {
-    if (noText) return;
-    const [exercise, lecture] = Sound.url
-      .replace("files/lecture", "")
+    const soundText = Sound.url
+      .replace("audio/", "")
       .replace(".m4a", "")
-      .split("/");
-    setTimeout(() => {
-      if (exercise !== "files" && exercise > 0) {
-        setlanguageText(lesson[exercise - 1].language?.[lecture - 1]);
-        setTimeout(() => setlanguageText(""), 3000);
-      }
-    }, 1500);
+      .replace(/-/g, " ");
+    const { text, lesson } = Game.translate(soundText);
+    if (noText || lesson === 1) return;
+    setLanguageText(text);
+    setTimeout(() => setLanguageText(""), 5500);
     // eslint-disable-next-line
   }, [Sound.url]);
 
@@ -39,12 +38,12 @@ const GameFooter = ({
       {audio && (
         <div
           className="score score__play"
-          onClick={async () => active && Sound.play(audio)}
+          onClick={() => active && Sound.play(audio)}
         >
           <GiSpeaker />
         </div>
       )}
-      <h5 className="language-text">{languageText}</h5>
+      <h2 className="language-text">{languageText}</h2>
       <div className="score score__correct">{correct}</div>
       <div className="score score__incorrect">{incorrect}</div>
     </div>

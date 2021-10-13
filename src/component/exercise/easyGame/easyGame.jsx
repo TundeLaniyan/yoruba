@@ -11,11 +11,14 @@ import { setProgress } from "../../../action";
 import GameFooter from "../../gameFooter/gameFooter";
 import Sound from "../../../Sound";
 import Card from "../../card/card";
+import CardText from "../../card/cardText";
 import Button from "../../button/button";
 import Navigation from "../navigation/navigation";
 import "./easyGame.css";
 
 const EasyGame = ({ lecture, setProgress, Game }) => {
+  const ACCENT = lecture === 1;
+  const CurrentCard = ACCENT ? CardText : Card;
   const [state, setState] = useState([]);
   const [soundState, setSoundState] = useState();
   const [answer, setAnswer] = useState();
@@ -28,9 +31,9 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
   const buttonRef = createRef();
   const unMount = useRef();
   unMount.current = cleanUp;
-  const gameLimit = 10;
+  const gameLimit = ACCENT ? lesson[0].text.length / 3 : 10;
   const gameSpeed = 3500;
-  const cardLimit = 4;
+  const cardLimit = ACCENT ? 3 : 4;
   const isTouchDevice = Game.isTouchDevice();
 
   useEffect(
@@ -43,10 +46,13 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
 
   useEffect(() => buttonRef.current?.scrollIntoView({ behaviour: "smooth" }));
 
+  const shuffleCards = (card) =>
+    [...card].sort(() => (Math.random() > 0.5 ? 1 : -1));
+
   async function answerQuestion(state) {
+    setState((prevState) => shuffleCards(prevState));
     const answer = await Game.answerQuestion({ state, cardLimit });
     setAnswer(answer);
-    setState((prev) => prev.sort(() => (Math.random() > 0.5 ? 1 : -1)));
     setActive(true);
   }
 
@@ -64,8 +70,10 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
     setState([]);
     setResults([]);
     setTouchPlay(false);
-    const totalLength = lesson[lecture - 1].words.length;
-    const cards = Game.generateCards({ cardLimit, totalLength });
+    const totalLength = lesson[lecture - 1].text.length;
+    const cards = ACCENT
+      ? [next * 3 + 1, next * 3 + 3, next * 3 + 2]
+      : Game.generateCards({ cardLimit, totalLength });
     setState(cards);
     if (isTouchDevice) setActive(true);
     else {
@@ -84,36 +92,30 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
   const handleOnClick = useCallback(
     async (input) => {
       if (!active) return;
-      await Sound.play(`files/lecture${lecture}/${input}.m4a`);
+      await Sound.play(`audio/${Game.getWord(lecture, input)}.m4a`);
       if (isTouchDevice && !touchPlay) return;
       setActive(false);
-      Game.delay(
-        gameSpeed,
-        async () => {
-          const CORRECT = input === answer;
-          if (CORRECT) {
-            setResults(
-              Game.setResult({ input, state, results, answer: "correct" })
-            );
-            await Game.correct();
-            setNext((prev) => prev + 1);
-          } else {
-            setResults(
-              Game.setResult({ input, state, results, answer: "incorrect" })
-            );
-            await Game.incorrect();
-            incorrectInput();
-          }
-        },
-        setCleanUp
-      );
+      const CORRECT = input === answer;
+      if (CORRECT) {
+        setResults(
+          Game.setResult({ input, state, results, answer: "correct" })
+        );
+        await Game.correct();
+        setNext((prev) => prev + 1);
+      } else {
+        setResults(
+          Game.setResult({ input, state, results, answer: "incorrect" })
+        );
+        await Game.incorrect();
+        incorrectInput();
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [active, touchPlay, answer]
   );
 
   function incorrectInput() {
-    Sound.play(`files/lecture${lecture}/${answer}.m4a`);
+    Sound.play(`audio/${Game.getWord(lecture, answer)}.m4a`);
     setIncorrect((prev) => prev + 1);
     setActive(true);
   }
@@ -124,11 +126,11 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
   }
 
   return (
-    <div className="easy-game">
+    <div className={`easy-game ${ACCENT && "easy-game--accent"}`}>
       <Navigation challenge="Easy Game" lecture={lecture} />
-      <div className="select">
+      <div className={`select ${ACCENT && "select--accent"}`}>
         {state.map((cur, index) => (
-          <Card
+          <CurrentCard
             key={index}
             state={cur}
             lecture={lecture}
@@ -150,10 +152,12 @@ const EasyGame = ({ lecture, setProgress, Game }) => {
       )}
       <div style={{ marginBottom: "9rem" }} />
       <GameFooter
-        audio={`files/lecture${lecture}/${answer}.m4a`}
+        audio={`audio/${Game.getWord(lecture, answer)}.m4a`}
         correct={next}
         incorrect={incorrect}
         active={active}
+        noText={ACCENT}
+        Sound={Sound}
       />
     </div>
   );

@@ -30,7 +30,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
     setResults(results);
     setCurrentRound(0);
     const totalLength = Game.totalCards();
-    const currentLength = lesson[lecture - 1].words.length;
+    const currentLength = lesson[lecture - 1].text.length;
     const cards = Game.generateCards({ cardLimit, totalLength, currentLength });
     setState(cards);
     if (!isTouchDevice) Game.delay(2500, () => answerQuestion(cards, results));
@@ -58,10 +58,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
     async (input) => {
       if (!active) return;
       setActive(false);
-      const curInput = displayCard(input, lecture);
-      await Sound.play(
-        `files/lecture${curInput.lecture}/${curInput.exercise}.m4a`
-      );
+      await Sound.play(`audio/${Game.getWordMult(input, lecture)}.m4a`);
       const CORRECT = input === answer;
       if (CORRECT) correctInput(input);
       else incorrectInput(input);
@@ -86,10 +83,7 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
     setResults(Game.setResult({ input, state, results, answer: "incorrect" }));
     await Game.incorrect();
     setIncorrect((prev) => prev + 1);
-    const currentAnswer = displayCard(answer, lecture);
-    await Sound.play(
-      `files/lecture${currentAnswer.lecture}/${currentAnswer.exercise}.m4a`
-    );
+    await Sound.play(`audio/${Game.getWordMult(answer, lecture)}.m4a`);
     setActive(true);
   }
 
@@ -111,21 +105,13 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
         ) : (
           state.map((cur, index) => {
             const display = displayCard(cur, lecture);
-            return display.lecture > 1 ? (
-              <Card
+            const CurrentCard = display.lecture > 1 ? Card : CardText;
+            return (
+              <CurrentCard
                 key={cur}
                 state={cur}
                 lecture={display.lecture}
                 exercise={display.exercise}
-                onClick={handleOnClick}
-                answer={results[index]?.answer}
-                active={active}
-              />
-            ) : (
-              <CardText
-                key={cur}
-                state={cur}
-                exercise={cur}
                 onClick={handleOnClick}
                 answer={results[index]?.answer}
                 active={active}
@@ -135,12 +121,11 @@ const HardGame = memo(function ({ lecture, setProgress, Game }) {
         )}
       </div>
       <GameFooter
-        audio={`files/lecture${displayCard(answer, lecture).lecture}/${
-          displayCard(answer, lecture).exercise
-        }.m4a`}
+        audio={`audio/${Game.getWordMult(answer, lecture)}.m4a`}
         correct={correct}
         incorrect={incorrect}
         active={active}
+        Sound={Sound}
       />
     </div>
   );
