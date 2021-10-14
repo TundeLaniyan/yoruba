@@ -44,7 +44,7 @@ const Task = ({ lecture, progress }) => {
       <img
         className="task__cover-img"
         alt=""
-        src={`./images/lecture${lecture}.svg`}
+        src={`./images/${lesson[lecture - 1].title.replace(/\s/g, "-")}.svg`}
       />
       <div className="task__content">
         <div className="task__title">{lesson[lecture - 1].title}</div>

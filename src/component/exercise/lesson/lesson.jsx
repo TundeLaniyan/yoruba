@@ -44,7 +44,10 @@ const Lesson = ({ setLecture, lecture, progress }) => {
               <div
                 className="lesson__img"
                 style={{
-                  backgroundImage: `url(./images/Lecture${index + 1}.svg)`,
+                  backgroundImage: `url(./images/${lesson[index].title.replace(
+                    /\s/g,
+                    "-"
+                  )}.svg)`,
                 }}
               />
               <div className="lesson__content">

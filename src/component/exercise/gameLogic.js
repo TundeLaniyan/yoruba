@@ -47,7 +47,6 @@ class GameLogic {
     setProgress({ result, exercise, lecture: this.lecture });
     alert("result: " + result + "%");
   };
-
   answerQuestion = async function ({ state, cardLimit, silent }) {
     const value = Math.floor(Math.random() * cardLimit);
     !silent &&
@@ -134,7 +133,7 @@ class GameLogic {
   getWord = (lecture, exercise) => {
     if (!lecture || !exercise) return "";
     return lesson[lecture - 1].text[exercise - 1][NATIVELANGUAGE].replace(
-      /[()\s?]+/g,
+      /[/()-\s?]+/g,
       (s) => (s === " " ? "-" : s === "?" ? "" : "+")
     );
   };
