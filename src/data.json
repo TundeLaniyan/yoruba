@@ -457,7 +457,7 @@
           "Yoruba": "Àbúrò"
         },
         {
-          "English": "Older sibling",
+          "English": "Elder sibling",
           "Yoruba": "Ẹ̀gbọ́n"
         },
         {
@@ -504,7 +504,7 @@
         },
         {
           "English": "Good morning",
-          "Yoruba": "Ẹ Káàárọ"
+          "Yoruba": "Ẹ káàárọ̀"
         },
         {
           "English": "Hope you woke up well",
@@ -528,7 +528,7 @@
         },
         {
           "English": "Good evening (sunset)",
-          "Yoruba": ""
+          "Yoruba": "Ẹ kú ìrọ̀lẹ́"
         },
         {
           "English": "Good evening",
@@ -536,7 +536,7 @@
         },
         {
           "English": "Good bye",
-          "Yoruba": "Ọ dàbọ"
+          "Yoruba": "Ó dàbọ̀"
         },
         {
           "English": "Good night",
@@ -544,7 +544,7 @@
         },
         {
           "English": "House greeting",
-          "Yoruba": ""
+          "Yoruba": "Ẹ kú ilé"
         },
         {
           "English": "Your welcome",
@@ -564,7 +564,7 @@
         },
         {
           "English": "Thank you",
-          "Yoruba": ""
+          "Yoruba": "Eṣe"
         },
         {
           "English": "You are well seated",
@@ -572,7 +572,7 @@
         },
         {
           "English": "Hello",
-          "Yoruba": ""
+          "Yoruba": "Báwo ni?"
         }
       ]
     },
@@ -738,27 +738,27 @@
       "text": [       
         {
           "English": "They",
-          "Yoruba": "Àwọn"
+          "Yoruba": "Wọ́n"
         },
         {
           "English": "All of you",
-          "Yoruba": "Ẹ̀yin"
+          "Yoruba": "Ẹ"
         },
         {
           "English": "We",
-          "Yoruba": "Àwa"
+          "Yoruba": "A"
         },
         {
           "English": "He/She/It",
-          "Yoruba": "Òun"
+          "Yoruba": "Ó"
         },
         {
           "English": "You",
-          "Yoruba": "Ìwọ"
+          "Yoruba": "O"
         },
         {
           "English": "I",
-          "Yoruba": "Èmi"
+          "Yoruba": "Mo"
         }
       ]
     },
@@ -915,7 +915,7 @@
           "Yoruba": "Tẹ́"
         },
         {
-          "English": "Mold ?",
+          "English": "Mold",
           "Yoruba": "Mọ"
         },
         {
@@ -923,7 +923,7 @@
           "Yoruba": "Kùn"
         },
         {
-          "English": "Draw ?",
+          "English": "Draw",
           "Yoruba": "Yà"
         },
         {
@@ -951,7 +951,7 @@
           "Yoruba": "Rán"
         },
         {
-          "English": "stretch",
+          "English": "Stretch",
           "Yoruba": "Ràn"
         },
         {
@@ -1005,30 +1005,6 @@
           "Yoruba": "Mo fẹ́ kírun"
         },
         {
-          "English": "They are the one who ate it",
-          "Yoruba": "Àwọn ni ó jẹ́"
-        },
-        {
-          "English": "It is you who ate it",
-          "Yoruba": "Ẹ̀yin ni ẹ jẹ́"
-        },
-        {
-          "English": "We are the one who ate it",
-          "Yoruba": "Àwa la jẹ́"
-        },
-        {
-          "English": "He is the one who ate it",
-          "Yoruba": "Òun ni ó jẹ́"
-        },
-        {
-          "English": "You are the one who ate it",
-          "Yoruba": "Ìwọ ni ó jẹ́"
-        },
-        {
-          "English": "I am the one that ate it",
-          "Yoruba": "Èmi ni mo jẹ́"
-        },
-        {
           "English": "Kunle watch a scene",
           "Yoruba": "Kúnlé wo ìran"
         },
@@ -1059,6 +1035,123 @@
         {
           "English": "Femi sold shoes",
           "Yoruba": "Fẹ́mi tà bàtà"
+        },
+        {
+          "English": "Ade gave them",
+          "Yoruba": "Adé fún wọn"
+        },
+        {
+          "English": "Ade gave you (plural)",
+          "Yoruba": "Adé fún yín"
+        },
+        {
+          "English": "Ade gave us",
+          "Yoruba": "Adé fún wa"
+        },
+        {
+          "English": "Ade gave him",
+          "Alternate": "Adé gave her",
+          "Yoruba": "Adé fún un",  
+          "Extra": "This is third person in object position. The grammatical particle we will use is derived from the"
+        },
+        {
+          "English": "Ade gave you",
+          "Yoruba": "Adé fún ọ"
+        },
+        {
+          "English": "Ade gave me",
+          "Yoruba": "Adé fún mi"
+        },
+        {
+          "English": "Ade insults you",
+          "Yoruba": "Adé bú ẹ"
+        },
+        {
+          "English": "Ade insults me",
+          "Yoruba": "Adé bú mi"
+        },
+        {
+          "English": "They ate beans",
+          "Yoruba": "Wọ́n jẹ ẹ̀wà"
+        },
+        {
+          "English": "You ate beans (plural)",
+          "Yoruba": "Ẹ jẹ ẹ̀wà"
+        },
+        {
+          "English": "We ate beans",
+          "Yoruba": "A jẹ ẹ̀wà"
+        },
+        {
+          "English": "She ate beans",
+          "Alternate": "He ate beans",
+          "Yoruba": "Ó jẹ ẹ̀wà"
+        },
+        {
+          "English": "You ate beans",
+          "Yoruba": "O jẹ ẹ̀wà"
+        },
+        {
+          "English": "I will eat beans",
+          "Yoruba": "N ò jẹ ẹ̀wà"
+        },
+        {
+          "English": "I ate beans",
+          "Yoruba": "Mo jẹ ẹ̀wà"
+        }
+      ]
+    },
+    {
+      "title": "Prenominals",
+      "description": "Extension to subject identifier",
+      "text": [       
+        {
+          "English": "They (prenominals)",
+          "Yoruba": "Àwọn"
+        },
+        {
+          "English": "All of you (prenominals)",
+          "Yoruba": "Ẹ̀yin"
+        },
+        {
+          "English": "We (prenominals)",
+          "Yoruba": "Àwa"
+        },
+        {
+          "English": "He/She/It (prenominals)",
+          "Yoruba": "Òun"
+        },
+        {
+          "English": "You (prenominals)",
+          "Yoruba": "Ìwọ"
+        },
+        {
+          "English": "I (prenominals)",
+          "Yoruba": "Èmi"
+        },
+        {
+          "English": "They are the one who ate it",
+          "Yoruba": "Àwọn ni ó jẹ́"
+        },
+        {
+          "English": "It is you who ate it",
+          "Yoruba": "Ẹ̀yin ni ẹ jẹ́"
+        },
+        {
+          "English": "We are the one who ate it",
+          "Yoruba": "Àwa la jẹ́"
+        },
+        {
+          "English": "He is the one who ate it",
+          "Yoruba": "Òun ni ó jẹ́"
+        },
+        {
+          "English": "You are the one who ate it",
+          "Yoruba": "Ìwọ ni ó jẹ́"
+        },
+        {
+          "English": "I am the one that ate it",
+          "Yoruba": "Èmi ni mo jẹ́"
         }
       ]
     },
@@ -1171,6 +1264,64 @@
         {
           "English": "Stop stealing",
           "Yoruba": "Ẹ má jalè mọ́"
+        }
+      ]
+    },
+    {
+      "title": "Yoruba statements",
+      "description": "Common Yoruba statements",
+      "text": [
+        {
+          "English": "Hello everybody",
+          "Yoruba": "Báwo ni gbogbo yin"
+        },
+        {
+          "English": "Good morning",
+          "Yoruba": "Ẹ káàárọ̀"
+        },
+        {
+          "English": "Long time no see",
+          "Yoruba": "Ẹ kú ọjọ́ mẹ́ta"
+        },
+        {
+          "English": "I am pleased to meet you",
+          "Yoruba": "Inú mi dún-ùn láti mọ̀ yín"
+        },
+        {
+          "English": "See you later",
+          "Yoruba": "A ó máa ríra"
+        },
+        {
+          "English": "See you soon",
+          "Yoruba": "A tún máa ríra"
+        },
+        {
+          "English": "Good bye",
+          "Yoruba": "Ó dàbọ̀"
+        },
+        {
+          "English": "See you tomorrow",
+          "Yoruba": "A ó ríra lọ́la"
+        },
+        {
+          "English": "Thank you (younger)",
+          "Yoruba": "O ṣeun"
+        },
+        {
+          "English": "Thank you (elder)",
+          "Yoruba": "Ẹ ṣeun "
+        },
+        {
+          "English": "I like you",
+          "Yoruba": "Mo nífẹ̀ẹ́ rẹ"
+        },
+        {
+          "English": "You are too funny",
+          "Yoruba": "O ti mọ àwàdà ṣe púpọ̀ jù"
+        },
+        {
+          "English": "You are awesome",
+          "Yoruba": "Èèyàn ni ẹ"
         }
       ]
     }

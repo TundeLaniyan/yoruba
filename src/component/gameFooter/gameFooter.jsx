@@ -26,7 +26,7 @@ const GameFooter = ({
     setLanguageText(text);
     setTimeout(() => setLanguageText(""), 5500);
     // eslint-disable-next-line
-  }, [Sound.url]);
+  }, [Sound]);
 
   return (
     <div

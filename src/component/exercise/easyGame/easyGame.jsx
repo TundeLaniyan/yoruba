@@ -12,13 +12,15 @@ import GameFooter from "../../gameFooter/gameFooter";
 import Sound from "../../../Sound";
 import Card from "../../card/card";
 import CardText from "../../card/cardText";
+import CardSentence from '../../card/cardSentence';
 import Button from "../../button/button";
 import Navigation from "../navigation/navigation";
 import "./easyGame.css";
 
 const EasyGame = ({ lecture, setProgress, Game }) => {
   const ACCENT = lecture === 1;
-  const CurrentCard = ACCENT ? CardText : Card;
+  const SENTENCE = lecture === 13;
+  const CurrentCard = ACCENT ? CardText : SENTENCE ? CardSentence : Card;
   const [state, setState] = useState([]);
   const [soundState, setSoundState] = useState();
   const [answer, setAnswer] = useState();
